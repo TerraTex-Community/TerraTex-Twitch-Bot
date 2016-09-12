@@ -1,0 +1,34 @@
+[
+  {
+    "command": "quote",
+    "description": "Zeigt ein zufälliges oder ein bestimmtes Zitat an.",
+    "params": "[id]",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "quote list",
+    "description": "Sendet einen Link zu allen Zitaten des Channels.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "quote add",
+    "description": "Fügt ein neues Zitat hinzu.",
+    "params": "Name Zitat",
+    "type": "system",
+    "permission": "mod",
+    "aliasOf": null
+  },
+  {
+    "command": "quote remove",
+    "description": "Löscht ein Zitat.",
+    "params": "id",
+    "type": "system",
+    "permission": "mod",
+    "aliasOf": null
+  }
+]

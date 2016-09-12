@@ -1,0 +1,213 @@
+
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Bad-Word-Filter / Beleidigungsfilter</span></div>
+    <div class="card-block">
+        <fieldset class="form-group">
+            <label for="badWords">
+                <input id="badWords" class="switch" type="checkbox" {{#if (eq badWords 1)}}checked{{/if}} data-on-color="success" data-off-color="danger">
+                Beleidigungsfilter aktiv?
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="badWords_useDefaultList">
+                <input id="badWords_useDefaultList" class="switch" type="checkbox" {{#if (eq badWords_useDefaultList 1)}}checked{{/if}} data-on-color="success" data-off-color="danger">
+                Standard deutsche BadWord-Liste benutzen? (in Aufbau / Alpha)
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="badWords_useDefaultList_en">
+                <input id="badWords_useDefaultList_en" class="switch" type="checkbox" {{#if (eq badWords_useDefaultList_en 1)}}checked{{/if}} data-on-color="success" data-off-color="danger">
+                Standard englische BadWord-Liste benutzen? (in Aufbau / Alpha)
+            </label>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <button class="btn btn-info" data-toggle="modal" data-target="#chatfilter_badwords">Custom BadWord-Liste bearbeiten</button>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label for="badWords_banAfterTimes">
+                Nach wievielen Beleidigungen soll ein Zuschauer gebannt werden?
+            </label>
+            <input type="number" class="form-control" id="badWords_banAfterTimes" placeholder="" step="1" min="0"
+                   value="{{#if badWords_banAfterTimes}}{{badWords_banAfterTimes}}{{else}}3{{/if}}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="badWords_banTime">
+                Wie lange soll der Zuschauer gebannt werden (in Minuten, -1 entspricht permanent)?
+            </label>
+            <input type="number" class="form-control" id="badWords_banTime" placeholder="" step="1" min="0"
+                   value="{{#if badWords_banTime}}{{badWords_banTime}}{{else}}10{{/if}}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="badWords_resetCounterTime">
+                Nach wievielen Minuten soll der Zähler für die Anzahl der Beleidigungen zurückgesetzt werden?
+            </label>
+            <input type="number" class="form-control" id="badWords_resetCounterTime" placeholder="" step="1" min="0"
+                   value="{{#if badWords_banTime}}{{badWords_banTime}}{{else}}30{{/if}}"/>
+        </fieldset>
+
+
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveBadWords">Speichern</a>
+        </p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Werbefilter</span></div>
+    <div class="card-block">
+        <fieldset class="form-group">
+            <label for="adDomains">
+                <input id="adDomains" class="switch" type="checkbox" {{#if (eq adDomains 1)}}checked{{/if}} data-on-color="success" data-off-color="danger">
+                Sollen Websites als Werbungen gefiltert werden?
+            </label>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="adIps">
+                <input id="adIps" class="switch" type="checkbox" {{#if (eq adIps 1)}}checked{{/if}} data-on-color="success" data-off-color="danger">
+                Sollen IP-Adressen als Werbungen gefiltert werden?
+            </label>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <button class="btn btn-info" data-toggle="modal" data-target="#chatfilter_adWhiteList">Whitelist/Freigabeliste bearbeiten</button>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label for="adPermitTime">
+                Wie lange soll eine Freigabe mit !permit [username] gültig sein (in Minuten)?
+            </label>
+            <input type="number" class="form-control" id="adPermitTime" placeholder="" step="1" min="0"
+                   value="{{#if adPermitTime}}{{adPermitTime}}{{else}}3{{/if}}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="adBanAfterTimes">
+                Nach wievielen Werbungen soll ein Zuschauer gebannt werden?
+            </label>
+            <input type="number" class="form-control" id="adBanAfterTimes" placeholder="" step="1" min="0"
+                   value="{{#if adBanAfterTimes}}{{adBanAfterTimes}}{{else}}3{{/if}}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="adBanTime">
+                Wie lange soll der Zuschauer gebannt werden (in Minuten, -1 entspricht permanent)?
+            </label>
+            <input type="number" class="form-control" id="adBanTime" placeholder="" step="1" min="0"
+                   value="{{#if adBanTime}}{{adBanTime}}{{else}}10{{/if}}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="adResetCounterTime">
+                Nach wievielen Minuten soll der Zähler für die Anzahl der Werbungen zurückgesetzt werden?
+            </label>
+            <input type="number" class="form-control" id="adResetCounterTime" placeholder="" step="1" min="0"
+                   value="{{#if adResetCounterTime}}{{adResetCounterTime}}{{else}}30{{/if}}"/>
+        </fieldset>
+
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveAD">Speichern</a>
+        </p>
+    </div>
+</div>
+
+<!-- Modal BadWords -->
+<div class="modal fade" id="chatfilter_badwords" tabindex="-1" role="dialog" aria-labelledby="chatfilter_badwords" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Abbrechen">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Badword/Beileidigungsliste</h4>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 10%"></th>
+                        <th>BadWord</th>
+                        <th>RegEx</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="btn btn-secondary btn-sm" id="addBadWord"><i class="fa fa-plus text-success"></i></div>
+                        </th>
+                        <th>
+                            <input type="text" id="add_badword" class="form-control form-control-sm"  />
+                        </th>
+                        <th>
+                            <input type="text" id="add_regex" class="form-control form-control-sm"  />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="hidden-xs-up template">
+                    <tr>
+                        <td>
+                            <div class="btn btn-secondary btn-sm deleteRow"><i class="fa fa-trash text-danger"></i></div>
+                        </td>
+                        <td class="badword">#badword</td>
+                        <td class="regex">#regex</td>
+                    </tr>
+                </tbody>
+                <tbody class="entry">
+                </tbody>
+            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary save">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal BadWords -->
+<div class="modal fade" id="chatfilter_adWhiteList" tabindex="-1" role="dialog" aria-labelledby="chatfilter_adWhiteList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Abbrechen">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">IP/Domain Whitelist</h4>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 10%"></th>
+                        <th>Adresse</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="btn btn-secondary btn-sm" id="addDomainIP"><i class="fa fa-plus text-success"></i></div>
+                        </th>
+                        <th>
+                            <input type="text" id="add_domainip" class="form-control form-control-sm"  />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="template hidden-xs-up">
+                    <tr>
+                        <td>
+                            <div class="btn btn-secondary btn-sm deleteRow"><i class="fa fa-trash text-danger"></i></div>
+                        </td>
+                        <td class="domain">#domain</td>
+                    </tr>
+                </tbody>
+                <tbody class="entry">
+                </tbody>
+            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary save">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/pages/pageChatFilter.js"></script>

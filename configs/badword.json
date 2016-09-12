@@ -1,0 +1,93 @@
+{
+    "badwords": [
+        {
+            "description": "hurensohn",
+            "regex_old": "h(([^a-z ]|[u]){0,3}|)r([^a-z ]|)[3e]{0,1}([^a-z ]|)n(([^a-z ]|)s(|([^a-z ]|)o([^a-z ]|)h([^a-z ]|))n){0,1}",
+            "regex": "hurensohn"
+        },
+        {
+            "description": "huso",
+            "regex": "huso"
+        },
+        {
+            "description": "wixxer",
+            "regex": "w([^a-z]|)[i!]([^a-z]|)(x([^a-z]|)(x([^a-z]|)|)|c([^a-z]|)h([^a-z]|)s)([^a-z]|)[e3]([^a-z]|)r"
+        },
+        {
+            "description": "spatst /* Not done regex building beginning with this line */",
+            "regex": "spast"
+        },
+        {
+            "description": "spacken",
+            "regex": "spacken"
+        },
+        {
+            "description": "affenarsch",
+            "regex": "affenarsch"
+        },
+        {
+            "description": "Analbaron",
+            "regex": "Analbaron"
+        },
+        {
+            "description": "Analdin",
+            "regex": "Analdin"
+        },
+        {
+            "description": "Arschbratze",
+            "regex": "Arschbratze"
+        },
+        {
+            "description": "Fotze",
+            "regex": "Fotze"
+        },
+        {
+            "description": "Hackfresse",
+            "regex": "Hackfresse"
+        },
+        {
+            "description": "Kackbratze",
+            "regex": "Kackbratze"
+        },
+        {
+            "description": "Kotlutscher",
+            "regex": "Kotlutscher"
+        },
+        {
+            "description": "Pimmelfresse",
+            "regex": "Pimmelfresse"
+        },
+        {
+            "description": "Sackfotze",
+            "regex": "Sackfotze"
+        },
+        {
+            "description": "Wichsfisch",
+            "regex": "Wichsfisch"
+        },
+        {
+            "description": "Arschficker",
+            "regex": "Arschficker"
+        },
+        {
+            "description": "nutte",
+            "regex": "nutte"
+        },
+        {
+            "description": "schlampe",
+            "regex": "schlampe"
+        },
+        {
+            "description": "schnepfe",
+            "regex": "schnepfe"
+        },
+        {
+            "description": "bastard",
+            "regex": "bastard"
+        },
+        {
+            "description": "hundesohn",
+            "regex": "hundesohn"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{{#if (eq type "group")}}
+    {{#if seperator}}
+        <li class="nav-item"></li>
+    {{/if}}
+    {{#if title}}
+        <li class="nav-item disabled">
+            <a class="nav-link disabled" href="#">{{title}}</a></li>
+
+    {{/if}}
+    {{#each items}}
+        {{> navigation}}
+    {{/each}}
+{{else}}
+    <li class="nav-item">
+        <a class="nav-link" href="#" id="nav_{{id}}" data-load-page="{{id}}" data-remove-active="#navContainerLeft .nav-link">{{title}}</a>
+
+        {{#if items}}
+            Sub Navigation not implemented yet.
+        {{/if}}
+    </li>
+{{/if}}

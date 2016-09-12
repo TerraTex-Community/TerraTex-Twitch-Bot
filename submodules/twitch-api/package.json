@@ -1,0 +1,38 @@
+{
+  "name": "twitch-api",
+  "version": "0.4.3",
+  "description": "Simple module for using twitch.tv's REST API in node.js",
+  "keywords": [
+    "express",
+    "twitch.tv",
+    "auth",
+    "rest",
+    "api",
+    "authentication"
+  ],
+  "author": {
+    "name": "Manuel Miranda",
+    "email": "solidmax@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manumiranda/twitch-api"
+  },
+  "bugs": {
+    "url": "https://github.com/manumiranda/twitch-api/issues"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./twitch-api",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "request": "^2.60.0"
+  }
+}

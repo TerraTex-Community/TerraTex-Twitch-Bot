@@ -1,0 +1,92 @@
+{{#showGiveAway}}
+{{^activeGiveAway}}
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Giveaway</span></div>
+    <div class="card-block">
+        <fieldset class="form-group">
+            <label for="removePointsOption">
+                <select class="form-control" id="removePointsOption">
+                    <option value="0">Mindestpoints müssen im Besitz sein (und werden nicht abgezogen)</option>
+                    <option value="1">Mindestpoints werden bezahlt, Verlierer bekommen Points zurück</option>
+                    <option value="2">Mindestpoints werden bezahlt, Niemand bekommt Points zurück</option>
+                    <option value="3">Mindestpoints werden bezahlt, Der Gewinner bekommt zusätzlich alle eingesetzten
+                        Points
+                    </option>
+                </select>
+            </label>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="minPoints">Mindestpoints für Teilnahme am GiveAway</label>
+            <input type="number" class="form-control-inline text-xs-right" id="minPoints" min="0" value="0"/>
+        </fieldset>
+
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="startGiveAway">GiveAway Starten</a>
+        </p>
+    </div>
+</div>
+{{/activeGiveAway}}
+{{#activeGiveAway}}
+<div class="card" style="width:750px">
+    <div class="card-header"><span class="font-weight-bold">Giveaway</span></div>
+    <div class="card-block">
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-success" id="rollGiveAway">Roll / Reroll</a>
+            <a href="#" class="btn btn-warning" id="closeGiveAway">GiveAway Beenden</a>
+            <a href="#" class="btn btn-danger" id="stopGiveAway">GiveAway Abbrechen</a>
+        </p>
+        <div class="row">
+            <div class="col-xs-4 giveawayUserList">
+                <div class="card">
+                    <div class="card-header"><span class="font-weight-bold">Teilnehmer</span></div>
+                    <div class="card-block" id="userListEntries">
+                        {{#users}}
+                        <div class="userItem" style="color: {{color}}">{{display-name}}</div>
+                        {{/users}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8 no-padding-left giveAwayField">
+                <div class="drawBox">
+                    <div class="card card-inverse ">
+                        <div class="innerRightPadding">
+                            <div class="inner" id="userRotateContainerForGiveAway" style="left: 0px">
+
+
+
+                            </div>
+                            <div class="winnerLine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="winnerIsFollower right"></div>
+                <div class="winnerField">
+                    <div id="winnerPlaceBoxedImage">
+
+                    </div>
+                    <div class="winnerOverlay">
+                        <img src="/images/winner.png" />
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <div id="winnerChat">
+                    <div class="bottomChatInner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/activeGiveAway}}
+
+<script src="/javascripts/pages/pageGiveAway.js"></script>
+<script>
+    g_socket.emit("sendMeGiveAwayUsers", {});
+</script>
+{{/showGiveAway}}
+{{^showGiveAway}}
+<div class="alert alert-info">as GiveAway-System kann nur genutzt werden, wenn der Bot online ist.</div>
+{{/showGiveAway}}

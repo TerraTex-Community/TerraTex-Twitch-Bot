@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Zitate / Quotes Einstellungen</span></div>
+    <div class="card-block">
+        <p class="card-text">
+            Das Quotesystem erlaubt es über Chat Befehle Zitate abzuspeichern und beliebig im Chat abzurufen. Je nach Einstellung,
+            können auch regelmäßig zufällige Zitate gesendet werden.
+        </p>
+        <form id="quote_settings">
+            <fieldset class="form-group">
+                <label for="quoteStatus">QuoteSystem aktivieren?</label>
+                <input id="quoteStatus" class="switch" type="checkbox" {{#quoteStatus}}checked{{/quoteStatus}} data-on-color="success" data-off-color="danger">
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_quotes">Zitateinstellungen speichern</a>
+        </p>
+    </div>
+</div>
+
+<!-- require JS for this page -->
+<script src="/javascripts/pages/pageQuoteSettings.js"></script>

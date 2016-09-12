@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Chat Begrüßung für neue Follower</span></div>
+    <div class="card-block">
+        <form id="custom_follower_settings">
+            <fieldset class="form-group">
+                <input id="followerAlert" class="switch" type="checkbox" {{#followerAlert}}checked{{/followerAlert}} data-on-color="success" data-off-color="danger">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="followerText">Follower Begrüßungstext</label>
+                <input type="text" class="form-control" id="followerText" placeholder="followerText" value="{{followerText}}"/>
+                <small class="text-muted">
+                    Verfügbare Platzhalter: <i>#user#</i> - Nickname des Followers
+                </small>
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_followerAlert">Speichern</a>
+        </p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Chatnachricht für neue Chatter</span></div>
+    <div class="card-block">
+        <form id="custom_join_settings">
+            <fieldset class="form-group">
+                <input id="chatJoinAlert" class="switch" type="checkbox" {{#chatJoinAlert}}checked{{/chatJoinAlert}} data-on-color="success" data-off-color="danger">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="chatJoinTarget">Nachricht an
+                    <select id="chatJoinTarget" class="form-control">
+                        <option value="CHAT" {{#chatJoinTargets.chat}}selected{{/chatJoinTargets.chat}}> Chat </option>
+                        <option value="STREAMER" {{#chatJoinTargets.streamer}}selected{{/chatJoinTargets.streamer}}> Streamer (Whisper)</option>
+                    </select>
+                </label>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="chatJoinMessage">Chat Nachricht</label>
+                <input type="text" class="form-control" id="chatJoinMessage" placeholder="Nachricht" value="{{chatJoinMessage}}"/>
+                <small class="text-muted">
+                    Verfügbare Platzhalter: <i>#user#</i> - Nickname des neuen Chatters
+                </small>
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_chatJoinAlert">Speichern</a>
+        </p>
+    </div>
+</div>
+
+<!-- require JS for this page -->
+<script src="/javascripts/pages/pageChatNotificationSettings.js"></script>

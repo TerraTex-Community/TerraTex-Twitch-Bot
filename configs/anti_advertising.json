@@ -1,0 +1,24 @@
+{
+    "ipadress": {
+        "regex": "((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\W){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?[:]{0,1}[0-9]*))"
+    },
+    "domains": {
+        "regex": "((?:[a-zA-Z0-9äüö](?:[a-zA-Z0-9\\-.äüö])*[a-zA-Z0-9äüö])+\\.(?:{tlds})(?:\\W|$))",
+        "tlds": [
+            "AC", "ACTIVE", "AD", "ADS", "ADULT","AE", "AF", "AFL", "AG", "AI","AL", "AM", "AO", "APP", "AQ","AR", "AS", "AT", "AU", "AW",
+            "AX", "AZ", "BA", "BB", "BD","BE", "BEST", "BET", "BF", "BG","BH", "BI", "BIO", "BIZ", "BJ","BM", "BN", "BO", "BR", "BS","BT",
+            "BV", "BW", "BY", "BZ","BZH", "CA", "CC", "CD", "CENTER","CEO", "CF", "CG", "CH", "CI","CK", "CL", "CM", "CN", "CO", "COM", "COMMUNITY",
+            "CLAN", "CR", "CU", "CV","CW", "CX", "CY", "CZ", "DE","DEV", "DJ", "DK", "DM", "DO","DZ", "EARTH", "EC", "EE", "EG","ER", "ES", "ET",
+            "EU", "EUS","FM", "FO", "FOO", "FORUM", "FR","GA", "GAME", "GB", "GBIZ", "GE","GF", "GG", "GH", "GI", "GL","GLOBAL", "GM",
+            "GN", "GP", "GQ","GR", "GROUP", "GS", "GT", "GU","GW", "GY", "HK", "HM", "HN","HOW", "HR", "HT", "HU", "ID","IE", "IL", "IM",
+            "IN", "INFO","ING", "INK", "INT", "IO", "IQ","IR", "JE", "JM", "JO", "JP", "KE","KG", "KH", "KI", "KM", "KN",
+            "KP", "KR", "KW", "KY", "KZ","LA", "LB", "LC", "LI", "LIVE","LK", "LOL", "LR", "LS", "LT","LU", "LV", "LY", "MA", "MC","MD", "ME", "MEDIA",
+            "MG", "MH","MIL", "MK", "ML", "MM", "MN","MO", "MP", "MQ", "MR", "MS","MT", "MU", "MV", "MW", "MX","MY", "MZ", "NA", "NC", "NE","NEC",
+            "NET", "NETWORK", "NEW", "NEWS","NF", "NG", "NI", "NL", "NO","NP", "NR", "NU", "NZ", "OM","ONE", "ONG", "ONL", "ONLINE", "OOO","ORG",
+            "PA", "PE", "PET", "PF","PG", "PH", "PK", "PL", "PM","PN", "PR", "PRO", "PROD", "PRODUCTIONS","PS", "PT", "PUB", "PW", "PY","QA", "RE",
+            "REALTY", "RED", "RIP","RO", "ROCKS", "RS", "RU", "RUN","RW", "SA", "SB", "SC", "SD","SE", "SERVICES", "SG", "SH", "SI","SJ", "SK", "SL",
+            "SM", "SN","SO", "SR", "SU", "SUCKS", "SV","SX", "SZ", "TC", "TD", "TF","TG", "TH", "TJ", "TK", "TL","TM", "TN", "TO", "TT", "TV","TW", "TZ",
+            "UA", "UG", "UK","US", "UY", "UZ", "VA", "VC","VE", "VG", "VI", "VN", "VU","WEBSITE", "WS", "WTF", "XXX", "XYZ","YE", "YT", "ZA", "ZM", "ZONE","ZW"
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "command": "points",
+    "description": "Zeigt an, wieviele Points du bereits gesammelt hast!",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "givepoints",
+    "description": "Überträgt eigene Points an einen anderen Viewer!",
+    "params": "Nickname Anzahl",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "addpoints",
+    "description": "Fügt Points allen oder einem bestimmten Viewer hinzu!",
+    "params": "Anzahl [Nickname]",
+    "type": "system",
+    "permission": "mod",
+    "aliasOf": null
+  }
+]

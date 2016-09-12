@@ -1,0 +1,165 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Chat</span></div>
+    <div class="card-block">
+        Diese Klasse stellt Funktionen und Attribute/Properties zum ausgeführten Command bereit.
+        <br/>
+
+        <strong>Funktionen der Klasse</strong>:<br/><br/>
+        <ul>
+            <li><a href="#setData">setData</a></li>
+            <li><a href="#getData">getData</a></li>
+        </ul>
+
+        <strong>Properties der Klasse</strong>:<br/><br/>
+        <ul>
+            <li><a href="#parameter">parameter</a></li>
+            <li><a href="#parameterArray">parameterArray</a></li>
+        </ul>
+
+    </div>
+</div>
+
+
+<div class="card" id="setData">
+    <div class="card-header"><span class="font-weight-bold">Function Command:setData</span></div>
+    <div class="card-block">
+        Diese Funktion Speichert daten in der Datenbank.
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Chat:setData(mixed data)</code>
+
+        <div class="placeholder-1em"></div>
+        <div class="doku-fn-head-small">Parameter</div>
+        <ul class="paramList">
+            <li>mixed data: Die Daten die gespeichert werden sollen.</li>
+        </ul>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>Diese Funktion gibt keine Werte zurück.</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+            siehe Command:getData()
+
+    </div>
+</div>
+<div class="card" id="getData">
+    <div class="card-header"><span class="font-weight-bold">Function Command:getData</span></div>
+    <div class="card-block">
+        Diese Funktion lädt gespeicherte Daten aus der Datenbank.
+        <strong>Hinweis: Gespeicherte Tables werden als userdata (JS-Object) zurückgegeben.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">mixed Chat:getData()</code>
+
+        <div class="placeholder-1em"></div>
+        <div class="doku-fn-head-small">Parameter</div>
+        <ul class="paramList">
+            <li>keine</li>
+        </ul>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>Die vorher gespeicherten Daten.</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+            <code class="language-lua">
+                -- erhalte die letzte Summe
+                local sum = Command:getData()
+
+                -- Wenn bisher keine daten gesetzt sind, setze sie auf 0
+                if not tonumber(sum) then
+                sum = 0
+                end
+
+                -- Erhöhe die Summe im 1
+                sum = sum + 1
+
+                -- speichere Summe
+                Command:setData(sum)
+
+                -- Gebe die Summe aus
+                Chat:output("Der Befehl wurde " .. sum .. " mal ausgeführt")
+            </code>
+        </pre>
+
+    </div>
+</div>
+
+<div class="card" id="parameter">
+    <div class="card-header"><span class="font-weight-bold">Property Command.parameter</span></div>
+    <div class="card-block">
+        In diesem Attribut ist die Nachricht des Nutzers nach dem Command gespeichert.
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">String Command.parameter</code>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>String - Text nach dem Command</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel 1</div>
+        <pre class="alert alert-code line-numbers">
+            <code class="language-lua">
+                -- Der User sendet den Command !hallo alle im Chat!
+                local output = Command.parameter
+
+                -- Der Bot sendet an den Chat "Begrüßt alle im Chat!"
+                Chat:action( "Begrüßt " .. output )
+            </code>
+        </pre>
+
+        <div class="doku-fn-head">Beispiel 2</div>
+        <pre class="alert alert-code line-numbers">
+            <code class="language-lua">
+                -- Der User sendet den Command !addition 4 10
+                local params = Command.parameter
+                -- Wandelt den String in eine Table um
+                local paramsTable = {}
+                local pattern = '([^ ]+)'
+                string.gsub(params, pattern, function(value) paramsTable[#paramsTable + 1] = value;  end);
+
+
+                -- Der Bot berechnet die Summe der beiden Parameter
+                local calc = tonumber(paramsTable[1]) + tonumber(paramsTable[2])
+
+                Chat:output("Das Ergebnis ist: " .. calc)
+            </code>
+        </pre>
+
+    </div>
+</div>
+
+<div class="card" id="parameterArray">
+    <div class="card-header"><span class="font-weight-bold">Property Command.parameterArray</span></div>
+    <div class="card-block">
+        In diesem Attribut sind die Parameter des Commands gespeichert (Message nach dem Command geteilt an allen Leerzeichen).
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">JsArray Command.parameterArray</code>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>JsArray/userdata - Es gibt die Parameter als JsArray zurück.</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+            <code class="language-lua">
+                -- Der User sendet den Command !addition 4 10
+                local params = Command.parameterArray
+
+                -- Der Bot berechnet die Summe der beiden Parameter
+                local calc = tonumber(parameterArray[0]) + tonumber(parameterArray[1])
+
+                Chat:output("Das Ergebnis ist: " .. calc)
+            </code>
+        </pre>
+
+    </div>
+</div>
+

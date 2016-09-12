@@ -1,0 +1,8 @@
+{
+    "fromUser": "Name des Senders",
+    "toUser": "Name des Empfängers",
+    "quote": "Text des Zitates",
+    "date": "Datum im Format: DD.MM.YYYY HH:MM:SS",
+    "timeFormated": "Zeit als Text - z.B. '10 Jahre 20 Stunden 10 Minuten'",
+    "minutes": "Anzahl Minuten - z.B. '20'"
+}

@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Level-System Einstellungen</span></div>
+    <div class="card-block">
+            <fieldset class="form-group">
+                <input id="levelEnabled" class="switch" type="checkbox" {{#levelEnabled}}checked{{/levelEnabled}} data-on-color="success" data-off-color="danger">
+                <label for="levelEnabled"><span class="font-weight-bold">Levelsystem aktiv</span></label>
+            </fieldset>
+        <fieldset class="form-group">
+            <label for="defaultLevel">Default Level</label>
+            <input type="text" class="form-control" id="defaultLevel" value="{{defaultLevel}}"/>
+            <small class="text-muted">Dieses Level wird vergeben ab 0 Punkte, oder wenn kein weiteres Level definiert wurde.
+            </small>
+        </fieldset>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_levelSettings">Einstellungen Speichern</a>
+        </p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Levels</span></div>
+    <div class="card-block">
+        <p class="text-xs-right right">
+            <a href="#" class="btn btn-primary" id="saveLevelNames">Levelnamen Speichern</a>
+        </p>
+        <p>
+            Level mit <input type="number" min="1" value="1" class="form-control-inline text-xs-right" id="addLevel_hours"/> Stunden
+            <a href="#" class="btn btn-success" id="addLevel">hinzufügen</a>
+        </p>
+        <div id="drawLevels">
+            {{{levels}}}
+        </div>
+    </div>
+</div>
+
+<!-- require JS for this page -->
+<script src="/javascripts/pages/pageLevelSettings.js"></script>

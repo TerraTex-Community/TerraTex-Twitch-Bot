@@ -1,0 +1,83 @@
+<!-- Display Homepage = Page without Login -->
+
+
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand" href="/">TerraTex Twitch Bot<small class="versionInfo">v{{version}}</small></a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://forum.terratex.eu">Support / Forum</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://twitchtracker.terratex.eu/index.php?project=2">Bugs/Featurerequests</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="http://terratex.eu">About Us</a></li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="http://forum.terratex.eu/index.php?legal-notice/&s=8fc843102b481cc84a098605421c6fc15cf3f956">Impressum</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="navbar-fixed-placeholder"></div>
+
+<div class="placeholder-2em"></div>
+
+
+
+<div class="container">
+    {{#channelNotExist}}
+        <div class="alert alert-danger">
+            Error: Der von Ihnen aufgerufene Link existiert nicht (mehr). Es existiert keine Toplist zum Twitch-Kanal {{ channel }}.
+        </div>
+    {{/channelNotExist}}
+
+    {{^channelNotExist}}
+        <div class="card" style="margin-bottom: 65px;">
+            <div class="card-header"><span class="font-weight-bold">Top100 von {{ streamerName }} nach
+                <select id="orderby">
+                    <option value="points" {{#if (eq activeorder "points")}}selected{{/if}}> Punkte </option>
+                    <option value="time" {{#if (eq activeorder "time")}}selected{{/if}}> View Time </option>
+                    <option value="chat" {{#if (eq activeorder "chat")}}selected{{/if}}> gesendete Chatnachrichten </option>
+                </select>
+            </span></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Wer?</th>
+                    <th class="text-align-right">Points</th>
+                    <th class="text-align-right">View Time? (in h)</th>
+                    <th class="text-align-right">Chat Nachrichten</th>
+                    <th class="text-align-right">Level</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{countReset "toplist"}}
+                {{#list}}
+                    <tr>
+                        <td><strong>#{{countUp "toplist"}}</strong></td>
+                        <td>{{viewerName}}</td>
+                        <td class="text-align-right">{{math_floor points}}</td>
+                        <td class="text-align-right">{{time_MinuteToHour viewTime}}</td>
+                        <td class="text-align-right">{{chatMessages}}</td>
+                        <td class="text-align-right">{{level}}</td>
+                    </tr>
+                {{/list}}
+                </tbody>
+            </table>
+        </div>
+    {{/channelNotExist}}
+</div>
+
+<script>
+    $(document).ready(function(){
+        var channel = "{{channel}}";
+        $("#orderby").change(function(){
+            var value = $("#orderby").val();
+            location.href = "/toplist/?channel=" + channel + "&orderby=" + value;
+        });
+    });
+</script>
+
+<footer class="navbar navbar-fixed-bottom  navbar-dark bg-inverse">
+    <div class="center">&copy; TerraTex Twitch Bot by Geramy92 2015-2016 | Changelog | <a
+            href="http://twitchtracker.terratex.eu/index.php?do=roadmap&project=2">Planned Features</a></div>
+</footer>

@@ -1,0 +1,144 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Level-System Einstellungen</span></div>
+    <div class="card-block">
+        Timer senden nach einer bestimmten Zeit automatisch Texte oder Befehle an den Chat. Es ist auch möglich Befehle
+        direkt an den Bot zu senden, ohne das diese im Chat auftauchen. Timer sollten erst nach einer Mindestanzahl von
+        Nachrichten und wenn der Streamer online ist ausgeführt werden um Spam zu vermeiden.
+        <br/><br/>
+        <button class="btn btn-success" id="createTimer">Neuen Timer erstellen</button>
+    </div>
+
+    <table class="table table-hover">
+        <tr>
+            <th style="max-width: 50px"></th>
+            <th style="max-width: 50px"></th>
+            <th>Timer Beschreibung</th>
+            <th style="max-width: 50px; text-align: right">alle x Minuten</th>
+        </tr>
+        {{#each timers}}
+            <tr>
+                <td style="max-width: 30px"><a href="#" class="btn btn-info btn-sm tEdit" data-timer-id="{{id}}">bearbeiten</a>
+                </td>
+                <td style="max-width: 30px"><a href="#" class="btn btn-danger btn-sm tDelete" data-timer-id="{{id}}">löschen</a>
+                </td>
+                <td>{{description}}</td>
+                <td style="max-width: 30px; text-align: right">{{minutes}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>
+
+
+<div class="modal fade" id="createEditTimer" tabindex="-1" role="dialog" aria-labelledby="createEditTimer"
+     aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <strong>Timer Bearbeitung</strong>
+            </div>
+            <div class="modal-body">
+                <fieldset class="form-group">
+                    <label for="timerdescription"> Timerbeschreibung
+                    </label>
+                    <input type="text" id="timerdescription" class="content form-control" style="width: 100%"/>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="onlyIfStreaming">
+                        <input id="onlyIfStreaming" class="switch" data-size="mini" type="checkbox" data-on-color="success"
+                               data-off-color="danger">
+                        Command nur ausführen, wenn der Stream läuft.
+                    </label>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="executeEveryXMinutes">
+                        Timer alle
+                        <input type="number" id="executeEveryXMinutes" class="text-xs-right" value="5" step="1"
+                               required/>
+                        Minuten ausführen.
+                    </label>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="messagesAfter">
+                        <div class="input-group">
+                            <select id="messagesAfterType" class="form-control" style="width: auto;">
+                                <option value="0">nach min. x Nachrichten im Chat dieses Timers</option>
+                                <option value="1">nach min. x Nachrichten im Chat aller Timer</option>
+                            </select>
+                            <input type="number" id="messagesAfter" class="form-control-sm text-xs-right" required/>
+                        </div>
+                        <small>
+                            Wenn diese Option Größer als 1 ist, werden die Nachrichten im Chat gezählt und je nach
+                            ausgewählten Typ die Ausführung des Timers übersprungen, sollten weniger Nachrichten
+                            gesendet worden sein.
+                        </small>
+                    </label>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="order">
+                        <input id="order" class="switch" data-size="mini" type="checkbox" data-on-color="success"
+                               data-off-color="danger">
+                        Einträge in zufälliger Reihenfolge senden?
+                    </label>
+                </fieldset>
+                <hr/>
+                <fieldset class="form-group">
+                    <div class="btn btn-success" id="timerAddMessage">Message/Befehl hinzufügen</div>
+                </fieldset>
+                <small><strong>Erklärung Intern</strong>: Interne Nachrichten/Befehle werden direkt dem Bot übergeben,
+                    ohne dass sie an den Chat gesendet
+                    werden.
+                </small>
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th style="width: 30px"></th>
+                    <th>Message</th>
+                    <th style="width: 40px">Intern?</th>
+                </tr>
+                <tbody class="hidden-xs-up template">
+                <tr>
+                    <td>
+                        <div class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+
+                            <input type="text" class="form-control-xs content" style="width:100%" value="#content#"/>
+                            <div class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-secondary btn-sm dropdown-toggle timerSelectCommandToggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right timerSelectCommandForInput"
+                                     style="max-height: 200px; overflow-y: scroll">
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input class="#switch# intern" data-size="small" data-selected="#selected#" type="checkbox"
+                               data-on-color="success"
+                               data-off-color="danger"></td>
+                </tr>
+                </tbody>
+                <tbody class="entry">
+
+                </tbody>
+            </table>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-success create">Erstellen</button>
+                <button type="button" class="btn btn-success save">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/pages/pageTimer.js"/>

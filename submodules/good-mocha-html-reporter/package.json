@@ -1,0 +1,37 @@
+{
+  "author": {
+    "email": "Gauger16@gmail.com",
+    "name": "Gauge"
+  },
+  "dependencies": {
+    "chalk": "latest"
+  },
+  "description": "A visually appealing html reporter for mocha",
+  "devDependencies": {
+    "mocha": "1.6.x"
+  },
+  "directories": {},
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "gitHead": "c2a30c703e4a44c6daf81966d71aebf125b9a64e",
+  "keywords": [
+    "mocha",
+    "reporter",
+    "html",
+    "visual",
+    "selenium"
+  ],
+  "main": "main.js",
+  "maintainers": [
+    {
+      "email": "Gauger16@gmail.com",
+      "name": "gauge"
+    }
+  ],
+  "name": "good-mocha-html-reporter",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "2.0.0"
+}

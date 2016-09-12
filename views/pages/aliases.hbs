@@ -1,0 +1,41 @@
+
+<div class="card" id="alias">
+    <div class="card-header"><span class="font-weight-bold">Alias / Alternativbefehle</span></div>
+    <div class="card-block">
+        <fieldset class="form-group">
+            <label for="alias">Alias-Name (Command)
+                <input class="form-control" type="text" name="aliasCommand" id="aliasCommand" value="" />
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="aliasOf">Command
+                <select class="form-control" id="aliasOf">
+                    {{#commandToSelect}}
+                        <option value="{{command}}">{{command}}</option>
+                    {{/commandToSelect}}
+                </select>
+            </label>
+        </fieldset>
+        <button class="btn btn-success" id="aliasCreated">Neuen Alias erstellen</button>
+    </div>
+
+
+    <table class="table table-hover">
+        <tr>
+            <th style="max-width: 50px"></th>
+            <th>Command</th>
+            <th>Alias von</th>
+        </tr>
+        {{#aliases}}
+            <tr>
+                <td style="max-width: 50px"><a href="#" class="btn btn-danger aliasDelete" data-cmd="{{command}}">löschen</a></td>
+                <td>{{command}}</td>
+                <td>{{aliasOf}}</td>
+            </tr>
+        {{/aliases}}
+
+    </table>
+</div>
+
+
+<script type="text/javascript" src="/javascripts/pages/pageAliases.js"/>

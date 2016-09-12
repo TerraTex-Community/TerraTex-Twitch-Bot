@@ -1,0 +1,51 @@
+#%RAML 1.0 Resource
+/partners:
+  get:
+    description: Returns List of TerraTex Twitch Partners Ordered by Online Status, Viewers and Followers
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {
+                  "status":200,
+                  "success":true,
+                  "error":null,
+                  "result":[{
+                    "ID":1,
+                    "channel_name": "examplechannel",
+                    "display_name": "ExampleChannel",
+                    "lastState": false,
+                    "lastFollowerCount": 9999,
+                    "lastViewerCount": 0,
+                    "lastViewsCount": 99999,
+                    "twitchPartnered":false,
+                    "lastTitle": "BeispielTitel des Streams!",
+                  "lastGame": "Example Game"
+                  }]
+                }
+/botchannels:
+  get:
+    description: Returns List of Streams, that are using the TTTB, Ordered by Online Status, Viewers and Followers
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {
+                  "status":200,
+                  "success":true,
+                  "error":null,
+                  "result":[{
+                    "ID":1,
+                    "channel_name": "examplechannel",
+                    "display_name": "ExampleChannel",
+                    "lastState": false,
+                    "lastFollowerCount": 9999,
+                    "lastViewerCount": 0,
+                    "lastViewsCount": 99999,
+                    "twitchPartnered":false,
+                    "lastTitle": "BeispielTitel des Streams!",
+                  "lastGame": "Example Game"
+                  }]
+                }

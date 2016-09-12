@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Chat</span></div>
+    <div class="card-block">
+        Diese Klasse stellt Funktionen zum Chat zur Verfügung.
+        <br/>
+
+        <strong>Funktionen der Klasse</strong>:<br/><br/>
+        <ul>
+            <li><a href="#action">action</a></li>
+            <li><a href="#output">output</a></li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+<div class="card" id="action">
+    <div class="card-header"><span class="font-weight-bold">Function Chat:action()</span></div>
+    <div class="card-block">
+        Diese Funktion lässt den Bot einen Text mit dem Befehl /me senden.
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Chat:action (string text)</code>
+
+        <div class="placeholder-1em"></div>
+        <div class="doku-fn-head-small">Parameter</div>
+        <ul class="paramList">
+            <li>text: Text der im Chat ausgegeben werden soll.</li>
+        </ul>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>Diese Funktion gibt keine Werte zurück.</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+<code class="language-lua">-- speichert Ausgabetext in einer Variable
+local output = "grüßt alle im Chat!"
+
+-- prints 'output' to the twitch chat with command /me
+Chat:action( output )</code>
+        </pre>
+
+    </div>
+</div>
+
+
+<div class="card" id="output">
+    <div class="card-header"><span class="font-weight-bold">Function Chat:output()</span></div>
+    <div class="card-block">
+        Diese Funktion lässt den Bot einen Text ausgeben.
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Chat:output (string text)</code>
+
+        <div class="placeholder-1em"></div>
+        <div class="doku-fn-head-small">Parameter</div>
+        <ul class="paramList">
+            <li>text: Text der im Chat ausgegeben werden soll.</li>
+        </ul>
+
+        <div class="doku-fn-head-small">Rückgabewert</div>
+        <ul class="paramList">
+            <li>Diese Funktion gibt keine Werte zurück.</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+<code class="language-lua">-- speichert "Hello World" in einer Variable
+    local output = "Hello World!"
+
+    -- prints 'output' to the twitch chat
+    Chat:output( output )</code>
+        </pre>
+
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Custom Bot Account</span></div>
+    <div class="card-block">
+        <p class="card-text">
+            Der "BotTerraTex" kann einen angepassten Namen für deinen Channel bekommen. Dazu braucht dieser allerdings
+            einen entsprechenden Account.
+            Du kannst dazu auf http://twitch.tv gehen und einen eigenen Account nur für den Bot registrieren. Nach dem
+            du diesen registriert hast,
+            musst du zusätzlich ein oauth Passwort mit Hilfe dieses Tools generieren: <a
+                href="https://twitchapps.com/tmi/">https://twitchapps.com/tmi/</a>
+            <br/><br/>
+            Bitte gebe die entsprechenden Login-Daten unten an.
+        </p>
+        <form id="custom_login_settings">
+            <fieldset class="form-group">
+                <label for="customLogin_Name">Username</label>
+                <input type="text" class="form-control" id="customLogin_Name"
+                       placeholder="Gebe den Benutzername des Bot-Accounts ein" value="{{#if botname}}{{botname}}{{/if}}"/>
+                <small class="text-muted">Der Loginname des Accounts, den du für den Bot angelegt hast.</small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="customLogin_Password">OAuth-Password</label>
+                <input type="text" class="form-control" id="customLogin_Password" placeholder="Password"/>
+                <small class="text-muted">Der OAuth-Code der auf <a href="https://twitchapps.com/tmi/">https://twitchapps.com/tmi/</a>
+                    generiert wurde.
+                </small>
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="settings_customLogin">Speichern & Bot Restarten</a>
+        </p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Additional Options</span></div>
+    <div class="card-block">
+        <p class="card-text">
+            Standardmäßig sendet der Bot beim Verbinden zum Chatserver eine Testnachricht. Diese wird jedesmal gesendet,
+            wenn der Bot neugestartet wird. Da dies auch beim Absturz oder Fehlern der API passieren kann ist dies
+            eine allgemeine Information für den Streamer. Diese kann aber stören, daher gibt es hier die Möglichkeit
+            diese
+            zu deaktivieren.
+        </p>
+        <form>
+            <fieldset class="form-group">
+                <input id="connectMessage" class="switch" type="checkbox" {{#if connectmessage}}checked{{/if}}
+                       data-on-color="success" data-off-color="danger">
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="settings_additionalOptions">Speichern</a>
+        </p>
+    </div>
+</div>
+
+
+<!-- require JS for this page -->
+<script src="/javascripts/pages/pageSettings.js"></script>

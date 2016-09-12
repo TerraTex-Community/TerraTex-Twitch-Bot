@@ -1,0 +1,147 @@
+<div class="card" id="scriptedCommands">
+    <div class="card-header"><span class="font-weight-bold">Scriptbare Commands</span></div>
+    <div class="card-block">
+        <button class="btn btn-success" id="scriptedCommands_createCommand">Neuen Command Erstellen</button>
+        <button class="btn btn-danger" id="showScriptedCommandLog">Lade Error/Info Log</button>
+    </div>
+
+    <table class="table table-hover">
+        <tr>
+            <th style="max-width: 50px"></th>
+            <th style="max-width: 50px"></th>
+            <th>Command</th>
+            <th>Berechtigung</th>
+        </tr>
+        {{#commands}}
+            <tr>
+                <td style="max-width: 50px"><a href="#" class="btn btn-info scEdit" data-cmd="{{command}}">bearbeiten</a></td>
+                <td style="max-width: 50px"><a href="#" class="btn btn-danger scDelete" data-cmd="{{command}}">löschen</a></td>
+                <td>{{command}}</td>
+                <td>{{restrictedTo}}</td>
+            </tr>
+        {{/commands}}
+
+    </table>
+</div>
+
+<div class="modal fade" id="scriptedCommandTemplateSelector" tabindex="-1" role="dialog" aria-labelledby="scriptedCommandTemplateSelector" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <strong>Welches Template soll zum erstellen des Commands genutzt werden?</strong>
+            </div>
+
+            <select id="scriptedCommandTemplate" class="form-control">
+                <!-- Create List from Database -->
+                <option value="0">Kein Template</option>
+                {{#examples}}
+                    <option value="{{ID}}">{{description}}</option>
+                {{/examples}}
+            </select>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-success create">Erstellen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="scriptedCommandLog" tabindex="-1" role="dialog" aria-labelledby="scriptedCommandLog" aria-hidden="true">
+    <div class="modal-dialog modal-lg " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <strong>Scripted Commands Log</strong>
+            </div>
+
+            <textarea style="width:100%; padding: 2px; height: 70vh;"></textarea>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="clearScriptedCommandLog">Log löschen</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="scriptedCommandEditor" tabindex="-1" role="dialog" aria-labelledby="scriptedCommandEditor" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Abbrechen">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Command Editor</h4>
+            </div>
+
+            <div class="modal-body">
+                <fieldset class="form-group">
+                    <label for="scriptedCommandName">Command Name</label>
+                    <input type="text" class="form-control" id="scriptedCommandName" value="" required/>
+                    <small class="text-muted">Command der im Chat eingeben werden muss, damit das Script ausgeführt wird.</small>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="scriptedCommandParameterDescription">Parameter Namen</label>
+                    <input type="text" class="form-control" id="scriptedCommandParameterDescription"/>
+                    <small class="text-muted">Aus dieser Definition wird die Parameter anzeige auf der Commandlist Seite generiert. <br/>
+                    Format: Liste von Parameternamen mit " " - Leerzeichen getrennt. Optionale Parameter mit "[" und "]" umrunden.<br/>
+                    z.B. <code>NichtOptionalerParameter [optionalerParameter]</code></small>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="scriptedCommandDescription">Command Beschreibung</label>
+                    <textarea class="form-control" id="scriptedCommandDescription"></textarea>
+                    <small class="text-muted">Dieser Text erscheint auf der Commandlist Seite.</small>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="scriptedCommandPermission">Berechtigung?</label>
+                    <select id="scriptedCommandPermission" class="form-control">
+                        <option value="USER">Zuschauer</option>
+                        <option value="MOD">Moderator</option>
+                        <option value="STREAMER">Streamer</option>
+                    </select>
+                </fieldset>
+
+                <hr/>
+
+                <fieldset class="form-group">
+                    <label for="editor" class="label-clickable" data-toggle="collapse" data-target="#editorContainer" aria-expanded="false"
+                           aria-controls="editorContainer">Scriptcode</label><br/>
+                    <div class="collapse" id="editorContainer">
+                        <small>Scriptsprache ist Lua. <br/> Eine Dokumentation der Script-API kann unter <a href="{{@url}}/script_docs">{{@url}}/sc_doku</a>
+                            gefunden
+                            werden!
+                        </small>
+                        <div id="editor">
+
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="jsoneditor" class="label-clickable" data-toggle="collapse" data-target="#jsonEditorContainer" aria-expanded="false"
+                           aria-controls="jsonEditorContainer">
+                        Commandspeicher
+                    </label><br/>
+                    <div id="jsonEditorContainer" class="collapse">
+                        <small>Dieser Speicher kann von der Scriptsprache gelesen und auch verändert werden. Gespeichert werden alle als JSON.</small>
+                        <div id="jsoneditor">
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary create">Erstellen</button>
+                <button type="button" class="btn btn-primary save">Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/pages/pageScriptedCommands.js"/>
+

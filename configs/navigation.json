@@ -1,0 +1,141 @@
+[
+    {
+        "type": "group",
+        "desc": "general",
+        "seperator": false,
+        "title": false,
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "dashboard",
+                "title": "Dashboard"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "settings",
+                "title": "Settings"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "desc": "live-systems",
+        "seperator": false,
+        "title": "Live-Systeme",
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "giveaway",
+                "title": "GiveAway"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "desc": "commands",
+        "seperator": false,
+        "title": "Befehle",
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "scriptedCommands",
+                "title": "Scriptbare Befehle"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "aliases",
+                "title": "Alias / Alternativbefehle"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "desc": "viewer systems",
+        "seperator": false,
+        "title": "Viewersysteme",
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "points",
+                "title": "Pointssystem"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "level",
+                "title": "Level System"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "desc": "chat",
+        "seperator": false,
+        "title": "Chatfunktionen",
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "chatfilter",
+                "title": "ChatFilter"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "chatNotifications",
+                "title": "Meldungen"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "chatgames",
+                "title": "Mini-Games"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "quotes",
+                "title": "Quotes/Zitate"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "timer",
+                "title": "Timer"
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "desc": "language",
+        "seperator": false,
+        "title": "Sprache",
+        "items": [
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "text",
+                "title": "Texte"
+            }
+        ]
+    }
+]

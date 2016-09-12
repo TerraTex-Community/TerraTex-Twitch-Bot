@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">Points-System Einstellungen</span></div>
+    <div class="card-block">
+        <form>
+            <fieldset class="form-group">
+
+                <input id="pointsEnabled" class="switch" type="checkbox" {{#pointsActive}}checked{{/pointsActive}} data-on-color="success" data-off-color="danger">
+                <label for="pointsEnabled"><span class="font-weight-bold">Pointssystem aktiv</span></label>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="pointsPerMinute">Punkte für Zusehen ohne im Chat zu schreiben:</label><br/>
+                <input id="pointsPerMinute" min="0" max="1000" type="number" step="0.5" value="{{pointsPerMinute}}" class="text-xs-right"  /> Points in
+                <input id="pointsEveryMinute" min="1" max="1000" type="number" step="1" value="{{pointsEveryMinutes}}" class="text-xs-right"  /> Minuten<br/>
+                <small>
+                    Zur Vereinfachung der Eingabe kann eingegeben werden, wie viele Punkte in welchem Zeitraum vergeben werden. Allerdings
+                    vergibt der Bot jede Minute Points. Die Eingabe wird entsprechend umgerechnet. Die Punkte werden bei Benutzung auf
+                    volle Punkte abgerundet. Die Points können mit einer Kommastelle angegeben werden, Minuten nur in ganzen Minuten.
+                </small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="pointsPerMinutesInChat">Punkte für Zusehen und im Chat zu schreiben:</label><br/>
+                <input id="pointsPerMinutesInChat" min="0" max="1000" type="number" step="0.5" value="{{pointsPerMinuteInChat}}" class="text-xs-right"/> Points in
+                <input id="pointsEveryMinutesInChat" min="1" max="1000" type="number" step="1" value="{{pointsEveryMinutesInChat}}" class="text-xs-right" /> Minuten<br/>
+                <small>
+                    Zur Vereinfachung der Eingabe kann eingegeben werden, wie viele Punkte in welchem Zeitraum vergeben werden. Allerdings
+                    vergibt der Bot jede Minute Points. Die Eingabe wird entsprechend umgerechnet. Die Punkte werden bei Benutzung auf
+                    volle Punkte abgerundet. Die Points können mit einer Kommastelle angegeben werden, Minuten nur in ganzen Minuten.<br/>
+                    <i>Points werden nicht pro gesendete Chatnachricht gegeben. Dieser Fall von Pointsvergabe tritt ein, wenn innerhalb einer Minute eine oder mehr
+                    Nachrichten geschrieben wurden. Punkte werden wie im anderen Fall anteilig vergeben</i>
+
+                </small>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="onlyModsHaveGive">
+                    <input id="onlyModsHaveGive" class="switch" type="checkbox" {{#pointsGiveOnlyMods}}checked{{/pointsGiveOnlyMods}} data-on-color="success" data-off-color="danger">
+                    !give kann nur von Moderatoren benutzt werden (Übergeben von eigenen Points an jemand anderes).
+                </label>
+            </fieldset>
+        </form>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_pointsSettings">Einstellungen Speichern</a>
+        </p>
+    </div>
+</div>
+
+
+<script src="/javascripts/pages/pagePointsSettings.js"></script>

@@ -1,0 +1,40 @@
+{{#data}}
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#cardContent_{{catKey}}" aria-expanded="false"
+         aria-controls="cardContent_{{catKey}}">
+        <span class="font-weight-bold">{{catName}}</span>
+    </div>
+    <div class="card-block collapse" id="cardContent_{{catKey}}">
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary saveStrings" data-cat-name="{{catKey}}">Speichern</a>
+        </p>
+
+        {{#texts}}
+        <!-- Start of Fieldgroup -->
+        <fieldset class="form-group">
+            <label for="string_{{textKey}}">{{item.desc}}</label>
+            <input type="text" id="string_{{textKey}}" class="form-control string_{{@root.catKey}}" data-string-key="{{textKey}}" value="{{item.text}}"
+                   required/>
+            <small class="text-muted">
+                Default: <i>{{item.default}}</i><br/>
+                Verfügbare Platzhalter:<br/>
+                <ul>
+                    {{#item.vars}}
+                        <li><i>#{{tag}}#</i> - {{desc}}</li>
+                    {{/item.vars}}
+                </ul>
+            </small>
+        </fieldset>
+        <hr>
+        {{/texts}}
+
+        <!-- End of FieldGroup -->
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary saveStrings" data-cat-name="{{catKey}}">Speichern</a>
+        </p>
+    </div>
+</div>
+{{/data}}
+
+
+<script src="/javascripts/pages/pageText.js"></script>

@@ -1,0 +1,10 @@
+[
+  {
+    "command": "roulette",
+    "description": "Mit diesem Befehl kann ein Viewer eine Runde Roulette starten oder an einer teilnehmen. Der Parameter 'Points' ist von den Einstellungen des Streamers abhängig.",
+    "params": "~points~",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  }
+]

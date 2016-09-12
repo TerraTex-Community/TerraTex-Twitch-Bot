@@ -1,0 +1,150 @@
+<div class="card">
+    <div class="card-header"><span class="font-weight-bold">User</span></div>
+    <div class="card-block">
+        Diese Klasse stellt Funktionen und Attribute/Properties bereit, die den Nutzer des Commands betreffen.
+        <br/>
+
+        <strong>Funktionen der Klasse</strong>:<br/><br/>
+        <ul>
+            <li><a href="#getGame">getGame</a></li>
+            <li><a href="#getTitle">getTitle</a></li>
+            <li><a href="#getChannel">getChannel</a></li>
+            <li><a href="#getChannelCreateDate">getChannelCreateDate</a></li>
+            <li><a href="#getStream">getStream</a></li>
+            <li><a href="#getStreamStart">getStreamStart</a></li>
+        </ul>
+
+        <strong>Properties der Klasse</strong>:<br/><br/>
+        <ul>
+        </ul>
+
+    </div>
+</div>
+
+
+<div class="card" id="getGame">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getGame</span></div>
+    <div class="card-block">
+        Diese Funktion fragt das aktuelle Spiel von der Twitch-API ab.<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getGame(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>String Game - Name/Titel des Spiels</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+<code class="language-lua">
+-- fragt das Spiel ab
+Stream:getGame(function (gameTitle)
+    -- gibt das aktuelle Spiel im Chat aus
+    Chat:output("Aktuell wird " .. gameTitle .. "gespielt!")
+end)
+</code>
+        </pre>
+
+    </div>
+</div>
+
+<div class="card" id="getTitle">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getTitle</span></div>
+    <div class="card-block">
+        Diese Funktion fragt den aktuellen Titel von der Twitch-API ab.<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getTitle(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>String Title - Name/Titel des Streams</li>
+        </ul>
+
+        <div class="doku-fn-head">Beispiel</div>
+        <pre class="alert alert-code line-numbers">
+<code class="language-lua">
+-- fragt das Spiel ab
+Stream:getTitle(function (title)
+    -- gibt das aktuelle Spiel im Chat aus
+    Chat:output("Der Title des Channels/Streams ist: " .. title)
+end)
+</code>
+        </pre>
+
+    </div>
+</div>
+
+ {{!--@todo: rework documentations -> add examples--}}
+<div class="card" id="getStreamStart">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getStreamStart</span></div>
+    <div class="card-block">
+        Abfrage des Zeitpunktes des Startes des aktuellen Streams<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getStreamStart(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>JsDateObject - <a href="https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date">Dokumentation über Js-Dateobject: https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date</a></li>
+            <li>oder false wenn Stream offline</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" id="getChannelCreateDate">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getChannelCreateDate</span></div>
+    <div class="card-block">
+        Abfrage des Erstellungsdatums der Twitch-Kanals<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getChannelCreateDate(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>JsDateObject - <a href="https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date">Dokumentation über Js-Dateobject: https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="card" id="getChannel">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getChannel</span></div>
+    <div class="card-block">
+        Gibt Ergebnis von <a href="https://github.com/justintv/Twitch-API/blob/master/v3_resources/channels.md#get-channelschannel">TwitchAPI -
+        /channel/:channel/</a> zurück<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getChannel(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>JsObject - <a href="https://github.com/justintv/Twitch-API/blob/master/v3_resources/channels.md#get-channelschannel">TwitchAPI -
+                /channel/:channel/</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" id="getStream">
+    <div class="card-header"><span class="font-weight-bold">Function Stream:getStream</span></div>
+    <div class="card-block">
+        Gibt Ergebnis von <a href="https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-streamschannel">TwitchAPI -
+        /streams/:channel/</a> zurück<br/>
+        <strong class="text-danger">Diese Funktion wird Asyncron aufgerufen.</strong>
+
+        <div class="doku-fn-head">Syntax</div>
+        <code class="doku-fn-code">nil Stream:getStream(callbackFunc)</code>
+
+        <div class="doku-fn-head-small">Callback-Parameter</div>
+        <ul class="paramList">
+            <li>JsObject - <a href="https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-streamschannel">TwitchAPI -
+                /streams/:channel/</a></li>
+        </ul>
+    </div>
+</div>

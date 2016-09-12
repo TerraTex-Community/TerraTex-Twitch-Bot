@@ -1,0 +1,70 @@
+<!-- Display Homepage = Page without Login -->
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse" id="topNavigation">
+    <div class="container">
+        <a class="navbar-brand" href="/">TerraTex Twitch Bot<small class="versionInfo">v{{version}}</small></a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="http://forum.terratex.eu">Support / Forum</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="http://twitchtracker.terratex.eu/index.php?project=2">Bugs/Featurerequests</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="http://terratex.eu">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank"
+                                    href="http://forum.terratex.eu/index.php?legal-notice/&s=8fc843102b481cc84a098605421c6fc15cf3f956">Impressum</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav right">
+            <li  class="nav-item" >
+                <input id="switch-bot" type="checkbox" {{#connected}}checked{{/connected}} data-on-color="success" data-off-color="danger">
+            </li>
+            <li  class="nav-item" >
+                <a href="/logout" class="btn btn-danger">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="sameHeight" data-same-height="#topNavigation"></div>
+<div id="placeholderForNotifications"></div>
+
+<div class="mainContainer">
+    <div id="navContainerLeft" class="col-xs-12 col-md-2 bg-light-inverted">
+        <ul class="nav nav-pills nav-stacked nav-sideLeft">
+
+            {{#each navi}}
+                {{> navigation}}
+            {{/each}}
+
+        </ul>
+        <br/><br/><br/>
+    </div>
+    <div class="col-xs-12 col-md-8" id="content"><script>$(document).ready(function(){requestPage("dashboard")});</script></div>
+    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted" id="staticBar"></div>
+</div>
+
+<footer class="navbar navbar-fixed-bottom  navbar-dark bg-inverse" >
+    <div class="center">&copy; TerraTex Twitch Bot by Geramy92 2015-2016 | <a href="/changelog/">Changelog</a> | <a href="http://twitchtracker.terratex.eu/index.php?do=roadmap&project=2">Planned Features</a></div>
+</footer>
+<script>
+    var g_socket = io();
+    g_socket.on('connect_error', function() {
+        location.reload();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#switch-bot").bootstrapSwitch({
+            onSwitchChange: function(event,state) {
+                g_socket.emit("channelStateChange", state);
+            }
+        });
+    });
+</script>
+
+<script src="/javascripts/system/navigation.js"></script>
+<script src="/javascripts/system/notification.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $('input.switch').bootstrapSwitch();
+    });
+</script>

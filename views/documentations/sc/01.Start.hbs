@@ -1,0 +1,25 @@
+<div class="card">
+<div class="card-block">    <h1>Scriptbare Commands - Scripting Dokumentation</h1>
+
+    <h3>Allgemeines</h3>
+    <p>Der Bot ist in der Scriptsprache Javascript geschrieben. <strong>Als Scriptsprache für die Scriptbaren Commands dient
+        Lua</strong> um eine bessere Abtrennung zu gewährleisten. Als Folge daraus entstehen allerdings eine Reihe von Problemen, da
+        Javascript selbst Asyncron arbeitet, während Lua zwar auch Async arbeiten kann aber doch häufiger Syncrone
+        Funktionen
+        nutzt. Um das Auszugleichen wurde ein entsprechender Layer eingerichtet. In der Dokumentation gibt es einige
+        Funktionen
+        daher doppelt. Asyncrone Funktionen geben die aktuellen Daten der API wieder, da diese sich im Moment des
+        Aufrufes aktualisieren und anschließend eine Callbackfunktion aufrufen. Zu jeder Asyncronen Funktion gibt es immer
+        einen
+        Syncronen Aufruf. Dieser gibt jedoch gecachte Werte (Daten, die bereits 1-5 Minuten alt sind) zurück.<br/><br/>
+        <strong>Neue Funktionen werden zunächst Async implementiert... Sync Funktionen werden entsprechend
+            nachgeliefert</strong></p>
+
+
+    <h3>Arrays/Objecte und Lua-Tables</h3>
+    <p>Leider ist es bisher nicht möglich Javascript Arrays oder Objects zu Lua-Tables umzuwandeln. Daher geben auch alle
+        API Funktionen keine Lua-Tables sondern JS-Objecte zurück. In Lua sind diese dann vom Typ "userdata". "ipairs" und "pairs" können dennoch entsprechend
+        genutzt werden, lediglich das Table-verhalten ist hier nicht vorhanden. (Erster Index ist 0 statt 1, statt #tablename für die Länger gibt es ein
+        Attribut
+        length. </p></div>
+</div>

@@ -1,0 +1,26 @@
+[
+  {
+    "command": "chat",
+    "description": "Zeigt an, wieviele Nachrichten schon gesendet wurden.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "view",
+    "description": "Zeigt an, wie lange man bereits den Stream zuschaut.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "follow",
+    "description": "Zeigt an, seit wann man den Channel followed (wird durch refollow reseted).",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  }
+]

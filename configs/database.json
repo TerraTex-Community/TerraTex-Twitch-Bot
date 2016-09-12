@@ -1,0 +1,17 @@
+{
+    "host": "localhost",
+    "user": "",
+    "password": "",
+    "database": "",
+    "encryptPassword": "",
+    "algorithm": "aes-256-ctr",
+
+    "channelTables": [
+        "chat_notifications",
+        "chatfilter",
+        "minigames",
+        "quotes_settings",
+        "viewer_points_configs",
+        "viewer_ranks_configs"
+    ]
+}

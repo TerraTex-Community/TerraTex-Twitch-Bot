@@ -1,0 +1,10 @@
+[
+  {
+    "command": "",
+    "description": "",
+    "params": "",
+    "type": "cmd,scmd,alias,system",
+    "permission": "user",
+    "aliasOf": null
+  }
+]

@@ -1,0 +1,799 @@
+<!-- Display Homepage = Page without Login -->
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand" href="/">TerraTex Twitch Bot
+            <small class="versionInfo">v{{version}}</small>
+        </a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://forum.terratex.eu">Support / Forum</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://twitchtracker.terratex.eu/index.php?project=2">Bugs/Featurerequests</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="http://terratex.eu">About Us</a></li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="http://forum.terratex.eu/index.php?legal-notice/&s=8fc843102b481cc84a098605421c6fc15cf3f956">Impressum</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="navbar-fixed-placeholder"></div>
+
+<div class="placeholder-2em"></div>
+
+
+<div class="container changelog">
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Beta 1 - 01.06.2016 - Hotfix 3</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugfixes</td>
+                <td>
+                    <ul>
+                        <li>[CHAT-FILTER] !permit funktioniert jetzt richtig</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Beta 1 - 25.05.2016 - Hotfix 3</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugfixes</td>
+                <td>
+                    <ul>
+                        <li>[CRASHFIX] Wenn man ohne den Bot zu verbinden, direkt auf Einstellungsseiten gegangen ist, ist der Bot abgestürzt</li>
+                        <li>[API] Es kommt zu zufälligen Timeouts beim callen der TwitchAPI. Wenn es dazu kommt, blieb die API stecken.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Beta 1 - 25.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Neue Features</td>
+                <td>
+                    <ul>
+                        <li>[Scripted-Commands] Eine neue Scriptingfunktion Utilities:getDate() ist verfügbar, mit der die aktuelle Zeit als JsDate Object
+                            abgefragt werden kann.</li>
+                        <li>[Scripted-Commands] Ein neues Template für Befehle wie !uptime ist nun verfügbar.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Verbesserungen</td>
+                <td>
+                    <ul>
+                        <li>[Scripted-Commands] Die Beispiele werden jetzt durch Versionierung gefiltert. Zukünftig werden Examples aus Closed Beta
+                            Versionen nicht mehr in der Release Version angezeigt. (Released in Beta 1 Hotfix 2)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Beta 1 - 24.05.2016 - Released in Beta 1 Hotfix 1</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Verbesserungen</td>
+                <td>
+                    <ul>
+                        <li>[Dashboard] Die Ansichten der letzten 12 / 24 Stunden werden jetzt schneller bereichnet.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 23.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Das Dashboard hat nun einige Grafiken und Statistiken.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 18.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Es können jetzt Alias (Alternativbefehle) erstellt werden.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Improvments</td>
+                <td>
+                    <ul>
+                        <li>Überarbeitung der Navigation</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugfix</td>
+                <td>
+                    <ul>
+                        <li>[Startseite] Die Streamer auf der Startseite wurden teilweise nicht richtig sortiert (Online Streamer zuerst).</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 12.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Verbesserungen</td>
+                <td>
+                    <ul>
+                        <li>[Timer] Es kann nun eine mindest Anzahl gesendeter Nachrichten eingestellt werden.</li>
+                        <li>[Timer] Es kann nun eingestellt werden, ob der Timer nur beim Streamer ausgeführt wird oder
+                            auf wenn der Streamer offline ist.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 12.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Removed</td>
+                <td>
+                    <ul>
+                        <li>[Quotesystem] Die Timeroption zum senden einer zufälligen Quote wurde entfernt. Ein Timer kann über
+                        die Commandtimer erstellt werden.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugfix</td>
+                <td>
+                    <ul>
+                        <li>[Quotesystem] Es wird jetzt eine Nachricht gesendet, wenn eine Quote gelöscht wird.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 01.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Scripting API Changes</td>
+                <td>
+                    <ul>
+                        <li>Added Stream:getChannel()</li>
+                        <li>Added Stream:getStream()</li>
+                        <li>Added Stream:getStreamStart()</li>
+                        <li>Added Stream:getChannelCreateDate()</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>API Changes</td>
+                <td>
+                    <ul>
+                        <li>Changed Scripting Documentation Path from /sc_doku to /script_docs</li>
+                        <li>Added external API Documentation on /api_docs</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 01.05.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Commandliste</li>
+                        <li>!commandlist für Twitch-Chat</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 08.04.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvments</td>
+                <td>
+                    <ul>
+                        <li>Designänderungen</li>
+                        <li>Commandvorschläge bei Timerbearbeitung / -erstellung</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 08.04.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvments</td>
+                <td>
+                    <ul>
+                        <li>[ScriptedCommands] Beschreibung hinzugefügt. (Wird später auf Commandlist Seite angezeigt)</li>
+                        <li>[ScriptedCommands] Parameterbeschreibung hinzugefügt. (Wird später auf Commandlist Seite angezeigt)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 07.04.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>[Timer] Wenn nach dem Editieren oder Speichern eines Timers ein neuer Timer erstellt wurde, standen noch alte Werte im Formular
+                            .</li>
+                        <li>[Timer] Die Seite wurde nach dem Editieren, Erstellen oder Löschen nicht korrekt aktualisiert.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 01.04.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[Scriptable-Commands] Die Dokumentation wurde nun angelegt und ist unter /cs_doku erreichbar.</li>
+                        <li>[Timer] Es können jetzt Timer erstellt werden, die Befehle oder Texte nach einer gewissen Zeit senden.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>[Mini-Games/Roulette] Der Bug, dass die Einstellungen auf der Konfigurationsseite nicht richtig angezeigt wurden, wurde behoben
+                            .</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 29.03.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[Scriptable-Commands] Das Feature "Scriptbare Commands" wurde nun für alle freigeschaltet. Commands können nun erstellt werden
+                            und können mit der Scriptsprache Lua selbst aus gebaut werden. Dokumentation und Beispiele folgen demnächst.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 18.03.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>[Advertising-Filter] Der !permit Befehl funktionierte nicht richtig.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 18.03.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>[Toplist] Der Streamer wird jetzt nicht mehr in der Topliste angezeigt.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>"anotheruselessbot" wurde zur Liste der zu ignorierenden Bots hinzugefügt.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 14.03.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[ChatFilter] BadWord-Detection ist jetzt vollständig konfigurierbar.</li>
+                        <li>[ChatFilter] Werbedetection wurde vollständig umgesetzt und ist ebenfalls vollständig konfigurierbar.</li>
+                        <li>Beim neuladen der Seite bleibt man nun auf der aktuellen Seite und wird nicht mehr auf das Dashboard geleitet.</li>
+                        <li>[Toplist] Eine Top100 Liste kann jetzt gefunden werden unter /toplist/?channel=[channelName]</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 09.03.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[ChatFilter] BadWord Detection - Aktuell nur globale BadWord Liste, nicht deaktivierbar.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 27.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Das Mini-Chat-Game Pointsroulette ist jetzt verfügbar.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 25.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvments</td>
+                <td>
+                    <ul>
+                        <li>Die Nachricht beim Starten oder Reconnecten des Bottes kann nun unter den Einstellungen
+                            deaktiviert werden.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 24.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvments</td>
+                <td>
+                    <ul>
+                        <li>[Quotes] Das Layout der Zitate-Seite wurde überarbeitet. Die Daten haben nun alle führende
+                            Nullen,
+                            größere Spalten und überlappen sich nicht mehr mit der Namens-Spalte.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Die Template Engine wurde von Hogan.js zu handlebars.js geändert.
+                            Dadurch musste einiges angepasst werden.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 19.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugfixes</td>
+                <td>
+                    <ul>
+                        <li>[GiveAway] Das Script zur Generierung der zufallsgenerierten Bilderanzeige, ist in einen
+                            endlessloop geraten, sofern die Teilnehmerliste leer war. Das führte beim starten der Seite
+                            zum crash des Browsers.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>[Backup] Ein Backupsystem wurde integriert, dass 10 Backups der Datenbank speichert. Ein
+                            Backup wird alle 15 Minuten angelegt.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 09.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugfixes</td>
+                <td>
+                    <ul>
+                        <li>[Login] Im Produktiv-System wurde nach dem registrieren eines neuen Accounts die Session
+                            nicht richtig gesetzt. Aufgrund dieses Fehlers wurde keine Warnmeldung für
+                            Nicht-Alpha-Accounts ausgegeben.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Cleanup Code</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 08.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugfixes</td>
+                <td>
+                    <ul>
+                        <li>[Login] Im Produktiv-System wurde nach dem registrieren eines neuen Accounts die Session
+                            nicht richtig gesetzt. Aufgrund dieses Fehlers wurde keine Warnmeldung für
+                            Nicht-Alpha-Accounts ausgegeben.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Cleanup Code</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 01.02.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[GiveAway] Das GiveAway-System ist fertig und befindet sich nun im Test.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 28.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Information</td>
+                <td>
+                    <ul>
+                        <li>[GiveAway] Das GiveAway-System ist noch Work In Progress.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Die Domain twitchAlpha.terratex.eu wird jetzt via https ausgeliefert.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 27.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Information</td>
+                <td>
+                    <ul>
+                        <li>[GiveAway] Das GiveAway-System ist noch Work In Progress.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>[Level-System] Viewer-Level-System (Level nach Zeit des zuschauens) kann jetzt konfiguriert
+                            werden.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Improvements</td>
+                <td>
+                    <ul>
+                        <li>[Level-System] Es wurde ein weiterer Ausgabetext hinzugefügt, für den Fall das der Viewer
+                            den letzten Level erreicht hat.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>[Level-System] Wenn es nur den Standardlevel gab, wurden die Level nicht geupdatet.</li>
+                        <li>[Level-System] Es wurden 'NaN' als Zeit bis zum nächsten Level angezeigt, sofern es keinen
+                            höheren Level
+                            gab.
+                        </li>
+                        <li>[Database/Pointsystem] Es wurden einige Querys nicht correct geupdated bei den letzten
+                            Optimierungsarbeiten.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 26.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Viewer-Level-System (Level nach Zeit des zuschauens) [not completed]</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Improvements</td>
+                <td>
+                    <ul>
+                        <li>Diverse Codeoptimierungen.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 20.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Die Konfigurationsseite für Points wurde fertiggestellt.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Der Bot hat nun ein Favicon.</li>
+                        <li>Die Notification, wenn jemand den Chat betritt wird nicht mehr bei bekannten Bots, dem
+                            Streamer oder dem eigentlich Bot gesendet.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>Fehlerhafte anzeige der Parameter des !chat Befehls.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 19.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Editierbarkeit aller Texte in einer entsprechenden neuen Seite.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>Die Texte des Quote-Systems sind nun auch im neuem Texthandler verfügbar.</li>
+                        <li>Die Texte des Viewer-Systems sind nun auch im neuem Texthandler verfügbar.</li>
+                        <li>Designanpassungen</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 18.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>New Features</td>
+                <td>
+                    <ul>
+                        <li>Unter dem Seitentitel wird jetzt die aktuelle Alpha Version angezeigt.</li>
+                        <li>!addpoints [number] - Gibt allem im Chat Punkte in Höhe von "number".</li>
+                        <li>!addpoints [number] [username] - Gibt "username", wenn er/sie im Chat ist, Punkte in Höhe
+                            von "number".
+                        </li>
+                        <li>!givepoints [username] [number] - Der Benutzer des Befehls übergibt "number" Points an
+                            "username". - Only For Mods
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Additional Changes</td>
+                <td>
+                    <ul>
+                        <li>
+                            Neuen Texthandler implementiert, die Texte des Pointsystems und NotificationSystems wurden
+                            bereits übertragen. Configuration und andere Systeme folgen.
+                            Mit diesem neuem System wird es nach Fertigstellung möglich sein alle Texte zu bearbeiten,
+                            die es gibt.
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>Bei der Abrage der Chat-API wurden einige Fehler nicht richtig abgefangen.</li>
+                        <li>NodeJS unterstützt den {...} Parameter noch nicht, daher kam es im Commandhandler zu einen
+                            Fehler, der die
+                            Quotes unbrauchbar machte.
+                        </li>
+                        <li>Platzhalter wurden im Rahmen einer Vereinheitlichung geändert.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 16.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>Follower Alert im Chat wurde immer wieder gesendet.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 15.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>Rework der Follownotification um das fehlerhafte senden der Notification zu beheben.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Improvements</td>
+                <td>
+                    <ul>
+                        <li>Eine Code-Bereiche wurden optimiert und laufen jetzt stabiler.</li>
+                        <li>Konfiguration von Punkte pro Minute auf Punkte pro X Minuten (bessere Lesbarkeit)</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 14.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvements</td>
+                <td>
+                    <ul>
+                        <li>Eine Code-Bereiche wurden optimiert und laufen jetzt stabiler.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 11.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Improvements</td>
+                <td>
+                    <ul>
+                        <li>automatische Random-Quotes werden nun nur noch gesendet, wenn der Stream online ist</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Implementations</td>
+                <td>
+                    <ul>
+                        <li>Zähler von geschriebenen Nachrichten eines Viewers</li>
+                        <li>Zähler für zugeschaute Minuten eines Viewers</li>
+                        <li>Punkte (Points) Berechnung pro Minute</li>
+                        <li>Neuer Befehl für Viewer: !points - zeigt an wie viele Points derjenige hat</li>
+                        <li>Neuer Befehl für Viewer: !view - zeigt wie lange der Viewer schon den Stream angesehen hat
+                        </li>
+                        <li>Neuer Befehl für Viewer: !chat - zeigt wie viele Nachrichten der Viewer schon in den Chat
+                            geschrieben hat
+                        </li>
+                        <li>Neuer Befehl für Viewer: !follow - zeigt dem Viewer wann er gefollowed hat</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><span class="font-weight-bold">Alpha - 10.01.2016</span></div>
+        <table class="table table-hover">
+            <tr>
+                <td>Bugs</td>
+                <td>
+                    <ul>
+                        <li>Fehler beim parsen von Einstellungen behoben (CRASHFIX)</li>
+                        <li>Fehler beim Abfragen der API für Follows behoben (CRASHFIX)</li>
+                        <li>Reconnect bei MySQL-Connection Lost implementiert (CRASHFIX)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Implementations</td>
+                <td>
+                    <ul>
+                        <li>Neues Settingsmenü für Quotes</li>
+                        <li>!quote list - Liste aller Quotes für Viewer implementiert</li>
+                        <li>Option für zufälliges Senden von Quotes in den Chat hinzugefügt</li>
+                        <li>Changelog implementiert</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="alert alert-info">
+        RELEASE 0.0.1 am 10.01.2016: KEINE CHANGELOGS VORHER VERFÜGBAR.
+    </div>
+</div>
+
+
+<footer class="navbar navbar-fixed-bottom  navbar-dark bg-inverse">
+    <div class="center">&copy; TerraTex Twitch Bot by Geramy92 2015-2016 | <a href="/changelog/">Changelog</a> | <a
+            href="http://twitchtracker.terratex.eu/index.php?do=roadmap&project=2">Planned Features</a></div>
+</footer>

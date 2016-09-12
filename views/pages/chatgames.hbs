@@ -1,0 +1,79 @@
+<div class="alert alert-warning">
+    Achtung! Die Minigames können nur bei aktiviertem Pointssystem genutzt werden!
+</div>
+
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#card_roulette" aria-expanded="false"
+         aria-controls="card_roulette"><span class="font-weight-bold">Points-Roulette</span></div>
+    <div class="card-block collapse" id="card_roulette">
+        <p>
+            <span class="font-weight-bold">Spielerklärung</span><br/>
+            Dieses Spiel wird von einem Zuschauer mit !roulette gestartet. Je nach Regeloption muss zusätzlich ein
+            Betrag angegeben werden. Es können nun alle Zuschauer mit !roulette teilnehmen und müssen je nach
+            Regeloption einen festen Betrag, dem vom Startzuschauer festgelegten Betrag oder einen eigenen Betrag
+            (muss angegeben werden) bezahlen. Nach einer Zwei Minuten wird der Gewinner gezogen.
+            Dieser erhält den gesamten Pot an Points.
+        </p>
+        <fieldset class="form-group">
+            <input id="chatGames_rouletteEnabled" class="switch" type="checkbox" {{#if roulette.active}}checked{{/if}}
+                   data-on-color="success" data-off-color="danger">
+            <label for="chatGames_rouletteEnabled"><span class="font-weight-bold">Pointsroulette aktiv</span></label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="chatGames_rouletteRules">
+                <span class="font-weight-bold">Spielregeln:</span>
+                <select class="form-control select-view" id="chatGames_rouletteRules" data-select-view="roulette-rules">
+                    <option value="0" {{#if (eq roulette.option "0")}}selected{{/if}}>Regeloption 1: Fixer Betrag</option>
+                    <option value="1" {{#if (eq roulette.option "1")}}selected{{/if}}>Regeloption 2: Dynamischer Fix-Betrag</option>
+                    <option value="2" {{#if (eq roulette.option "2")}}selected{{/if}}>Regeloption 3: Dynamischer Betrag
+                    </option>
+                </select>
+            </label>
+            <br/>
+            <small>
+                Spielregeln - Erklärungen:
+                <ul>
+                    <li>Regeloption 1: Fixer Betrag - Jeder Spieler zahlt einen vom Streamer festgelegten Betrag an
+                        Points.
+                    </li>
+                    <li>Regeloption 2: Dynamischer Fix-Betrag - Jeder Spieler bezahlt gleichen Betrag an Points,
+                        definiert vom Startspieler.
+                        Der Streamer kann einen Mindest- und Maximalbetrag festlegen.
+                    </li>
+                    <li>Regeloption 3: Dynamischer Betrag - Jeder Spieler kann selbst festlegen, wieviele Points er in
+                        den Pot wirft. Er gewinnt von jedem Spieler maximal seinen eigenen Betrag.
+                    </li>
+                </ul>
+            </small>
+        </fieldset>
+        <div data-select-view="roulette-rules" data-select-view-value="0">
+            <!-- Shows Option Regeloption 1: Fixer Betrag -->
+            <fieldset class="form-group">
+                <label for="chatGames_roulette_points">Fixer Points-Betrag mit den gespielt wird</label>
+                <input type="number" class="form-control" id="chatGames_roulette_points" placeholder="" step="1" min="1"
+                       value="{{#if roulette.points}}{{roulette.points}}{{else}}5{{/if}}"/>
+            </fieldset>
+        </div>
+        <div data-select-view="roulette-rules" data-select-view-value="1">
+            <!-- Shows Option Regeloption 2: Dynamischer Fix-Betrag -->
+            <fieldset class="form-group">
+                <label for="chatGames_roulette_min_points">Mindest Points-Betrag mit den gespielt wird</label>
+                <input type="number" class="form-control" id="chatGames_roulette_min_points" placeholder="" step="1" min="1"
+                       value="{{#if roulette.minPoints}}{{roulette.minPoints}}{{else}}5{{/if}}"/>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="chatGames_roulette_max_points">Maximaler Points-Betrag mit den gespielt wird (Ein Betrag <= Min
+                    deaktiviert diese Option)</label>
+                <input type="number" class="form-control" id="chatGames_roulette_max_points" placeholder="" step="1" min="1"
+                       value="{{#if roulette.maxPoints}}{{roulette.maxPoints}}{{else}}500{{/if}}"/>
+            </fieldset>
+        </div>
+        <!-- Option Regeloption 3: Dynamischer Betrag has no additional Settings -->
+
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="chatGames_saveRoulette">Pointsroulette Einstellungen Speichern</a>
+        </p>
+    </div>
+</div>
+
+<script src="/javascripts/pages/pageChatGames.js"></script>

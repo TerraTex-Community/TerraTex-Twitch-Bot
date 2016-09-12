@@ -1,0 +1,384 @@
+{
+    "pointSystem": {
+        "give_not_in_chat": {
+            "desc": "Fehler bei !give: Der Benutzer ist nicht im Chat",
+            "text": "#fromUser# befindet sich derzeit kein #toUser# im Chat",
+            "vars": [
+                "fromUser",
+                "toUser"
+            ]
+        },
+        "give_success": {
+            "desc": "!give war erfolgreich",
+            "text": "#fromUser# hat #toUser# #count# Points gegeben!",
+            "vars": [
+                "fromUser",
+                "toUser",
+                {
+                    "tag": "count",
+                    "desc": "Anzahl der Punkte"
+                }
+            ]
+        },
+        "add_single_user": {
+            "desc": "!addpoints an einer einzelnen Person.",
+            "text": "#fromUser# hat #toUser# #count# Points hinzugefügt",
+            "vars": [
+                "fromUser",
+                "toUser",
+                {
+                    "tag": "count",
+                    "desc": "Anzahl der Punkte"
+                }
+            ]
+        },
+        "add_all": {
+            "desc": "!addpoints an alle im Chat",
+            "text": "#fromUser# hat allen #count# Points hinzugefügt",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "count",
+                    "desc": "Anzahl der Punkte"
+                }
+            ]
+        },
+        "add_not_in_chat": {
+            "desc": "Fehler bei !addpoints: Der Benutzer ist nicht im Chat",
+            "text": "@#fromUser# Es befindet sich derzeit kein #toUser# im Chat",
+            "vars": [
+                "fromUser",
+                "toUser"
+            ]
+        },
+        "show_points": {
+            "desc": "Ausgabe bei !points",
+            "text": "#fromUser#, du hast #count# Points.",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "count",
+                    "desc": "Anzahl der Punkte"
+                }
+            ]
+        }
+    },
+    "notifications": {
+        "new_follower": {
+            "desc": "Ausgabe bei einem neuem Follower",
+            "text": "Danke für deinen Follow #user#!!!",
+            "vars": [
+                {
+                    "tag": "user",
+                    "desc": "Username des Viewers der gefollowed hat."
+                }
+            ]
+        },
+        "new_chatter": {
+            "desc": "Ausgabe bei einem neuem Chatter",
+            "text": "#user#, willkommen im Chat!",
+            "vars": [
+                {
+                    "tag": "user",
+                    "desc": "Username des Viewers der den Chat betreten hat."
+                }
+            ]
+        },
+        "back_chatter": {
+            "desc": "Ausgabe wenn ein Chatter nach längerer Zeit wieder da ist",
+            "text": "#user#, willkommen zurück im Chat!",
+            "vars": [
+                {
+                    "tag": "user",
+                    "desc": "Username des Viewers der den Chat betreten hat."
+                }
+            ]
+        }
+    },
+    "quoteSystem": {
+        "quote_text": {
+            "desc": "Ausgabe eines Zitates bei !quote oder nach Ablauf des Timers",
+            "text": "Zitat ##id#: #quote# - #user# am #date#",
+            "vars": [
+                {
+                    "tag": "id",
+                    "desc": "ID des Zitates"
+                },
+                {
+                    "tag": "user",
+                    "desc": "Der angegebene Name beim hinzufügen des Quotes."
+                },
+                "date"
+            ]
+        },
+        "quote_not_existing": {
+            "desc": "Ausgabe wenn !quote mit einer falschen ID ausgeführt wurde",
+            "text": "@#fromUser# Es existiert kein Zitat mit der ID ##id#",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "id",
+                    "desc": "ID des Zitates"
+                }
+            ]
+        },
+        "quote_deleted": {
+            "desc": "Ausgabe nach einem !quote remove",
+            "text": "@#fromUser# Das Zitat mit der ID ##id# wurde gelöscht!",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "id",
+                    "desc": "ID des Zitates"
+                }
+            ]
+        },
+        "quote_add": {
+            "desc": "Ausgabe nach einem !quote add",
+            "text": "Zitat ##id# hinzugefügt: #quote# - #user# am #date#",
+            "vars": [
+                {
+                    "tag": "id",
+                    "desc": "ID des Zitates"
+                },
+                {
+                    "tag": "user",
+                    "desc": "Der angegebene Name beim hinzufügen des Quotes."
+                },
+                "date",
+                "quote"
+            ]
+        },
+        "quote_add_wrong_usage": {
+            "desc": "Fehlerausgabe wenn Parameter falsch sind bei !quote add",
+            "text": "@#fromUser# Das Zitat kann nicht hinzugefügt werden, da Parameter fehlen: !quote add [name] [text]",
+            "vars": [
+                "fromUser"
+            ]
+        },
+        "quote_remove_wrong_usage": {
+            "desc": "Fehlerausgabe wenn Parameter falsch sind bei !quote remove",
+            "text": "@#fromUser# Das Zitat kann nicht gelöscht werden, da Parameter fehlen: !quote remove id",
+            "vars": [
+                "fromUser"
+            ]
+        }
+    },
+    "viewerSystem": {
+        "cmd_follow": {
+            "desc": "Ausgabe bei dem Befehl !follow",
+            "text": "#fromUser#, du hast am #date# gefollowed.",
+            "vars": [
+                "fromUser",
+                "date"
+            ]
+        },
+        "cmd_view": {
+            "desc": "Ausgabe bei dem Befehl !view",
+            "text": "#fromUser# du schaust schon #timeFormated# (#minutes# Minuten) zu.",
+            "vars": [
+                "fromUser",
+                "timeFormated"
+            ]
+        },
+        "cmd_chat": {
+            "desc": "Ausgabe bei dem Befehl !chat",
+            "text": "#fromUser#, du hast schon #count# Nachrichten in den Chat geschrieben!",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "count",
+                    "desc": "Anzahl Chatnachrichten"
+                }
+            ]
+        }
+    },
+    "rankSystem": {
+        "cmd_level": {
+            "desc": "Ausgabe bei dem Befehl !level (wenn noch ein höheres Level existiert)",
+            "text": "#fromUser#, Aktuell bist du ein '#level#'. Du benötigst noch #timeFormated# bis zum nächsten Level.",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "level",
+                    "desc": "Aktuelles Level des Zuschauers"
+                },
+                {
+                    "tag": "timeFormated",
+                    "desc": "Zeit bis zum nächsten Level als Text - z.B. '10 Jahre 20 Stunden 10 Minuten'"
+                },
+                {
+                    "tag": "minutes",
+                    "desc": "Anzahl Minuten bis zum nächsten Level - z.B. '20'"
+                }
+            ]
+        },
+        "cmd_level_lastLevel": {
+
+            "desc": "Ausgabe bei dem Befehl !level (wenn Viewer das maximale Level erreicht hat)",
+            "text": "#fromUser#, du bist ein '#level#'.",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "level",
+                    "desc": "Aktuelles Level des Zuschauers"
+                }
+            ]
+        }
+    },
+    "giveAway": {
+        "start_0": {
+            "desc": "Ausgabe, wenn ein GiveAway gestartet wird. Mit der Option das nur Points vorhanden sein müssen.",
+            "text": "Das GiveAway wurde gestartet. Es werden #points# Points benötigt um teilzunehmen!",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl an Points die benötigt werden."
+                }
+            ]
+        },
+        "start_1": {
+            "desc": "Ausgabe, wenn ein GiveAway gestartet wird. Mit der Option das Points bezahlt werden und nur der Gewinner die Points nicht zurück bekommt.",
+            "text": "Das GiveAway wurde gestartet. Es werden #points# Points benötigt um teilzunehmen! Verlierer bekommen ihre Points nach dem GiveAway zurück!",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl an Points die benötigt werden."
+                }
+            ]
+        },
+        "start_2": {
+            "desc": "Ausgabe, wenn ein GiveAway gestartet wird. Mit der Option das Points bezahlt werden und niemand die Points zurück bekommt.",
+            "text": "Das GiveAway wurde gestartet. Die Teilnahme kostet #points# Points!",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl an Points die benötigt werden."
+                }
+            ]
+        },
+        "start_3": {
+            "desc": "Ausgabe, wenn ein GiveAway gestartet wird. Mit der Option das Points bezahlt werden und der Gewinner alle Points bekommt.",
+            "text": "Das GiveAway wurde gestartet. Die Teilnahme kostet #points# Points! Der Gewinner erhält zusätzlich alle Points nach dem GiveAway!",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl an Points die benötigt werden."
+                }
+            ]
+        }
+
+    },
+    "chatgames": {
+        "roulette_start_0": {
+            "desc": "Ausgabe beim Start einer Runde Roulette mit einem festen Betrag an Points für die Teilnahme.",
+            "text": "#user# hat eine Runde Roulette gestartet. Die Teilnahme kostet #points# Points. (Teilnahme mit !roulette)",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl Points die benötigt werden für die Teilnahme."
+                },
+                {
+                    "tag": "user",
+                    "desc": "Nutzername des Zuschauers, der die Runde Roulette gestartet hat."
+                }
+            ]
+        },
+        "roulette_start_1": {
+            "desc": "Ausgabe beim Start einer Runde Roulette mit einem vom Zuschauer festgelegten Betrag an Points für die Teilnahme.",
+            "text": "#user# hat eine Runde Roulette gestartet mit einem Einsatz von #points# Points. (Teilnahme mit !roulette)",
+            "vars": [
+                {
+                    "tag": "points",
+                    "desc": "Anzahl Points die benötigt werden für die Teilnahme."
+                },
+                {
+                    "tag": "user",
+                    "desc": "Nutzername des Zuschauers, der die Runde Roulette gestartet hat."
+                }
+            ]
+        },
+        "roulette_start_1_error": {
+            "desc": "Ausgabe wenn der Einsatzbetrag nicht in den festgelegten Grenzen befindet (mit Obergrenze).",
+            "text": "#fromUser#, der Einsatz für Roulette muss größer sein als #minPoints# und kleiner als #maxPoints#.",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "minPoints",
+                    "desc": "Mindesteinsatz"
+                },
+                {
+                    "tag": "maxPoints",
+                    "desc": "Maximaleinsatz"
+                }
+            ]
+        },
+        "roulette_start_1_error_nomax": {
+            "desc": "Ausgabe wenn der Einsatzbetrag nicht in den festgelegten Grenzen befindet (ohne Obergrenze).",
+            "text": "#fromUser#, der Einsatz für Roulette muss größer sein als #minPoints#.",
+            "vars": [
+                "fromUser",
+                {
+                    "tag": "minPoints",
+                    "desc": "Mindesteinsatz"
+                }
+            ]
+        },
+        "roulette_start_2": {
+            "desc": "Ausgabe beim Start einer Runde Roulette ohne festgelegten Teilnahmebetrag.",
+            "text": "#user# hat eine Runde Roulette gestartet. (Teilnahme mit !roulette [Einsatz])",
+            "vars": [
+                {
+                    "tag": "user",
+                    "desc": "Nutzername des Zuschauers, der die Runde Roulette gestartet hat."
+                }
+            ]
+        },
+        "roulette_winner": {
+            "desc": "Bekanntgabe des Gewinners einer Runde Roulette.",
+            "text": "Der Gewinner dieser Runde Roulette wurde gezogen! #user# hat #points# Points gewonnen!",
+            "vars": [
+                {
+                    "tag": "user",
+                    "desc": "Nutzername des Zuschauers, der die Runde Roulette gewonnen hat."
+                },
+                {
+                    "tag": "points",
+                    "desc": "Summe an Punkten, die der Gewinner gewonnen hat."
+                }
+            ]
+        }
+    },
+    "chatfilter": {
+        "badword_ban": {
+            "desc": "Wird gesendet, wenn eine Beleidigung erkannt wurde",
+            "text": "@#fromUser#, Beleidigungen sind hier unerwünscht!",
+            "vars": [
+                "fromUser"
+            ]
+        },
+        "advertising_ban": {
+            "desc": "Wird gesendet, wenn eine Werbung erkannt wurde",
+            "text": "@#fromUser#, Werbung ist hier unerwünscht!",
+            "vars": [
+                "fromUser"
+            ]
+        },
+        "permit_not_in_chat": {
+            "desc": "Fehler, wenn jemand permit gegeben werden soll, der nicht im chat ist.",
+            "text": "@#fromUser#, Dieser Zuschauer befindet sich nicht im Chat!",
+            "vars": [
+                "fromUser",
+                "toUser"
+            ]
+        },
+        "permit": {
+            "desc": "Nachricht wenn !permit erfolgreich war.",
+            "text": "@#toUser#, Du hast nun die erlaubnis Links/Ips zu senden!",
+            "vars": [
+                "fromUser",
+                "toUser"
+            ]
+        }
+    }
+}

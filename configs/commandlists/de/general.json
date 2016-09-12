@@ -1,0 +1,26 @@
+[
+  {
+    "command": "giveaway",
+    "description": "Mit dem befehlt nimmt man an einem GiveAway teil.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "commandlist",
+    "description": "Zeigt einen Link zur Liste aller Commands an.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  },
+  {
+    "command": "permit",
+    "description": "Erlaubt einen Viewer Links zu senden.",
+    "params": "",
+    "type": "system",
+    "permission": "mod",
+    "aliasOf": null
+  }
+]

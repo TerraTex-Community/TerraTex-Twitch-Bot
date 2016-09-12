@@ -1,0 +1,400 @@
+ul.nav.navbar-nav.right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+footer {
+    font-size: 0.8em;
+}
+
+.navbar-fixed-placeholder {
+    display: block;
+    width: 100%;
+    height: 54px;
+}
+
+* {
+    border-radius: 0 !important;
+}
+
+#navContainerLeft {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.nav-sideLeft {
+    width:100%;
+
+    .nav-item {
+        border-right: #0275d8 solid 1px;
+        border-top: #0275d8 solid 1px;
+        border-bottom: #0275d8 solid 1px;
+        border-left: #0275d8 solid 1px;
+      &:hover{
+        background-color: #f7f7f9;
+      }
+      &.disabled {
+        background-color: transparent;
+        border: none;
+        & > a {
+          padding: 0;
+        }
+      }
+    }
+}
+
+.bg-light-inverted {
+    background-color: lighten(#373a3c, 5%);
+    color: #eceeef;
+}
+
+#content {
+    padding-top: 20px;
+}
+
+.container.changelog td {
+    vertical-align: top;
+}
+.container.changelog td:first-child {
+    font-weight: bold;
+    width: 150px;
+}
+
+.container.changelog table {
+    width:100%;
+    margin-bottom: 0;
+}
+
+.inner .card.winner {
+  border: solid 1px red;
+}
+
+/**
+ *  Placeholder
+ */
+
+.placeholder-1em {
+    height: 1em;
+}
+.placeholder-2em {
+    height: 2em;
+}
+.placeholder-3em {
+    height: 3em;
+}
+.placeholder-5em {
+    height: 5em;
+}
+
+.navbar-brand {
+    position: relative;
+}
+small.versionInfo {
+    font-size: 0.5em;
+    position: absolute;
+    bottom: -2px;
+    left: 0px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    #content {
+        padding-bottom:50px;
+    }
+}
+
+.giveawayUserList {
+    .card {
+        #userListEntries {
+            height: 450px;
+        }
+    }
+}
+
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.drawBox {
+  & > .card {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    height: 150px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .innerRightPadding {
+    padding-right: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  .card-img-overlay {
+    top: auto;
+    padding: 0.5rem;
+    background-color: rgba(0,0,0,0.4);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .usertitle {
+    font-size: 0.8rem;
+    color: #FFF;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .winnerLine {
+
+    background-color: #f5363c;
+    border-bottom: 1px solid #e5e5e5;
+    width: 3px;
+    height:150px;
+    position: absolute;
+    left: 50%;
+    top:0;
+  }
+
+  .inner {
+    width:100000px;
+    height: 150px;
+    clear:both;
+    position: relative;
+
+
+    .card {
+      float: left;
+      width: 136px;
+      height: 136px;
+      margin: 5px 5px 5px 0;
+      .card-img {
+        max-width:100%;
+      }
+    }
+  }
+}
+.winnerField {
+  position: relative;
+  left: 75px;
+}
+#winnerPlaceBoxedImage {
+  .card {
+    width: 200px;
+    height: 200px;
+    margin: 15px 15px 15px 65px;
+    .card-img {
+      max-width:100%;
+      width:100%;
+    }
+
+    .usertitle {
+      font-size: 1.5rem;
+      color: #FFF;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .card-img-overlay {
+      top: auto;
+      padding: 0.5rem;
+      background-color: rgba(0,0,0,0.85);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.winnerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.85;
+  img {
+    width: 110%;
+  }
+}
+
+.giveAwayField {
+  height: 500px;
+}
+
+#winnerChat {
+  position: absolute;
+  bottom: 0;
+  max-height: 95px;
+  overflow: hidden;
+  display: flex;
+
+  .bottomChatInner {
+    height: auto;
+    vertical-align: bottom;
+    align-self: flex-end;
+    display: inline-block;
+
+    .date {
+      color: #969696;
+    }
+    .message {
+      font-style:italic;
+      display: inline-block;
+    }
+  }
+}
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+#placeholderForNotifications {
+  position: fixed;
+  width: 100%;
+}
+
+.modal-content > table {
+  margin-bottom: 0;
+}
+
+.card > table {
+  margin-bottom: 0;
+}
+.text-align-right {
+  text-align: right;
+}
+
+.emoticon {
+  width: 1.5em;
+}
+
+#editor {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+#jsoneditor {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.label-clickable {
+  background-color: #f5f5f5;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #cccccc;
+}
+
+#scriptedCommandEditor label {
+  font-weight: bold;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.doku-fn-head {
+  font-weight: bold;
+  width: 100%;
+  margin-top:5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.doku-fn-code {
+  width: 100%;
+  padding: 5px;
+  display: block;
+}
+.doku-fn-head-small {
+  text-decoration: underline;
+  margin-top:5px;
+  margin-bottom: 3px;
+}
+
+.alert-code {
+  background-color: #f7f7f9;
+  border-color: #e5e5e5;
+}
+
+a.anker {
+  position:relative;
+  top: -50px;
+}
+
+.btn-group-sm>.btn, .btn-sm {
+  padding: .23rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+body {
+  background-color: #5c636a;
+  background-repeat: no-repeat;
+  //background-position: left bottom 35px;
+  background-attachment: fixed;
+  background-size: 100% auto;
+  background-position: left bottom -7vw;
+
+  &[data-page='default']{
+    background-image: url("/images/Footer_TT.png");
+  }
+  //@media screen and (min-width: 1280px) {
+  //  background-position: left bottom -128px;
+  //}
+  //background-position: left bottom -10px;
+}
+
+.homeBoxes {
+  margin-top: 1rem;
+  .twitchStreamer {
+    .twitchChannelName {
+      float: left;
+      font-weight: bold;
+    }
+
+    .twitchChannelViewer {
+      float: right;
+    }
+    .online .twitchChannelViewer {
+      color: red;
+    }
+
+    .info {
+      font-size: 70%
+    }
+  }
+}
+
+.slowTransition {
+  transition: all 1s;
+}
+
+.card-header:not(.collapsed) > .fa-caret-right {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg)
+}
+.right {
+  float: right
+}
+
+.height400 {
+  height: 400px;
+}
+
+.card-block.noPadding {
+  padding: 0
+}
+.card-block table {
+  margin-bottom: 0
+}
+
+#channelStats {
+  td:first-child {
+    width: auto;
+    max-width: 120px;
+  }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "command": "level",
+    "description": "Zeigt das aktuelle Level des Viewers an.",
+    "params": "",
+    "type": "system",
+    "permission": "user",
+    "aliasOf": null
+  }
+]

@@ -1,0 +1,103 @@
+<!-- Display Homepage = Page without Login -->
+
+
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand" href="/">TerraTex Twitch Bot<small class="versionInfo">v{{version}}</small></a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://forum.terratex.eu">Support / Forum</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://twitchtracker.terratex.eu/index.php?project=2">Bugs/Featurerequests</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="http://terratex.eu">About Us</a></li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="http://forum.terratex.eu/index.php?legal-notice/&s=8fc843102b481cc84a098605421c6fc15cf3f956">Impressum</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="navbar-fixed-placeholder"></div>
+
+<div class="placeholder-2em"></div>
+
+
+
+<div class="container">
+    {{#channelNotExist}}
+        <div class="alert alert-danger">
+            Error: Der von Ihnen aufgerufene Link existiert nicht (mehr). Es existiert keine Commandliste zum Twitch-Kanal {{ channel }}.
+        </div>
+    {{/channelNotExist}}
+
+    {{^channelNotExist}}
+        <div class="card" style="margin-bottom: 65px;">
+            <div class="card-header"><span class="font-weight-bold">Liste aller Commands vom Twitch-Kanal {{ channel }}</span></div>
+            <div class="alert alert-info">
+                Zusatzinformationen:<br/>
+                <ul>
+                    <li>Kursiv geschriebene Berechtigungen werden vom Streamer bestimmt und können daher ggf. abweichen.</li>
+                    <li>Parameter die mit den Klammern '[]' umschlossen sind, sind optional.</li>
+                    <li>Parameter die mit den Symbolen '~~' umschlossen sind, können durch Einstellungen des Streamers geändert werden.
+                        Sie können daher auch ggf. wegfallen.</li>
+                </ul>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="">Command</th>
+                    <th>Parameter</th>
+                    <th>Berechtigung</th>
+                    <th>Beschreibung</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#cmds}}
+                    <tr>
+                        <td><nobr>{{command}}</nobr></td>
+                        <td><nobr>{{params}}</nobr></td>
+                        <td>
+                            <nobr>
+                                {{#if (eq permission "user")}}
+                                    {{#if (eq type "scmd")}}
+                                        <span style="font-style:italic;">
+                                    {{else}}
+                                        <span style="color: darkgreen">
+                                    {{/if}}
+
+                                    jeder Viewer
+
+                                    {{#if (eq type "scmd")}}
+                                        </span>
+                                    {{/if}}
+                                {{else}}
+                                    {{#if (eq permission "mod")}}
+                                        <span style="color: orangered">nur Moderatoren</span>
+                                    {{else}}
+                                        {{#if (eq permission "streamer")}}
+                                        <span style="color: red">nur der Streamer</span>
+                                        {{else}}
+                                        {{/if}}
+                                    {{/if}}
+                                {{/if}}
+                            </nobr>
+                        </td>
+                        <td>
+                            {{#if (eq type "alias")}}
+                                Alternativcommand von {{aliasOf}}
+                            {{else}}
+                                {{description}}
+                            {{/if}}
+                        </td>
+                    </tr>
+                {{/cmds}}
+                </tbody>
+            </table>
+        </div>
+    {{/channelNotExist}}
+</div>
+
+
+<footer class="navbar navbar-fixed-bottom  navbar-dark bg-inverse">
+    <div class="center">&copy; TerraTex Twitch Bot by Geramy92 2015-2016 | Changelog | <a
+            href="http://twitchtracker.terratex.eu/index.php?do=roadmap&project=2">Planned Features</a></div>
+</footer>

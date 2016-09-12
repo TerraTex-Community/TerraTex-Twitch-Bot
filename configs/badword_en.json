@@ -1,0 +1,36 @@
+{
+    "badwords": [
+        {
+            "description": "asshole",
+            "regex": "asshole"
+        },
+        {
+            "description": "bastard",
+            "regex": "bastard"
+        },
+        {
+            "description": "bitch",
+            "regex": "bitch"
+        },
+        {
+            "description": "motherfucker",
+            "regex": "motherfucker"
+        },
+        {
+            "description": "shitass",
+            "regex": "shitass"
+        },
+        {
+            "description": "whore",
+            "regex": "whore"
+        },
+        {
+            "description": "slut",
+            "regex": "slut"
+        },
+        {
+            "description": "cunt",
+            "regex": "cunt"
+        }
+    ]
+}

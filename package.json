@@ -1,0 +1,70 @@
+{
+  "name": "TerraTexTwitchBot",
+  "description": "A IRC and API Bot for Twitch",
+  "keywords": [
+    "twitch",
+    "bot",
+    "terratex"
+  ],
+  "homepage": "http://twitch.terratex.eu",
+  "author": "Colin Weber as Geramy92",
+  "version": "1.0.0-beta.2",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "runbuild": "npm install && npm start",
+    "test:mocha": "./node_modules/.bin/mocha --recursive --no-exit -R mocha-sonar-generic-test-coverage > build/reports/TEST-RESULTS.xml || exit 0",
+    "test:mocha-html": "./node_modules/.bin/mocha --recursive --no-exit -R good-mocha-html-reporter || exit 0",
+    "test": "grunt --gruntfile build/gruntfile.js --base ./"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "bootstrap": "4.0.0-alpha.2",
+    "chart.js": "^2.1.3",
+    "compare-versions": "^2.0.1",
+    "cookie-parser": "^1.4.1",
+    "debug": "~2.2.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "fs-extra": "^0.30.0",
+    "ftp": "^0.3.10",
+    "handlebars": "^4.0.5",
+    "hbs": "^4.0.0",
+    "hjs": "0.0.6",
+    "hogan.js": "^3.0.2",
+    "line-reader": "^0.4.0",
+    "lua.vm.js": "0.0.1",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.0",
+    "node-sass-middleware": "^0.9.8",
+    "node-shell-parser": "^0.2.1",
+    "npid": "^0.4.0",
+    "properties-reader": "0.0.15",
+    "raml2html": "git+https://github.com/raml2html/raml2html.git#raml1.0",
+    "request": "^2.72.0",
+    "serve-favicon": "~2.3.0",
+    "session-file-store": "^0.2.0",
+    "socket.io": "^1.4.6",
+    "tmi.js": "0.0.29",
+    "twitch-api": "file:submodules\\twitch-api"
+  },
+  "docs": {
+    "twitch-irc": "https://www.tmijs.org/docs/Commands.md",
+    "bootstrap": "http://v4-alpha.getbootstrap.com/",
+    "zombie-uitest": "http://zombie.js.org/"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "good-mocha-html-reporter": "file:submodules\\good-mocha-html-reporter",
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "jshint-html-reporter": "^0.2.4",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.4.5",
+    "mocha-junit-reporter": "^1.11.1",
+    "mocha-sonar-generic-test-coverage": "0.0.1",
+    "mocha-sonar-reporter": "^0.1.5",
+    "should": "^8.3.1",
+    "supertest": "^1.2.0"
+  }
+}

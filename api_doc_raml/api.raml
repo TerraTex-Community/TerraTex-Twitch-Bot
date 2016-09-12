@@ -1,0 +1,17 @@
+#%RAML 1.0
+title: TerraTex Twitch Bot API
+version: v1
+baseUri: https://twitch.terratex.eu/api/
+
+protocols:
+  - HTTPS
+mediaType: application/json
+securitySchemes:
+  basicAuth:
+    type: Basic Authentication
+    description: |
+      <br/> Username: Your API - Key <br/>
+      Password: Your API - Secret
+securedBy: [basicAuth]
+
+/terratex: !include TerraTex.raml

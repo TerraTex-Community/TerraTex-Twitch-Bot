@@ -1,0 +1,37 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm test
+    - forever start bin/www.js
+    - sleep 15
+    - npm run-script test:mocha
+    - npm run-script test:mocha-html
+#    - node build/sendReportToFTP.js
+    - forever stopall
+    - sonar-runner -Dsonar.projectVersion=$CI_BUILD_ID
+    - node build/checkSonarQuality.js
+  artifacts:
+    untracked: true
+    paths:
+      - build/reports/
+  tags:
+    - node
+
+deploy:
+  stage: deploy
+  script:
+    - call C:/build/clean_up.bat TwitchBot
+    - call xcopy .\* C:\build\TwitchBot\ /y /e
+    - call cd C:/build/TwitchBot
+    - call npm install --production
+    - call echo "ENV = PRODUCTION" > C:\build\TwitchBot\production.mode
+    - call forever start -a -o C:\build\logs\twitchbot.log -e C:\build\logs\twitchbot-error.log --uid TwitchBot --pidFile runForever.pid .\bin\www.js
+    - echo %CI_BUILD_ID% > ".version"
+  tags:
+    - windows
+  when: on_success
