@@ -1,6 +1,8 @@
 README
 =======
 
+[![Join the chat at https://gitter.im/TerraTex-Community/TerraTex-Twitch-Bot](https://badges.gitter.im/TerraTex-Community/TerraTex-Twitch-Bot.svg)](https://gitter.im/TerraTex-Community/TerraTex-Twitch-Bot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 NodeJS Bot for Twitch by TerraTex
 
 ___
