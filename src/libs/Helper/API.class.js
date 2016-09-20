@@ -15,21 +15,6 @@ class APIHelper {
                 url: "https://tmi.twitch.tv/group/user/" + channel + "/chatters"
             }, function (err, res, body) {
                 if (!err) {
-                    // console.log(typeof body);
-                    // if (body.includes("<html>")) {
-                    //     callback(body, null);
-                    //     return;
-                    // }
-                    //
-                    // let users = [];
-                    // let chatter = JSON.parse(body).chatters;
-                    // if (chatter) {
-                    //     users = users.concat(chatter.moderators).concat(chatter.staff).concat(chatter.admins).concat(chatter.global_mods);
-                    //     users = users.concat(chatter.viewers);
-                    // }
-                    //
-                    // callback(null, users);
-
                     let users = [];
                     let chatter = body.chatters;
                     if (chatter) {
