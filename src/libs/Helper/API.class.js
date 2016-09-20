@@ -15,7 +15,7 @@ class APIHelper {
                 url: "https://tmi.twitch.tv/group/user/" + channel + "/chatters"
             }, function (err, res, body) {
                 if (!err) {
-                    if (body.includes("<html>")) {
+                    if (body.contains("<html>")) {
                         callback(body, null);
                         return;
                     }
