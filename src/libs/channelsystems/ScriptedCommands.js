@@ -2,6 +2,7 @@
  * Created by C5217649 on 21.03.2016.
  */
 "use strict";
+var path = require("path");
 
 class ScriptedCommands {
     constructor(channel) {
@@ -10,7 +11,8 @@ class ScriptedCommands {
         this._globalObject = [];
 
         let fs = require("fs");
-        fs.readdir("./libs/channelsystems/LuaHandler", (function (err, files) {
+
+        fs.readdir(path.resolve(__dirname, "LuaHandler"), (function (err, files) {
             files.forEach((function (file) {
                 if (file !== "LuaRunner.js") {
                     let fileInfo = file.split(".");
@@ -22,9 +24,9 @@ class ScriptedCommands {
 
         this._defaultScripts = [];
 
-        fs.readdir("./lua/defaults", (function (err, files) {
+        fs.readdir(path.resolve(__root, "lua", "defaults"), (function (err, files) {
             files.forEach((function (file) {
-                fs.readFile("./lua/defaults/" + file, (function (fileErr, content) {
+                fs.readFile(path.resolve(__root, "lua", "defaults", file), (function (fileErr, content) {
                     if (!err) {
                         this._defaultScripts.push(content.toString());
                     } else {

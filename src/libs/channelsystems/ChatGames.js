@@ -32,8 +32,9 @@ class ChatGames {
      */
     _loadGames() {
         let fs = require("fs");
+        let path = require("path");
 
-        fs.readdir("./libs/channelsystems/ChatGames", (function(err, files) {
+        fs.readdir(path.resolve(__dirname, "ChatGames"), (function(err, files) {
             files.forEach((function(file) {
                 g_logger.bot.info("Load Game File " + file);
                 let Game = require("./ChatGames/" + file);

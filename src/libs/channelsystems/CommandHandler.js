@@ -2,8 +2,7 @@
  * Created by C5217649 on 14.01.2016.
  */
 "use strict";
-
-
+var path = require("path");
 
 /**
  * CommandHandler Class
@@ -415,7 +414,10 @@ class CommandHandler {
                 if ( dbresult[0].viewer_ranks_enabled === 1) {
                     sCmdSteps++;
                 }
-                fs.readFile("configs/commandlists/de/general.json", function (err, list) {
+
+                let path = require("path");
+
+                fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "general.json"), function (err, list) {
                     if (err) {
                         callback(err);
                         counter = -sCmdSteps;
@@ -428,7 +430,8 @@ class CommandHandler {
                         }
                     }
                 });
-                fs.readFile("configs/commandlists/de/viewersystem.json", function (err, list) {
+
+                fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "viewersystem.json"), function (err, list) {
                     if (err) {
                         callback(err);
                         counter = -sCmdSteps;
@@ -442,7 +445,7 @@ class CommandHandler {
                     }
                 });
                 if (dbresult[0].roulette.active) {
-                    fs.readFile("configs/commandlists/de/roulette.json", function (err, list) {
+                    fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "roulette.json"), function (err, list) {
                         if (err) {
                             callback(err);
                             counter = -sCmdSteps;
@@ -457,7 +460,7 @@ class CommandHandler {
                     });
                 }
                 if (dbresult[0].viewer_ranks_enabled === 1) {
-                    fs.readFile("configs/commandlists/de/levelsystem.json", function (err, list) {
+                    fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "levelsystem.json"), function (err, list) {
                         if (err) {
                             callback(err);
                             counter = -sCmdSteps;
@@ -472,7 +475,7 @@ class CommandHandler {
                     });
                 }
                 if (dbresult[0].viewer_points_enabled === 1) {
-                    fs.readFile("configs/commandlists/de/pointsystem.json", function (err, list) {
+                    fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "pointsystem.json"), function (err, list) {
                         if (err) {
                             callback(err);
                             counter = -sCmdSteps;
@@ -507,7 +510,7 @@ class CommandHandler {
                     });
                 }
                 if (dbresult[0].quote_enabled === 1) {
-                    fs.readFile("configs/commandlists/de/quotesystem.json", function (err, list) {
+                    fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "quotesystem.json"), function (err, list) {
                         if (err) {
                             callback(err);
                             counter = -sCmdSteps;

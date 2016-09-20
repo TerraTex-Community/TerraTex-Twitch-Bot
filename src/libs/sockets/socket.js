@@ -2,6 +2,7 @@
  * Created by Colin on 26.12.2015.
  */
 "use strict";
+var path = require("path");
 
 g_socket.on("connection", function(clientSocket){
     clientSocket.on("channelStateChange", function(state){
@@ -30,10 +31,10 @@ g_socket.on("connection", function(clientSocket){
             return;
         }
 
-        var content = "" + fs.readFileSync("views/pages/" + name + ".hbs");
+        var content = "" + fs.readFileSync(path.resolve(__root, "views", "pages", name + ".hbs"));
         var hogan = require("handlebars");
         var template = hogan.compile(content);
-        if (fs.existsSync("libs/sockets/pages/" + name + ".js")) {
+        if (fs.existsSync(path.resolve(__dirname, "pages", name + ".js"))) {
             let pageHandler = require("./pages/" + name + ".js");
 
             if (typeof pageHandler.sendPage === "function") {
@@ -49,7 +50,7 @@ g_socket.on("connection", function(clientSocket){
     /**
      * Load Pages
      */
-    fs.readdir("./libs/sockets/pages", function(err, files) {
+    fs.readdir(path.resolve(__dirname, "pages"), function(err, files) {
         files.forEach(function(file) {
             let pageFile = require("./pages/" + file);
             if (pageFile.loadPageSockets) {

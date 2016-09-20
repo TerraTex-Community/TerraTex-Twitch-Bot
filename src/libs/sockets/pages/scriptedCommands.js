@@ -3,8 +3,9 @@
  */
 "use strict";
 let fs = require("fs");
-let content = "" + fs.readFileSync("views/pagepart/level_drawLevels.hbs");
+let content = "" + fs.readFileSync(path.resolve(__root, "views","pagepart","level_drawLevels.hbs"));
 let hogan = require("handlebars");
+var path = require("path");
 
 class PageSettings {
     static loadPageSockets(clientSocket) {
@@ -12,7 +13,7 @@ class PageSettings {
             g_database.getTable("cmds_scripted_examples", {ID: data.id}, function (err, result) {
                 if (!err && result.length > 0) {
                     let fileName = result[0].file;
-                    fs.readFile("lua/examples/" + fileName, function (fileErr, fileResult) {
+                    fs.readFile(path.resolve(__root, "lua","examples", fileName), function (fileErr, fileResult) {
                         clientSocket.emit("sendExample", {content: fileResult.toString()});
                     });
                 }
@@ -57,7 +58,7 @@ class PageSettings {
             let channelName = clientSocket.handshake.session.user.name;
             fs.exists("tmp/channelLogs/" + channelName + ".log", function(result) {
                if(result) {
-                   fs.readFile("tmp/channelLogs/" + channelName + ".log", function(err, fileContent) {
+                   fs.readFile(path.resolve(__root, "tmp", "channelLogs", channelName + ".log"), function(err, fileContent) {
                        clientSocket.emit("recieveCommandLog", fileContent.toString());
                    });
                } else {
@@ -68,9 +69,9 @@ class PageSettings {
         });
         clientSocket.on("clearScriptedCommandLog", function(){
             let channelName = clientSocket.handshake.session.user.name;
-            fs.exists("tmp/channelLogs/" + channelName + ".log", function(result) {
+            fs.exists(path.resolve(__root, "tmp", "channelLogs", channelName + ".log"), function(result) {
                 if (result) {
-                    fs.unlink("tmp/channelLogs/" + channelName + ".log");
+                    fs.unlink(path.resolve(__root, "tmp","channelLogs", channelName + ".log"));
                 }
             });
 

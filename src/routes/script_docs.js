@@ -6,6 +6,7 @@
 var express = require('express');
 var router = express.Router();
 var version = require('./../../package.json').version;
+var path = require("path");
 
 /* GET home page. */
 router.get('/*', function (req, res) {
@@ -13,7 +14,7 @@ router.get('/*', function (req, res) {
 
     let fs = require("fs");
 
-    fs.readdir("views/documentations/sc/", function (err, files) {
+    fs.readdir(path.resolve(__root, "views","documentations","sc"), function (err, files) {
         let navPoints = [],fileName, loadFile = "01.Start.hbs", active="Start";
         for (let i = 0; i < files.length; i++) {
             fileName = files[i].split(".")[1];
@@ -24,7 +25,7 @@ router.get('/*', function (req, res) {
             }
         }
 
-        var content = "" + fs.readFileSync("views/documentations/sc/" + loadFile);
+        var content = "" + fs.readFileSync(path.resolve(__root,"views","documentations","sc", loadFile));
         var hogan = require("handlebars");
         var template = hogan.compile(content);
 

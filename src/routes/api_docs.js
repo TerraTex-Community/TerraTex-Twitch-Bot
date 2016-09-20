@@ -5,11 +5,12 @@
 
 var express = require('express');
 var router = express.Router();
+var path = require("path");
 
 /* GET home page. */
 router.get('/*', function (req, res) {
     let fs = require("fs");
-    fs.readFile("tmp/api_docs.html", function(err, content) {
+    fs.readFile(path.resolve(__root, "tmp","api_docs.html"), function(err, content) {
          res.send(content.toString());
     });
 });

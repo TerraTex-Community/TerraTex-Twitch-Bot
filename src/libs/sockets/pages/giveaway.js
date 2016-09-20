@@ -2,6 +2,7 @@
  * Created by Colin on 03.01.2016.
  */
 "use strict";
+var path = require("path");
 
 class PageGiveAway {
     static loadPageSockets(clientSocket) {
@@ -54,7 +55,7 @@ class PageGiveAway {
 
     static resendPage(clientSocket) {
         let fs = require ("fs");
-        var content = "" + fs.readFileSync("views/pages/giveaway.hbs");
+        var content = "" + fs.readFileSync(path.resolve(__root, "views", "pages", "giveaway.hbs"));
         var hogan = require("handlebars");
         var template = hogan.compile(content);
         PageGiveAway.sendPage(clientSocket, template);

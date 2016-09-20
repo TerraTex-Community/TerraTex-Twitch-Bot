@@ -2,6 +2,7 @@
  * Created by C5217649 on 18.01.2016.
  */
 "use strict";
+let path = require("path");
 
 class TextHandler {
     constructor(channel, loadFromID, callBackAfterInit) {
@@ -18,9 +19,9 @@ class TextHandler {
         this._loadID = id;
         //read default texts
         let fs = require("fs");
-        this._texts = JSON.parse(fs.readFileSync("configs/bot_text.json"));
+        this._texts = JSON.parse(fs.readFileSync(path.resolve(__root, "configs","bot_text.json")));
 
-        this._defaultDescriptions = JSON.parse(fs.readFileSync("configs/bot_default_params.json"));
+        this._defaultDescriptions = JSON.parse(fs.readFileSync(path.resolve(__root, "configs","bot_default_params.json")));
 
         this._hogan = [];
         this._catNames = {};

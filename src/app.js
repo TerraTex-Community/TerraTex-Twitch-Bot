@@ -118,6 +118,7 @@ global.g_logger = {
     socket: new LoggerClass("socket")
 };
 
+global.__root = __dirname;
 
 require("./public/javascripts/system/array_shuffle.js");
 

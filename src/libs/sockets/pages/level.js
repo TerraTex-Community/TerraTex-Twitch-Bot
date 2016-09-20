@@ -3,7 +3,8 @@
  */
 "use strict";
 let fs = require("fs");
-let content = "" + fs.readFileSync("views/pagepart/level_drawLevels.hbs");
+var path = require("path");
+let content = "" + fs.readFileSync(path.resolve(__root, "views","pagepart","level_drawLevels.hbs"));
 let hogan = require("handlebars");
 
 class PageSettings {
