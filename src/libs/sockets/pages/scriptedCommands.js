@@ -180,7 +180,7 @@ class PageSettings {
             g_database.getTable("cmds_scripted_examples", {}, function (dbErr, examples) {
 
                 let filteredExampleList = [];
-                let systemVersion = require('./../../../package.json').version;
+                let systemVersion = require('./../../../../package.json').version;
 
                 for (let i = 0; i < examples.length; i++) {
 

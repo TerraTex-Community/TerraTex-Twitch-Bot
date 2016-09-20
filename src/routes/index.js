@@ -44,7 +44,7 @@ router.get('/', function (req, res) {
             connected = true;
         }
 
-        let navigation = require("./navigation.json");
+        let navigation = require("./../configs/navigation.json");
 
         res.render('index.hbs', {content: 'main', connected: connected, version: (version + "-BUILD." + g_build), navi: navigation});
     }

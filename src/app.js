@@ -45,7 +45,7 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname,'node_modules/socket.io-client/')));
+app.use(express.static(path.join(__dirname, '../node_modules/socket.io-client/')));
 
 var SessionStore = require('session-file-store')(session);
 app.use(session({
