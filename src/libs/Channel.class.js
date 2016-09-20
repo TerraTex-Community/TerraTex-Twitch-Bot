@@ -102,7 +102,6 @@ class Channel {
             this._systems.Timer = new Timer(this);
 
 
-
             //for stats
             this._lastTotal = 0;
 
@@ -116,7 +115,7 @@ class Channel {
                 }
             }).bind(this));
         }).bind(this));
-        
+
     }
 
     getStreamStatus() {
@@ -185,48 +184,48 @@ class Channel {
 
     /** BOT FUNCTIONS **/
     checkNewFollow() {
-            g_twitchAPI.getChannelFollows(this._channelName, {
-                limit: "25",
-                direction: "desc"
-            }, (function (err, result) {
-                if (!err && result.follows) {
-                    if (this._settings.chatNotifications.followerAlert === 1) {
-                        let length = result.follows.length;
+        g_twitchAPI.getChannelFollows(this._channelName, {
+            limit: "25",
+            direction: "desc"
+        }, (function (err, result) {
+            if (!err && result.follows) {
+                if (this._settings.chatNotifications.followerAlert === 1) {
+                    let length = result.follows.length;
 
-                        let follow, followDate;
-                        let newFollowerDate = this._lastFollowerCheck;
-                        for (let i = 0; i < length; i++) {
-                            follow = result.follows[i];
-                            followDate = new Date(follow.created_at);
-                            if (this._lastFollowerCheck > followDate) {
-                                break;
-                            } else {
-                                this._client.say(this._channelName, this.text.get("notifications.new_follower", {
-                                    user: follow.user.display_name
-                                }));
-                                newFollowerDate = new Date();
-                            }
+                    let follow, followDate;
+                    let newFollowerDate = this._lastFollowerCheck;
+                    for (let i = 0; i < length; i++) {
+                        follow = result.follows[i];
+                        followDate = new Date(follow.created_at);
+                        if (this._lastFollowerCheck > followDate) {
+                            break;
+                        } else {
+                            this._client.say(this._channelName, this.text.get("notifications.new_follower", {
+                                user: follow.user.display_name
+                            }));
+                            newFollowerDate = new Date();
                         }
-
-                        this._lastFollowerCheck = newFollowerDate;
-                    } else {
-                        this._lastFollowerCheck = new Date();
                     }
 
-                    //save statistics
-                    let newTotal = result._total;
-                    let diff = newTotal - this._lastTotal;
-
-                    g_database.insert("stats_follows", {
-                        channelID: this._ID,
-                        value: newTotal,
-                        diff: diff
-                    });
-
-                    this._lastTotal = newTotal;
+                    this._lastFollowerCheck = newFollowerDate;
+                } else {
+                    this._lastFollowerCheck = new Date();
                 }
-                setTimeout(this.checkNewFollow.bind(this), 61000);
-            }).bind(this));
+
+                //save statistics
+                let newTotal = result._total;
+                let diff = newTotal - this._lastTotal;
+
+                g_database.insert("stats_follows", {
+                    channelID: this._ID,
+                    value: newTotal,
+                    diff: diff
+                });
+
+                this._lastTotal = newTotal;
+            }
+            setTimeout(this.checkNewFollow.bind(this), 61000);
+        }).bind(this));
 
     }
 

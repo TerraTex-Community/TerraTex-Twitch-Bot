@@ -11,9 +11,8 @@ router.get('/', function (req, res) {
     res.setHeader("Expires", "0");
 
     var sess = req.session;
-    let error = false;
 
-    if (!sess.login || error) {
+    if (!sess.login) {
         let loginUrl = g_twitchAPI.getAuthorizationUrl();
 
         let options = {loginUrl: loginUrl, content: 'home', version: (version + "-BUILD." + g_build)};
