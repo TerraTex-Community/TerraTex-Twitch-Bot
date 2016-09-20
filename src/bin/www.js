@@ -22,8 +22,11 @@ console.log();
 let fs = require('fs');
 if (fs.existsSync(__dirname + "/../production.mode")) {
     process.env.NODE_ENV = 'production';
+    process.env.PORT = 5555;
+
 } else {
     process.env.NODE_ENV = 'development';
+    process.env.PORT = 9999;
 }
 /**
  * Additional ENV Vars
@@ -40,10 +43,6 @@ if (fs.existsSync(__dirname + "/../ENV.json")) {
     }
 }
 global.ENV = env;
-
-
-
-process.env.PORT = ENV.port;
 
 if (fs.existsSync(__dirname + "/../.version")) {
     global.g_build = fs.readFileSync(__dirname + "/../.version");
