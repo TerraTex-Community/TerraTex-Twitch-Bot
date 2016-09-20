@@ -3,9 +3,9 @@
  */
 "use strict";
 let fs = require("fs");
+let path = require("path");
 let content = "" + fs.readFileSync(path.resolve(__root, "views","pagepart","level_drawLevels.hbs"));
 let hogan = require("handlebars");
-var path = require("path");
 
 class PageSettings {
     static loadPageSockets(clientSocket) {
