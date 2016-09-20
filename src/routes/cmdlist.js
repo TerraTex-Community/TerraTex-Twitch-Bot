@@ -5,7 +5,7 @@
 
 var express = require('express');
 var router = express.Router();
-var version = require('./../package.json').version;
+var version = require('./../../package.json').version;
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 
         if (!existErr && exist) {
 
-            let commandHandler = require("../libs/channelsystems/CommandHandler");
+            let commandHandler = require("./channelsystems/CommandHandler");
             commandHandler.getAllCommandsOfChannel(channel, true, true, true, function(err, commands) {
                 if (err) {
                     g_logger.system.error(err);

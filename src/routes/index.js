@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var version = require('./../package.json').version;
+var version = require('./../../package.json').version;
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -45,7 +45,7 @@ router.get('/', function (req, res) {
             connected = true;
         }
 
-        let navigation = require("../configs/navigation.json");
+        let navigation = require("./navigation.json");
 
         res.render('index.hbs', {content: 'main', connected: connected, version: (version + "-BUILD." + g_build), navi: navigation});
     }
