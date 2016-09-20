@@ -12,7 +12,8 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "forever": "forever start -l twitchbot.log -e twitchbot-error.log -o twichbot-output.log --uid TwitchBot -a -c node -s ./src/bin/www.js",
+    "forever": "forever start -l twitchbot.log -e twitchbot-error.log -o twichbot-output.log --uid TwitchBot --minUptime 10000 --spinSleepTime 1000 -a -c node -s ./src/bin/www.js",
+
     "runbuild": "npm install && npm start",
     "test:mocha": "./node_modules/.bin/mocha --recursive --no-exit -R mocha-sonar-generic-test-coverage > build/reports/TEST-RESULTS.xml || exit 0",
     "test": "grunt --gruntfile build/gruntfile.js --base ./"
