@@ -415,8 +415,6 @@ class CommandHandler {
                     sCmdSteps++;
                 }
 
-                let path = require("path");
-
                 fs.readFile(path.resolve(__dirname, "..", "..", "configs", "commandlists", "de", "general.json"), function (err, list) {
                     if (err) {
                         callback(err);
