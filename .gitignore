@@ -38,3 +38,5 @@ node_modules
 build/reports
 
 tmp
+/src/configs/twitch.json
+/src/configs/database.json

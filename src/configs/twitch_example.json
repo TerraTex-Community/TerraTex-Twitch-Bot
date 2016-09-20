@@ -1,0 +1,21 @@
+{
+  "irc": {
+    "login": "BotTerraTex",
+    "password": ""
+  },
+  "api_local": {
+    "name": "TerraTexTwitchBot-local",
+    "redirect_url": "",
+    "clientID": "",
+    "secret": ""
+  },
+  "api_release": {
+    "name": "TerraTex Twitch Bot",
+    "redirect_url": "",
+    "clientID": "",
+    "secret": ""
+  },
+  "defaultBotNames": [
+    "moobot", "tipeeebot", "nightbot", "anotheruselessbot", "JamesDerButler"
+  ]
+}

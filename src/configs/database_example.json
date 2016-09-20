@@ -1,10 +1,11 @@
 {
-    "host": "terratex.eu",
-    "user": "twitchbot",
-    "password": "twitchbot",
-    "database": "twitch_bot",
-    "encryptPassword": "htd0iCh1NaHurjRr",
+    "host": "localhost",
+    "user": "",
+    "password": "",
+    "database": "",
+    "encryptPassword": "",
     "algorithm": "aes-256-ctr",
+
     "channelTables": [
         "chat_notifications",
         "chatfilter",
