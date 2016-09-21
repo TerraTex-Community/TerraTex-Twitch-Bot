@@ -8,15 +8,11 @@
   ],
   "homepage": "http://twitch.terratex.eu",
   "author": "Colin Weber as Geramy92",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "forever": "forever start -w -l twitchbot.log -e twitchbot-error.log -o twichbot-output.log --uid TwitchBot --minUptime 10000 --spinSleepTime 1000 -a -c node -s ./src/bin/www.js",
-
-    "runbuild": "npm install && npm start",
-    "test:mocha": "./node_modules/.bin/mocha --recursive --no-exit -R mocha-sonar-generic-test-coverage > build/reports/TEST-RESULTS.xml || exit 0",
-    "test": "grunt --gruntfile build/gruntfile.js --base ./"
+    "runbuild": "npm install && npm start"
   },
   "dependencies": {
     "body-parser": "^1.15.1",
@@ -51,20 +47,12 @@
   },
   "docs": {
     "twitch-irc": "https://www.tmijs.org/docs/Commands.md",
-    "bootstrap": "http://v4-alpha.getbootstrap.com/",
-    "zombie-uitest": "http://zombie.js.org/"
+    "bootstrap": "http://v4-alpha.getbootstrap.com/"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
     "grunt": "*",
     "grunt-contrib-jshint": "*",
     "jshint-html-reporter": "^0.2.4",
-    "jshint-stylish": "^2.1.0",
-    "mocha": "^3.0.2",
-    "mocha-junit-reporter": "^1.11.1",
-    "mocha-sonar-generic-test-coverage": "0.0.1",
-    "mocha-sonar-reporter": "^0.1.5",
-    "should": "^11.1.0",
-    "supertest": "^2.0.0"
+    "jshint-stylish": "^2.1.0"
   }
 }
