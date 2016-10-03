@@ -35,7 +35,7 @@ class Bot {
                 debug: true
             },
             connection: {
-                cluster: "aws",
+                // cluster: "aws",
                 reconnect: true
             },
             identity: {
