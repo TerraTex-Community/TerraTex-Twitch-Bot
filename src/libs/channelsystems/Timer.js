@@ -203,7 +203,7 @@ class Timer {
          */
         let message = this._options.messages[this._lastMessageId];
         if (message) {
-            if (message.intern == 1 || message.intern) {
+            if (message.intern === "1" || message.intern === 1 || message.intern) {
                 this._channel.command.runCommandByBot(message.message);
             } else {
                 this._channel._client.say(this._channel._channelName, message.message);
