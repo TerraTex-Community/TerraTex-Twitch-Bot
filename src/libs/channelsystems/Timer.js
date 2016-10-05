@@ -137,7 +137,7 @@ class Timer {
     /**
      * @param {TimerDataObject} data
      */
-    update(data){
+    update(data) {
         if (this._options.minutes !== data.minutes) {
             if (this._timerTimeout) {
                 clearInterval(this._timerTimeout);
@@ -190,7 +190,7 @@ class Timer {
 
         //calc next message
         if (this._options.sendRandom) {
-            this._lastMessageId = Math.rand(0, (this._options.messages.length -1));
+            this._lastMessageId = Math.rand(0, (this._options.messages.length - 1));
         } else {
             this._lastMessageId++;
             if (this._lastMessageId >= (this._options.messages.length)) {
@@ -198,8 +198,6 @@ class Timer {
             }
         }
 
-
-        console.log("executed");
         /**
          * @type {TimerMessageObject}
          */
