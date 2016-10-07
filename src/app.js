@@ -166,8 +166,6 @@ if (g_app.get('env') === 'development') {
 }
 
 bot.createOnlineChannelsOnStartUp();
-let Backup = require("./libs/BackupRunner.js");
-global.g_backup = new Backup();
 
 require("./libs/API/result");
 
