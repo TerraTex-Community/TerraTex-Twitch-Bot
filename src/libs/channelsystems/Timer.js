@@ -168,7 +168,7 @@ class Timer {
             if (this._options.messages.length > 0) {
                 this._timerTimeout = setTimeout((function () {
                     this.execute();
-                }).bind(this), data.minutes * 60000);
+                }).bind(this), this._options.minutes * 60000);
             }
             return null;
         }
