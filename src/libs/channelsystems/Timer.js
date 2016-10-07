@@ -165,7 +165,7 @@ class Timer {
 
         // restart timer if not streaming
         if (this._options.onlyIfStreaming && !this._channel._streamStatus) {
-            if (data.messages.length > 0) {
+            if (this._options.messages.length > 0) {
                 this._timerTimeout = setTimeout((function () {
                     this.execute();
                 }).bind(this), data.minutes * 60000);
