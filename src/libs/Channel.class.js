@@ -28,7 +28,7 @@ class Channel {
         client.on("join", (function (channel, username) {
             if (username === botName && this._firstJoin) {
                 if (connectMessage) {
-                    client.say("#" + channel, "Ich bin ein Bot und ich bin in Entwicklung. Es dauert noch bis ich etwas tun kann.");
+                    client.say("#" + channel, "Ich bin der persönliche Buttler dieses Kanals und freue mich wieder hier sein zu dürfen.");
                 }
                 this._firstJoin = false;
             }
