@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 
         if (!existErr && exist) {
 
-            let commandHandler = require("./channelsystems/CommandHandler");
+            let commandHandler = require("../libs/channelsystems/CommandHandler");
             commandHandler.getAllCommandsOfChannel(channel, true, true, true, function(err, commands) {
                 if (err) {
                     g_logger.system.error(err);
