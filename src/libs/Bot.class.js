@@ -55,6 +55,10 @@ class Bot {
             }
         }).bind(this));
 
+        client.on('error', (err) => {
+            console.error("clienterror", err);
+        });
+
         // Connect the client to the server..
         client.connect();
     }
