@@ -36,7 +36,7 @@ class ChatGames {
 
         fs.readdir(path.resolve(__dirname, "ChatGames"), (function(err, files) {
             files.forEach((function(file) {
-                g_logger.bot.info("Load Game File " + file);
+                console.info("Load Game File " + file);
                 let Game = require("./ChatGames/" + file);
                 file = file.replace(".js", "");
                 this._games[file] = new Game(this._channel, this, this._settings[file]);

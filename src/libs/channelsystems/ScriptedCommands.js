@@ -68,7 +68,7 @@ class ScriptedCommands {
                         try {
                             result[i].save = JSON.parse(result[i].save);
                         } catch (e) {
-                            g_logger.system.error(e);
+                            console.error(e);
                         }
                         this._commands[cmd.command.toLowerCase()] = result[i];
                     }

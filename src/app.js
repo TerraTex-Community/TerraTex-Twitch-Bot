@@ -108,16 +108,6 @@ app.use(function (err, req, res) {
     });
 });
 
-let LoggerClass = require("./libs/Logger.class.js");
-global.g_logger = {
-    badword: new LoggerClass("badwords"),
-    advertising: new LoggerClass("advertising"),
-    bot: new LoggerClass("bot"),
-    system: new LoggerClass("system"),
-    api: new LoggerClass("api"),
-    socket: new LoggerClass("socket")
-};
-
 global.__root = __dirname;
 
 require("./public/javascripts/system/array_shuffle.js");

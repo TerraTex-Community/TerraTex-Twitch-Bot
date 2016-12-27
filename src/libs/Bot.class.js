@@ -19,7 +19,7 @@ class Bot {
         if (connectMessage === null || typeof connectMessage === "undefined") {
             connectMessage = 1;
         }
-        g_logger.bot.info("create new Channel: " + channelName);
+        console.info("create new Channel: " + channelName);
 
         let user = g_configs.twitch.irc.login;
         let password = g_configs.twitch.irc.password;
@@ -68,7 +68,7 @@ class Bot {
             if (!err) {
                 let length = result.length;
                 for (let i = 0; i < length; i++) {
-                    g_logger.bot.info("Connect Channel " + result[i].channelName + " on StartUp");
+                    console.info("Connect Channel " + result[i].channelName + " on StartUp");
                     this.createNewChannel(result[i].channelName, result[i].customLoginData, result[i].connectMessage);
                     if (process.env.NODE_ENV === 'development') {
                         break;

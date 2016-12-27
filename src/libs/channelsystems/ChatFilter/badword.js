@@ -85,7 +85,7 @@ class BadWord {
                     if (message.search(regex) !== -1) {
                         found = true;
 
-                        g_logger.badword.info("Found BadWord: " + fullFilter[c].description + " in " + message);
+                        console.info("Found BadWord: " + fullFilter[c].description + " in " + message);
                         break;
                     }
                 }

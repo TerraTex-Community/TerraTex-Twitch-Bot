@@ -83,7 +83,7 @@ class Advertising {
                         regex.lastIndex++;
                     }
                     if (this._settings.adExclude.indexOf(m[0]) === -1) {
-                        g_logger.advertising.info("Found Advertising: " + m[0] + " in " + message);
+                        console.info("Found Advertising: " + m[0] + " in " + message);
                         found = true;
                     }
                 }
@@ -102,7 +102,7 @@ class Advertising {
                     if (m[0].search(excludeExpression) === -1) {
                         if (this._settings.adExclude.indexOf(m[0]) === -1) {
                             found = true;
-                            g_logger.advertising.info("Found Advertising: " + m[0] + " in " + message);
+                            console.info("Found Advertising: " + m[0] + " in " + message);
                         }
                     }
                 }

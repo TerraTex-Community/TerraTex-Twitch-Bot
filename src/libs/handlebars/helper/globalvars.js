@@ -12,6 +12,6 @@ Handlebars.registerHelper('helperMissing', function(/* [args, ] options */) {
     }
 
     let ex = new Handlebars.Exception('Unknown field: ' + options.name);
-    g_logger.system.error(ex);
+    console.error(ex);
     throw ex;
 });

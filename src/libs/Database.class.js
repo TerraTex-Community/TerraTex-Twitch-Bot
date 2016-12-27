@@ -38,7 +38,7 @@ class Database {
 
         mysql.connect(function (err) {
             if (err) {
-                g_logger.system.error('error connecting: ' + err.stack);
+                console.error('error connecting: ' + err.stack);
                 return;
             }
 
@@ -46,7 +46,7 @@ class Database {
                 runAfter();
             }
 
-            g_logger.system.info('Database connected');
+            console.info('Database connected');
         });
 
         this._mysql = mysql;

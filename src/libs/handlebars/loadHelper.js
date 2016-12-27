@@ -8,7 +8,7 @@ let path = require("path");
 
 fs.readdir(path.resolve(__dirname, 'helper'), function(err, files) {
     files.forEach(function(file) {
-        g_logger.system.info("Load Handlebars Helper " + file);
+        console.info("Load Handlebars Helper " + file);
         require("./helper/" + file);
     });
 });

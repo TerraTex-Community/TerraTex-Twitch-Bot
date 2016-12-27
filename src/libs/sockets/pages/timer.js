@@ -18,7 +18,7 @@ class PageSettings {
                         title: "Error",
                         text: "Beim Laden der Daten zum Bearbeiten des Timers ist ein Fehler aufgetreten."
                     });
-                    g_logger.socket.error(err);
+                    console.error(err);
                 } else {
                     clientSocket.emit("sendTimerData", result[0]);
                 }
@@ -47,7 +47,7 @@ class PageSettings {
                         title: "Error",
                         text: "Beim Speichern des Timers ist ein Fehler aufgetreten."
                     });
-                    g_logger.socket.error(err);
+                    console.error(err);
                 } else {
                     clientSocket.emit("notify", {
                         style: "success",
@@ -82,7 +82,7 @@ class PageSettings {
                         title: "Error",
                         text: "Beim Löschen des Timers ist ein Fehler aufgetreten."
                     });
-                    g_logger.socket.error(err);
+                    console.error(err);
                 } else {
                     clientSocket.emit("notify", {
                         style: "success",
@@ -147,7 +147,7 @@ class PageSettings {
                         title: "Error",
                         text: "Beim erstellen des Timers ist ein Fehler aufgetreten."
                     });
-                    g_logger.socket.error(err);
+                    console.error(err);
                 }
             });
         });
