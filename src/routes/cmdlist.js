@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
             let commandHandler = require("../libs/channelsystems/CommandHandler");
             commandHandler.getAllCommandsOfChannel(channel, true, true, true, function(err, commands) {
                 if (err) {
-                    console.error(err);
+                    console.error("cmdlist.js: ", err);
                 } else {
                     res.render('index', {
                         content: 'cmdlist',

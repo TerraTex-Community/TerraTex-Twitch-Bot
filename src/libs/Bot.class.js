@@ -55,12 +55,22 @@ class Bot {
             }
         }).bind(this));
 
+        client.on("logon", function () {
+            console.info("#" + channelName + " logon event");
+        });
+
         client.on('error', (err) => {
             console.error("clienterror", err);
         });
 
+        client.on("disconnected", function (reason) {
+            console.error("#" + channelName + " Disconnected Error " + reason);
+        });
+
         // Connect the client to the server..
-        client.connect();
+        client.connect().catch(function(err) {
+            console.error("#" + channelName + " connection error: ", err);
+        });
     }
 
     createOnlineChannelsOnStartUp() {

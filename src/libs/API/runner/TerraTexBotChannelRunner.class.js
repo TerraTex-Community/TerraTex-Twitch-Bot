@@ -51,7 +51,7 @@ class TerraTexBotChannelRunner {
                                         g_database.update("terratex_bot_channels", update, {channel_name: result[i].channel_name});
                                     } else {
                                         if (errStream) {
-                                            console.error(errStream);
+                                            console.error("streamerror: ", errStream);
                                         }
                                     }
                                     if (i === result.length - 1) {
@@ -60,7 +60,7 @@ class TerraTexBotChannelRunner {
                                     }
                                 }).bind(this));
                             } else {
-                                console.error(errAPI);
+                                console.error("API Error: ", errAPI);
                                 if (i === result.length - 1) {
                                     this._partner = newPartners;
                                     setTimeout((this._actualize).bind(this), 60000);

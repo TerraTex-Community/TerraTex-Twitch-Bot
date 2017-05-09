@@ -44,7 +44,7 @@ class PageSettings {
                 if (!err && result.length > 0) {
                     clientSocket.emit("sendScriptedCommandCode", result[0]);
                 } else {
-                    console.error(err);
+                    console.error("scripted commands: ", err);
                     clientSocket.emit("notify", {
                         style: "danger",
                         title: "Error",
@@ -106,7 +106,7 @@ class PageSettings {
                             clientSocket.emit("reloadPage", {});
 
                         } else {
-                            console.error(err);
+                            console.error("scripted commands: ", err);
                             clientSocket.emit("notify", {
                                 style: "danger",
                                 title: "Error",
@@ -153,7 +153,7 @@ class PageSettings {
                             clientSocket.emit("reloadPage", {});
 
                         } else {
-                            console.error(err);
+                            console.error("scripted commands: ", err);
                             clientSocket.emit("notify", {
                                 style: "danger",
                                 title: "Error",

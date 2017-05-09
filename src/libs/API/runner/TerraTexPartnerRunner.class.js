@@ -37,18 +37,14 @@ class TerraTexPartnerRunner {
                                 newPartners.push(update);
                                 g_database.update("terratex_partners", update, {channel_name: result[i].channel_name});
 
-                            } else {
-                                console.error("Error on TerraTexParterRunner.class.js on Line 45");
-                                console.error(errStream);
-                            }
+                            } 
                             if (i === result.length - 1) {
                                 this._partner = newPartners;
                                 setTimeout((this._actualize).bind(this), 60000);
                             }
                         }).bind(this));
                     } else {
-                        console.error("Error on TerraTexParterRunner.class.js on Line 50");
-                        console.error(errAPI);
+                        console.error("Error on TerraTexParterRunner.class.js on Line 47", errAPI);
                         if (i === result.length - 1) {
                             this._partner = newPartners;
                             setTimeout((this._actualize).bind(this), 60000);

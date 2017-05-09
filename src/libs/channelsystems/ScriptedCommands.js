@@ -68,7 +68,7 @@ class ScriptedCommands {
                         try {
                             result[i].save = JSON.parse(result[i].save);
                         } catch (e) {
-                            console.error(e);
+                            console.error("scripted commands l71: ", e);
                         }
                         this._commands[cmd.command.toLowerCase()] = result[i];
                     }

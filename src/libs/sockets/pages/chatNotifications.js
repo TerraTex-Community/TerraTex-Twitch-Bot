@@ -21,7 +21,7 @@ class PageChatNotifications {
                             text: "Die Einstellungen zur Follower Notification wurden gespeichert."
                         });
                     } else {
-                        console.error(err);
+                        console.error("chatnotifications:", err);
 
                         clientSocket.emit("notify", {
                             style: "danger",
@@ -50,7 +50,7 @@ class PageChatNotifications {
                             text: "Die Einstellungen zur Chat Join Notification wurden gespeichert."
                         });
                     } else {
-                        console.error(err);
+                        console.error("chatnotifications:", err);
 
                         clientSocket.emit("notify", {
                             style: "danger",
