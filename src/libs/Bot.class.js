@@ -66,17 +66,21 @@ class Bot {
         // Connect the client to the server..
         client.connect().catch(function(err) {
             if (err === "Login authentication failed") {
-                console.info("#" + channelName + " Authentication failed: Channel has been removed from startup");
-                if (this._channelConnectors[channelName]) {
-                    delete this._channelConnectors[channelName];
-                }
-                g_database.update("channel", {connected: 0, customLoginData: null}, {channelName: channelName}, err => {
-                    if (err) {
-                        console.error(err);
-                    }
-                });
+                this._removeChannelAuthentication(channelName);
             } else {
                 console.error("#" + channelName + " connection error: ", err);
+            }
+        });
+    }
+
+    _removeChannelAuthentication(channelName) {
+        console.info("#" + channelName + " Authentication failed: Channel has been removed from startup");
+        if (this._channelConnectors[channelName]) {
+            delete this._channelConnectors[channelName];
+        }
+        g_database.update("channel", {connected: 0, customLoginData: null}, {channelName: channelName}, err => {
+            if (err) {
+                console.error(err);
             }
         });
     }
