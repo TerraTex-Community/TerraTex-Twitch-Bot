@@ -85,18 +85,18 @@ class PageSettings {
                 query += "WHERE channelID = :channelID ";
                 query += "GROUP BY channelID";
 
-                g_database.query(query, {
-                    channelID: channelID
-                }, function (err, result){
-                    result = result[0];
-                    if (result) {
-                        result.sumViewTime = g_helper.time.minutesToLongTimeString(result.sumViewTime);
-                        clientSocket.emit("recieveDashBoardData", {
-                            chart: "channelData",
-                            data: result
-                        });
-                    }
-                });
+                // g_database.query(query, {
+                //     channelID: channelID
+                // }, function (err, result){
+                //     result = result[0];
+                //     if (result) {
+                //         result.sumViewTime = g_helper.time.minutesToLongTimeString(result.sumViewTime);
+                //         clientSocket.emit("recieveDashBoardData", {
+                //             chart: "channelData",
+                //             data: result
+                //         });
+                //     }
+                // });
             }
         });
     }
