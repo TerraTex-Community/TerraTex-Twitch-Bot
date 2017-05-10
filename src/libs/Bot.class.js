@@ -64,7 +64,7 @@ class Bot {
         });
 
         // Connect the client to the server..
-        client.connect().catch(function(err) {
+        client.connect().catch(err => {
             if (err === "Login authentication failed") {
                 this._removeChannelAuthentication(channelName);
             } else {
