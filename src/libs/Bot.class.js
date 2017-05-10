@@ -3,8 +3,8 @@
  */
 "use strict";
 
-var irc = require("tmi.js");
-var Channel = require("./Channel.class.js");
+const irc = require("tmi.js");
+const Channel = require("./Channel.class.js");
 
 /**
  * @property {Object.<String, Channel>} _channelConnectors
@@ -30,7 +30,7 @@ class Bot {
             password = login.password;
         }
 
-        var options = {
+        const options = {
             options: {
                 debug: true
             },
@@ -45,7 +45,7 @@ class Bot {
             channels: ["#" + channelName]
         };
 
-        var client = new irc.client(options);
+        const client = new irc.client(options);
 
         let firstConnection = true;
         client.on("connected", (function () {
@@ -63,13 +63,21 @@ class Bot {
             console.error("clienterror", err);
         });
 
-        client.on("disconnected", function (reason) {
-            console.error("#" + channelName + " Disconnected Error " + reason);
-        });
-
         // Connect the client to the server..
         client.connect().catch(function(err) {
-            console.error("#" + channelName + " connection error: ", err);
+            if (err === "Login authentication failed") {
+                console.info("#" + channelName + " Authentication failed: Channel has been removed from startup");
+                if (this._channelConnectors[channelName]) {
+                    delete this._channelConnectors[channelName];
+                }
+                g_database.update("channel", {connected: 0, customLoginData: null}, {channelName: channelName}, err => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
+            } else {
+                console.error("#" + channelName + " connection error: ", err);
+            }
         });
     }
 
