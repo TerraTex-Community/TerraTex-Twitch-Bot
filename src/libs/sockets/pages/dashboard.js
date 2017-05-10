@@ -61,19 +61,19 @@ class PageSettings {
                 }
 
                 if (data.chart === "follower") {
-                    g_database.query(followerSql, {channelID: channelID}, function (err, result) {
-                        clientSocket.emit("recieveDashBoardData", {
-                            chart: "follower",
-                            data: result
-                        });
-                    });
+                    // g_database.query(followerSql, {channelID: channelID}, function (err, result) {
+                    //     clientSocket.emit("recieveDashBoardData", {
+                    //         chart: "follower",
+                    //         data: result
+                    //     });
+                    // });
                 } else if (data.chart === "viewer") {
-                    g_database.query(viewerSql, {channelID: channelID}, function (err, result) {
-                        clientSocket.emit("recieveDashBoardData", {
-                            chart: "viewer",
-                            data: result
-                        });
-                    });
+                    // g_database.query(viewerSql, {channelID: channelID}, function (err, result) {
+                    //     clientSocket.emit("recieveDashBoardData", {
+                    //         chart: "viewer",
+                    //         data: result
+                    //     });
+                    // });
                 }
             } else {
                 let query = "SELECT ";
@@ -85,18 +85,18 @@ class PageSettings {
                 query += "WHERE channelID = :channelID ";
                 query += "GROUP BY channelID";
 
-                // g_database.query(query, {
-                //     channelID: channelID
-                // }, function (err, result){
-                //     result = result[0];
-                //     if (result) {
-                //         result.sumViewTime = g_helper.time.minutesToLongTimeString(result.sumViewTime);
-                //         clientSocket.emit("recieveDashBoardData", {
-                //             chart: "channelData",
-                //             data: result
-                //         });
-                //     }
-                // });
+                g_database.query(query, {
+                    channelID: channelID
+                }, function (err, result){
+                    result = result[0];
+                    if (result) {
+                        result.sumViewTime = g_helper.time.minutesToLongTimeString(result.sumViewTime);
+                        clientSocket.emit("recieveDashBoardData", {
+                            chart: "channelData",
+                            data: result
+                        });
+                    }
+                });
             }
         });
     }
