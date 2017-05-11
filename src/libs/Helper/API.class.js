@@ -15,14 +15,18 @@ class APIHelper {
                 url: "https://tmi.twitch.tv/group/user/" + channel + "/chatters"
             }, function (err, res, body) {
                 if (!err) {
-                    let users = [];
-                    let chatter = body.chatters;
-                    if (chatter) {
-                        users = users.concat(chatter.moderators).concat(chatter.staff).concat(chatter.admins).concat(chatter.global_mods);
-                        users = users.concat(chatter.viewers);
-                    }
+                    if (body) {
+                        let users = [];
+                        let chatter = body.chatters;
+                        if (chatter) {
+                            users = users.concat(chatter.moderators).concat(chatter.staff).concat(chatter.admins).concat(chatter.global_mods);
+                            users = users.concat(chatter.viewers);
+                        }
 
-                    callback(null, users);
+                        callback(null, users);
+                    } else {
+                        callback(null, []);
+                    }
                 } else {
                     callback(err, null);
                 }
