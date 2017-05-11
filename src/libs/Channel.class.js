@@ -107,7 +107,7 @@ class Channel {
         this._client.on("join", (channel, username) => {
             if (username === this._botName && this._firstJoin) {
                 if (this._connectMessage) {
-                    client.say("#" + channel, "Ich bin der persönliche Buttler dieses Kanals und freue mich wieder hier sein zu dürfen.");
+                    this._client.say("#" + channel, "Ich bin der persönliche Buttler dieses Kanals und freue mich wieder hier sein zu dürfen.");
                 }
                 this._firstJoin = false;
             }
