@@ -398,3 +398,14 @@ body {
     max-width: 120px;
   }
 }
+
+.text-inverse {
+  color:white;
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      font-weight: bolder;
+    }
+  }
+}
