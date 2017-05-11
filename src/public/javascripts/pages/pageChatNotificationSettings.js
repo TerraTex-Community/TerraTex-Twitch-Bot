@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $("#saveForm_followerAlert").click(function(){
-        var data = {
+        const data = {
             active: $("#followerAlert").is(":checked"),
             text: $("#followerText").val()
         };
@@ -11,7 +11,7 @@ $(document).ready(function(){
     });
 
     $("#saveForm_chatJoinAlert").click(function(){
-        var data = {
+        const data = {
             active: $("#chatJoinAlert").is(":checked"),
             text: $("#chatJoinMessage").val(),
             target: $("#chatJoinTarget").val()

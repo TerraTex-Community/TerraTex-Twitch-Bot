@@ -9,15 +9,15 @@ $(document).ready(function () {
         window.pageAlias = true;
 
         $("html").on("click", "#aliasCreated", function() {
-            var command = $("#aliasCommand").val();
-            var aliasOf = $("#aliasOf").val();
+            const command = $("#aliasCommand").val();
+            const aliasOf = $("#aliasOf").val();
 
             g_socket.emit("addAlias", {command: command, aliasOf: aliasOf});
         });
 
 
         $("html").on("click", ".aliasDelete", function() {
-            var id = $(this).attr("data-cmd");
+            const id = $(this).attr("data-cmd");
 
             g_socket.emit("removeAlias", {command: id});
         });

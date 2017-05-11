@@ -2,18 +2,18 @@
  * Created by geramy on 28.02.2016.
  */
 "use strict";
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function (req, res) {
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.setHeader("Pragma", "no-cache");
     res.setHeader("Expires", "0");
 
-    var url = require('url');
-    var url_parts = url.parse(req.url, true);
+    const url = require('url');
+    const url_parts = url.parse(req.url, true);
 
-    g_twitchAPI.getAccessToken(url_parts.query.code, function (accessErr, body) {
+    g_twitchAPI.getAccessToken(url_parts.query.code, (accessErr, body) => {
         if (!accessErr) {
             g_twitchAPI.getAuthenticatedUser(body.access_token, function (authErr, result) {
                 if (!authErr) {
@@ -76,6 +76,5 @@ router.get('/', function (req, res) {
         }
     });
 });
-
 
 module.exports = router;

@@ -12,6 +12,7 @@ class Channel {
         if (connectMessage === null || typeof connectMessage === "undefined") {
             connectMessage = 1;
         }
+        this._connectMessage = connectMessage;
 
         botName = botName.toLowerCase();
 
@@ -22,27 +23,7 @@ class Channel {
         this._botName = botName;
         this._lastQuoteTimer = null;
 
-        client.on("ping", function () {
-            client.raw("PONG");
-        });
-        client.on("join", (function (channel, username) {
-            if (username === botName && this._firstJoin) {
-                if (connectMessage) {
-                    client.say("#" + channel, "Ich bin der persönliche Buttler dieses Kanals und freue mich wieder hier sein zu dürfen.");
-                }
-                this._firstJoin = false;
-            }
-            if (this._settings.chatNotifications) {
-                this.checkChatJoinAlert(username);
-            }
-        }).bind(this));
-        client.on("part", (function (channel, username) {
-            if (username !== botName) {
-                if (this._settings.chatNotifications) {
-                    this.checkChatLeft(username);
-                }
-            }
-        }).bind(this));
+        this._addClientEvents();
 
         this._lastFollowerCheck = new Date();
 
@@ -116,6 +97,32 @@ class Channel {
             }).bind(this));
         }).bind(this));
 
+    }
+
+    _addClientEvents() {
+        this._client.on("ping", function () {
+            client.raw("PONG");
+        });
+
+        this._client.on("join", (channel, username) => {
+            if (username === this._botName && this._firstJoin) {
+                if (this._connectMessage) {
+                    client.say("#" + channel, "Ich bin der persönliche Buttler dieses Kanals und freue mich wieder hier sein zu dürfen.");
+                }
+                this._firstJoin = false;
+            }
+            if (this._settings.chatNotifications) {
+                this.checkChatJoinAlert(username);
+            }
+        });
+
+        this._client.on("part", (channel, username) => {
+            if (username !== this._botName) {
+                if (this._settings.chatNotifications) {
+                    this.checkChatLeft(username);
+                }
+            }
+        });
     }
 
     getStreamStatus() {

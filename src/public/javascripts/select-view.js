@@ -14,8 +14,8 @@ $(document).ready(function () {
     });
 
     function manipulateSelectView(element) {
-        var relatedContainerName = element.attr("data-select-view");
-        var value = element.val();
+        const relatedContainerName = element.attr("data-select-view");
+        const value = element.val();
 
         if (relatedContainerName) {
             $("div[data-select-view='" + relatedContainerName + "']").hide();

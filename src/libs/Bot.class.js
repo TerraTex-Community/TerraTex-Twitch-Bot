@@ -108,7 +108,7 @@ class Bot {
      * @param {function} callback
      */
     createChannelEntries(channelName, email, partnered, callback) {
-        g_database.exist("channel", {channelName: channelName}, function (dbExistErr, exist) {
+        g_database.exist("channel", {channelName: channelName}, (dbExistErr, exist) => {
             if (dbExistErr) {
                 callback(dbExistErr);
             } else {
@@ -118,29 +118,12 @@ class Bot {
                         channelName: channelName,
                         email: email,
                         partnered: partnered
-                    }, function (dbInsertErr, insertId) {
+                    }, (dbInsertErr, insertId) => {
                         if (dbInsertErr) {
                             callback(dbInsertErr);
                         } else {
                             //create all other tables here from json
-                            let tablesToInsert = g_configs.database.channelTables;
-
-                            let todo = tablesToInsert.length;
-                            for (let i = 0; i < tablesToInsert.length; i++) {
-                                g_database.insert(tablesToInsert[i], {channelID: insertId}, function (err) {
-                                    if (!err) {
-                                        todo--;
-                                        if (todo === 0) {
-                                            callback(null, insertId);
-                                        }
-                                    } else {
-                                        if (todo > 0) {
-                                            callback(err);
-                                            todo = 0;
-                                        }
-                                    }
-                                });
-                            }
+                            this._executeTableInserts(insertId, callback);
                         }
                     });
                 } else {
@@ -150,8 +133,34 @@ class Bot {
         });
     }
 
+    /**
+     * @param insertId
+     * @param callback
+     * @private
+     */
+    _executeTableInserts(insertId, callback) {
+        const tablesToInsert = g_configs.database.channelTables;
+
+        let todo = tablesToInsert.length;
+        for (let i = 0; i < tablesToInsert.length; i++) {
+            g_database.insert(tablesToInsert[i], {channelID: insertId}, function (err) {
+                if (!err) {
+                    todo--;
+                    if (todo === 0) {
+                        callback(null, insertId);
+                    }
+                } else {
+                    if (todo > 0) {
+                        callback(err);
+                        todo = 0;
+                    }
+                }
+            });
+        }
+    }
+
     checkTableEntries(channelID, callback) {
-        g_database.exist("channel", {ID: channelID}, function (dbExistErr, exist) {
+        g_database.exist("channel", {ID: channelID}, (dbExistErr, exist) => {
             if (dbExistErr) {
                 callback(dbExistErr);
             } else {
@@ -161,11 +170,10 @@ class Bot {
 
                     let todo = tablesToInsert.length;
                     for (let i = 0; i < tablesToInsert.length; i++) {
-                        g_database.exist(tablesToInsert[i], {channelID: channelID}, function (checkTableExistErr, entryExist) {
-
+                        g_database.exist(tablesToInsert[i], {channelID: channelID}, (checkTableExistErr, entryExist) => {
                             if (!checkTableExistErr) {
                                 if (!entryExist) {
-                                    g_database.insert(tablesToInsert[i], {channelID: channelID}, function (err) {
+                                    g_database.insert(tablesToInsert[i], {channelID: channelID}, err => {
                                         if (!err) {
                                             todo--;
                                             if (todo === 0) {

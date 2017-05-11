@@ -3,14 +3,14 @@
  */
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var version = require('./../../package.json').version;
-var path = require("path");
+const express = require('express');
+const router = express.Router();
+const version = require('./../../package.json').version;
+const path = require("path");
 
 /* GET home page. */
 router.get('/*', function (req, res) {
-    var request = req.url.substr(1);
+    const request = req.url.substr(1);
 
     let fs = require("fs");
 
@@ -25,9 +25,9 @@ router.get('/*', function (req, res) {
             }
         }
 
-        var content = "" + fs.readFileSync(path.resolve(__root,"views","documentations","sc", loadFile));
-        var hogan = require("handlebars");
-        var template = hogan.compile(content);
+        const content = "" + fs.readFileSync(path.resolve(__root,"views","documentations","sc", loadFile));
+        const hogan = require("handlebars");
+        const template = hogan.compile(content);
 
         res.render('index.hbs', {
             content: 'script_docs',

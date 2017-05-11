@@ -37,7 +37,8 @@ class TerraTexPartnerRunner {
                                 newPartners.push(update);
                                 g_database.update("terratex_partners", update, {channel_name: result[i].channel_name});
 
-                            } 
+                            }
+
                             if (i === result.length - 1) {
                                 this._partner = newPartners;
                                 setTimeout((this._actualize).bind(this), 60000);

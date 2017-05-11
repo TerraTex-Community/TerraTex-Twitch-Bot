@@ -7,7 +7,7 @@ $(document).ready(function () {
         window.chatGamesIncluded = true;
 
         $("html").on('click', '#chatGames_saveRoulette', function () {
-            var data = {
+            const data = {
                 active: $("#chatGames_rouletteEnabled").is(":checked"),
                 option: $("#chatGames_rouletteRules").val(),
                 points: $("#chatGames_roulette_points").val(),

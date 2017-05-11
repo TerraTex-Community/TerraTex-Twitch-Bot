@@ -2,8 +2,8 @@
  * Created by C5217649 on 22.03.2016.
  */
 
-var followerChart = null;
-var viewerChart = null;
+let followerChart = null;
+let viewerChart = null;
 
 $(document).ready(function () {
     if (!window.pageDashboard) {

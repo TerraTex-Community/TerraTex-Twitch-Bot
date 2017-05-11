@@ -6,7 +6,7 @@
 let Handlebars = require('handlebars');
 
 Handlebars.registerHelper('helperMissing', function(/* [args, ] options */) {
-    var options = arguments[arguments.length - 1];
+    const options = arguments[arguments.length - 1];
     if (g_templateVars.hasOwnProperty(options.name)) {
         return g_templateVars[options.name];
     }

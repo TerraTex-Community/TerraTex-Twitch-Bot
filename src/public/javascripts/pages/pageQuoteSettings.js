@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $("#saveForm_quotes").click(function(){
-        var data = {
+        const data = {
             quoteStatus: $("#quoteStatus").is(":checked")
         };
         g_socket.emit("saveQuotesSettings", data);

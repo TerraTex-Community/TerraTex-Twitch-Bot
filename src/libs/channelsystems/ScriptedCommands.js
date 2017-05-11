@@ -2,7 +2,7 @@
  * Created by C5217649 on 21.03.2016.
  */
 "use strict";
-var path = require("path");
+const path = require("path");
 
 class ScriptedCommands {
     constructor(channel) {
@@ -84,12 +84,7 @@ class ScriptedCommands {
      * @param args
      * @private
      */
-    _runCommand(user, cmd) {
-        for (var _len = arguments.length, args = [], _key = 2; _key < _len;_key++)
-        {
-            args.push(arguments[_key]);
-        }
-
+    _runCommand(user, cmd, ...args) {
         let runner = new (require("./LuaHandler/LuaRunner"))(this._channel, this._globalObject, this._defaultScripts);
         runner.run(user, cmd.toLowerCase(), args, this._commands[cmd.toLowerCase()].code);
     }

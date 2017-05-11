@@ -44,11 +44,7 @@ class QuoteSystem {
      * @param {object} user    - User that has send the command
      * @param {string} message - complete message that was send
      */
-    cmdQuote(user) {
-        for (var _len = arguments.length, message = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-            message[_key - 1] = arguments[_key];
-        }
-
+    cmdQuote(user, ...message) {
         let parts = message;
         if (parts.length === 1) {
             parts[1] = "random";

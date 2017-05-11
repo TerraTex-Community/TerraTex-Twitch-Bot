@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     $("#saveForm_pointsSettings").click(function () {
-        var data = {
+        const data = {
             pointsEnabled: $("#pointsEnabled").is(":checked"),
             pointsPerMinute: $("#pointsPerMinute").val(),
             pointsPerMinuteInChat: $("#pointsPerMinutesInChat").val(),

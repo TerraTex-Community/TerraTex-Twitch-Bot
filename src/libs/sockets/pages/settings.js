@@ -6,8 +6,8 @@
 class PageSettings {
     static loadPageSockets(clientSocket) {
         clientSocket.on("settings_customLogin", function (data) {
-            var userName = data.loginName;
-            var userOauthPass = data.oauthPass;
+            const userName = data.loginName;
+            const userOauthPass = data.oauthPass;
 
             if (userOauthPass.startsWith("oauth:") || (userOauthPass === "" && userName === "")) {
                 let channel = clientSocket.handshake.session.user.name;
@@ -22,11 +22,11 @@ class PageSettings {
                     g_database.update("channel", {customLoginData: null}, {channelName: channel});
                 } else {
                     // save new Data
-                    var loginData = {
+                    const loginData = {
                         login: userName,
                         password: userOauthPass
                     };
-                    var loginString = g_helper.encrypt(JSON.stringify(loginData));
+                    const loginString = g_helper.encrypt(JSON.stringify(loginData));
                     g_bot.createNewChannel(channel, loginString, (data.connectMessage ? 1 : 0));
 
                     g_database.update("channel", {customLoginData: loginString}, {channelName: channel});

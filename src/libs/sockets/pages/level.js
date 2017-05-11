@@ -2,10 +2,10 @@
  * Created by C5217649 on 27.01.2016.
  */
 "use strict";
-let fs = require("fs");
-var path = require("path");
-let content = "" + fs.readFileSync(path.resolve(__root, "views","pagepart","level_drawLevels.hbs"));
-let hogan = require("handlebars");
+const fs = require("fs");
+const path = require("path");
+const content = "" + fs.readFileSync(path.resolve(__root, "views","pagepart","level_drawLevels.hbs"));
+const hogan = require("handlebars");
 
 class PageSettings {
     static loadPageSockets(clientSocket) {

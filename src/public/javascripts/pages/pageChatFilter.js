@@ -7,7 +7,7 @@ $(document).ready(function () {
         window.chatFilter = true;
 
         $("html").on('click', '#saveBadWords', function() {
-            var data = {
+            const data = {
                 badWords: $("#badWords").is(":checked") ? 1 : 0,
                 badWords_useDefaultList: $("#badWords_useDefaultList").is(":checked") ? 1 : 0,
                 badWords_useDefaultList_en: $("#badWords_useDefaultList_en").is(":checked") ? 1 : 0,
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 
         $("html").on('click', '#saveAD', function() {
-            var data = {
+            const data = {
                 adDomains: $("#adDomains").is(":checked") ? 1 : 0,
                 adIps: $("#adIps").is(":checked") ? 1 : 0,
                 adPermitTime: $("#adPermitTime").val(),
@@ -36,10 +36,10 @@ $(document).ready(function () {
         // add and remove filter
 
         $("html").on('click', '#addBadWord', function() {
-            var template = $("#chatfilter_badwords .template").html();
+            let template = $("#chatfilter_badwords .template").html();
 
-            var badWord = $('<div/>').text($("#add_badword").val()).html();
-            var regex = $('<div/>').text($("#add_regex").val()).html();
+            const badWord = $('<div/>').text($("#add_badword").val()).html();
+            const regex = $('<div/>').text($("#add_regex").val()).html();
 
             template = template.replace("#badword", badWord).replace("#regex", regex);
 
@@ -54,9 +54,9 @@ $(document).ready(function () {
         });
 
         $("html").on('click', '#addDomainIP', function() {
-            var template = $("#chatfilter_adWhiteList .template").html();
+            let template = $("#chatfilter_adWhiteList .template").html();
 
-            var domain = $('<div/>').text($("#add_domainip").val()).html();
+            const domain = $('<div/>').text($("#add_domainip").val()).html();
 
             template = template.replace("#domain", domain);
 
@@ -82,8 +82,8 @@ $(document).ready(function () {
         });
 
         g_socket.on("sendBadWords", function(data) {
-            var length = data.length;
-            var i, template;
+            const length = data.length;
+            let i, template;
             for (i = 0; i < length; i++) {
                 template = $("#chatfilter_badwords .template").html();
 
@@ -94,8 +94,8 @@ $(document).ready(function () {
         });
 
         g_socket.on("sendADWhiteList", function(data) {
-            var length = data.length;
-            var i, template;
+            const length = data.length;
+            let i, template;
             for (i = 0; i < length; i++) {
                 template = $("#chatfilter_adWhiteList .template").html();
                 template = template.replace("#domain", data[i]);
@@ -106,11 +106,11 @@ $(document).ready(function () {
 
         //save
         $("html").on('click','#chatfilter_badwords .save', function() {
-            var data = {
+            const data = {
                 badwords: []
             };
 
-            var badword, regex;
+            let badword, regex;
             $("#chatfilter_badwords .entry tr").each(function(){
                 badword = $(this).find(".badword").text();
                 regex = $(this).find(".regex").text();
@@ -123,11 +123,11 @@ $(document).ready(function () {
         });
 
         $("html").on('click','#chatfilter_adWhiteList .save', function() {
-            var data = {
+            const data = {
                 domains: []
             };
 
-            var domain;
+            let domain;
             $("#chatfilter_adWhiteList .entry tr").each(function(){
                 domain = $(this).find(".domain").text();
                 data.domains.push(domain);

@@ -3,19 +3,19 @@
  */
 "use strict";
 
-var crypto = require('crypto');
+const crypto = require('crypto');
 
 class Helper {
     static encrypt(text){
-        var cipher = crypto.createCipher(g_configs.database.algorithm, g_configs.database.encryptPassword);
-        var crypted = cipher.update(text,'utf8','base64');
+        const cipher = crypto.createCipher(g_configs.database.algorithm, g_configs.database.encryptPassword);
+        let crypted = cipher.update(text,'utf8','base64');
         crypted += cipher.final('base64');
         return crypted;
     }
 
     static decrypt(text){
-        var decipher = crypto.createDecipher(g_configs.database.algorithm, g_configs.database.encryptPassword);
-        var dec = decipher.update(text,'base64','utf8');
+        const decipher = crypto.createDecipher(g_configs.database.algorithm, g_configs.database.encryptPassword);
+        let dec = decipher.update(text,'base64','utf8');
         dec += decipher.final('utf8');
         return dec;
     }
@@ -27,7 +27,7 @@ class Helper {
  * additional prototypes
  */
 String.prototype.replaceAll = function (find, replace) {
-    var str = this;
+    const str = this;
     return str.split(find).join(replace);
 };
 

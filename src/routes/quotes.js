@@ -3,9 +3,9 @@
  */
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var version = require('./../../package.json').version;
+const express = require('express');
+const router = express.Router();
+const version = require('./../../package.json').version;
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -72,7 +72,7 @@ router.get('/', function (req, res) {
                     for (let y=0; y<results.length; y++) {
                         let date = results[y].date;
                         let output = (((date.getDate()<10?'0':'') + date.getDate()) + ".");
-                        output += (((date.getMonth()<10?'0':'') + (date.getMonth() + 1)));
+                        output += ((date.getMonth()<10?'0':'') + (date.getMonth() + 1));
                         output += ("." + date.getFullYear());
                         output += (" " + ((date.getHours()<10?'0':'') + date.getHours()) + ":");
                         output += ((date.getMinutes()<10?'0':'') + date.getMinutes());

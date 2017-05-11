@@ -1,30 +1,30 @@
 "use strict";
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
-var routes = require('./routes/index');
-var routesTwitchAnswer = require('./routes/twitch_answer');
-var routesQuotes = require('./routes/quotes');
-var routesChangelogs = require('./routes/changelog');
-var routesToplist = require('./routes/toplist');
-var scDoku = require('./routes/script_docs');
-var apiDoku = require('./routes/api_docs');
-var apiRouter = require('./routes/api');
-var cmdlistRoute = require('./routes/cmdlist');
+const routes = require('./routes/index');
+const routesTwitchAnswer = require('./routes/twitch_answer');
+const routesQuotes = require('./routes/quotes');
+const routesChangelogs = require('./routes/changelog');
+const routesToplist = require('./routes/toplist');
+const scDoku = require('./routes/script_docs');
+const apiDoku = require('./routes/api_docs');
+const apiRouter = require('./routes/api');
+const cmdlistRoute = require('./routes/cmdlist');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-var hbs = require('hbs');
+const hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views');
 
 // uncomment after placing your favicon in /public
@@ -76,7 +76,7 @@ app.use('/api', apiRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res) {
     res.status(404);
-    res.send('Site ' + req.originalUrl + ' Not Found')
+    res.send('Site ' + req.originalUrl + ' Not Found');
 });
 
 // error handlers
@@ -107,25 +107,8 @@ app.use(function (err, req, res) {
     });
 });
 
-global.__root = __dirname;
-
-require("./public/javascripts/system/array_shuffle.js");
-
-let Config = require("./libs/Config.class.js");
-/*jshint camelcase: false */
-global.g_configs = {
-    "twitch": new Config("twitch"),
-    "database": new Config("database"),
-    "badWord": new Config("badword"),
-    "badWordEn": new Config("badword_en"),
-    "advertising": new Config("anti_advertising")
-};
-
-
-global.g_helper = require("./libs/Helper.class.js");
-
-let Database = require("./libs/Database.class.js");
-global.g_database = new Database();
+//load process globals
+require("loadGlobals")();
 
 let TwitchAPI = require("twitch-api");
 global.g_twitchAPI = new TwitchAPI({
@@ -159,9 +142,9 @@ bot.createOnlineChannelsOnStartUp();
 require("./libs/API/result");
 
 // Generate API Documentation and Link it
-let fse = require("fs-extra");
-var raml2html = require('raml2html');
-var configWithDefaultTemplates = raml2html.getDefaultConfig();
+const fse = require("fs-extra");
+const raml2html = require('raml2html');
+const configWithDefaultTemplates = raml2html.getDefaultConfig();
 
 raml2html.render("api_doc_raml/api.raml", configWithDefaultTemplates).then(function(result) {
 

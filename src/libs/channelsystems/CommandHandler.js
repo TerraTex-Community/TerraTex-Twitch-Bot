@@ -2,7 +2,7 @@
  * Created by C5217649 on 14.01.2016.
  */
 "use strict";
-var path = require("path");
+const path = require("path");
 
 /**
  * CommandHandler Class
@@ -54,12 +54,12 @@ class CommandHandler {
     }
 
     /**
+     *
      * @param user
+     * @param cmd
+     * @param message
      */
-    executeAlias(user, cmd){
-        for (var _len = arguments.length, message = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-            message[_key - 2] = arguments[_key];
-        }
+    executeAlias(user, cmd, ...message){
 
         let sendedMessage = message.join(' ');
         sendedMessage = "!" + this._aliases[cmd] + sendedMessage;

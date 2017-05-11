@@ -3,9 +3,9 @@
  */
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var version = require('./../../package.json').version;
+const express = require('express');
+const router = express.Router();
+const version = require('./../../package.json').version;
 
 /* GET home page. */
 router.get('/', function (req, res) {

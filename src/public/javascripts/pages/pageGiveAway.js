@@ -7,8 +7,8 @@ $(document).ready(function () {
 
         window.giveAwayIncluded = true;
         $("html").on("click", "#startGiveAway", function () {
-            var option = $("#removePointsOption").val();
-            var points = $("#minPoints").val();
+            const option = $("#removePointsOption").val();
+            const points = $("#minPoints").val();
 
             g_socket.emit("startGiveAway", {
                 option: option,
@@ -40,8 +40,8 @@ $(document).ready(function () {
          * param data : list of all users
          */
         g_socket.on("generateNewSlideBar", function (data) {
-            var userList = [];
-            var userKey, output, user;
+            const userList = [];
+            let userKey, output, user;
 
             if (Object.keys(data).length > 0) {
                 for (userKey in data) {
@@ -64,9 +64,9 @@ $(document).ready(function () {
                     }
                 }
 
-                var factor = Math.floor(680 / (userList.length)) + 1;
-                var counter;
-                var newList = [];
+                const factor = Math.floor(680 / (userList.length)) + 1;
+                let counter;
+                let newList = [];
 
                 for (counter = 0; counter < factor; counter++) {
                     newList = newList.concat(userList);
@@ -87,11 +87,11 @@ $(document).ready(function () {
             $(".inner .card.winner").removeClass("winner");
             $(".inner").animate({"left": ($(".inner").position().left - Math.rand(1500, 5000))}, Math.rand(8000, 15000), "easeOutQuint", function () {
                 $("#rollGiveAway").show();
-                var left = ($(".inner").position().left - 2.5) - ($(".winnerLine").position().left + 1.5) ;
-                var elementWidth = $(".inner .card:first-child").outerWidth() + 5;
-                var elementId = Math.floor((-left)/elementWidth+1);
+                const left = ($(".inner").position().left - 2.5) - ($(".winnerLine").position().left + 1.5) ;
+                const elementWidth = $(".inner .card:first-child").outerWidth() + 5;
+                const elementId = Math.floor((-left)/elementWidth+1);
 
-                var winner = $(".inner .card:nth-child(" + elementId + ")").attr("data-user");
+                const winner = $(".inner .card:nth-child(" + elementId + ")").attr("data-user");
                 $(".inner .card:nth-child(" + elementId + ")").addClass("winner");
 
                 //send Winner to Server
@@ -103,7 +103,7 @@ $(document).ready(function () {
         });
 
         g_socket.on("sendWinnerMessage", function(data){
-            var messageFormated = "<small>";
+            let messageFormated = "<small>";
             messageFormated += ("<span class='date'>" + data.time + "</span> ");
             messageFormated += ("<span style='color:" + data.color + "'>" + data.userName + "</span> ");
             messageFormated += ("<div class='message'>" + data.message + "</div><br/>");

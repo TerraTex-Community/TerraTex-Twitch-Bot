@@ -2,7 +2,7 @@
  * Created by C5217649 on 18.01.2016.
  */
 "use strict";
-let path = require("path");
+const path = require("path");
 
 class TextHandler {
     constructor(channel, loadFromID, callBackAfterInit) {

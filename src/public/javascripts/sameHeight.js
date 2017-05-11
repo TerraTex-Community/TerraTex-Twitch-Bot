@@ -16,12 +16,12 @@ $(document).ready(function(){
 });
 
 function SH_ChangeHeight(object) {
-    var selector = object.attr("data-same-height");
-    var newHeight = $(selector).outerHeight();
+    const selector = object.attr("data-same-height");
+    let newHeight = $(selector).outerHeight();
     if (object.attr("data-substract-objects")) {
-        var list = object.attr("data-substract-objects").split(",");
-        var length = list.length;
-        var i;
+        const list = object.attr("data-substract-objects").split(",");
+        const length = list.length;
+        let i;
 
         for (i = 0; i < length; i++) {
             newHeight -= $(list[i]).outerHeight();
@@ -31,7 +31,7 @@ function SH_ChangeHeight(object) {
 }
 
 function SH_changeMinHeightToFull() {
-    var topHeight = $("#topNavigation").outerHeight();
+    const topHeight = $("#topNavigation").outerHeight();
     $("#navContainerLeft").css("min-height", "calc(100vh - " + topHeight + "px)");
     $("#staticBar").css("min-height", "calc(100vh - " + topHeight + "px)");
 }

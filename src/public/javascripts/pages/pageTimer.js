@@ -6,13 +6,13 @@
  * List of commands that are existing
  * @type {Array.<String>}
  */
-var timerCommandList = [];
+let timerCommandList = [];
 
-$(document).ready(function () {
+$(document).ready(() => {
     if (!window.script_timer) {
         window.script_timer = true;
 
-        var lastEditedId = false;
+        let lastEditedId = false;
 
         $("html").on("click", ".timerSelectCommandToggle", function () {
             if (timerCommandList.length > 0) {
@@ -46,7 +46,7 @@ $(document).ready(function () {
         });
 
         $("html").on("click", "#timerAddMessage", function () {
-            var content = $("#createEditTimer .template").html();
+            let content = $("#createEditTimer .template").html();
             content = content.replace("#content#", "").replace("#switch#", "switch").replace("#selected#", true);
 
             $("#createEditTimer .entry").append(content);
@@ -58,7 +58,7 @@ $(document).ready(function () {
         });
 
         $("html").on("click", "#createEditTimer .create", function () {
-            var data = {
+            const data = {
                 timerDesc: $("#timerdescription").val(),
                 timerTime: $("#executeEveryXMinutes").val(),
                 timerOrder: $("#createEditTimer #order").is(":checked"),
@@ -69,7 +69,7 @@ $(document).ready(function () {
             };
 
             $("#createEditTimer .entry tr").each(function () {
-                var messageData = {
+                const messageData = {
                     message: $(this).find(".content").val(),
                     intern: $(this).find(".intern").is(":checked")
                 };
@@ -81,7 +81,7 @@ $(document).ready(function () {
         });
 
         $("html").on("click", "#createEditTimer .save", function () {
-            var data = {
+            const data = {
                 timerId: lastEditedId,
                 timerDesc: $("#timerdescription").val(),
                 timerTime: $("#executeEveryXMinutes").val(),
@@ -93,7 +93,7 @@ $(document).ready(function () {
             };
 
             $("#createEditTimer .entry tr").each(function () {
-                var messageData = {
+                const messageData = {
                     message: $(this).find(".content").val(),
                     intern: $(this).find(".intern").is(":checked")
                 };
@@ -127,13 +127,13 @@ $(document).ready(function () {
             $("#onlyIfStreaming").bootstrapSwitch('state', data.onlyIfStreaming === 1, data.onlyIfStreaming === 1);
             $("#order").bootstrapSwitch('state', data.sendRandom === 1, data.sendRandom === 1);
 
-            var messages = JSON.parse(data.messages);
-            var length = messages.length;
-            var i, place;
+            const messages = JSON.parse(data.messages);
+            const length = messages.length;
+            let i, place;
 
             $("#createEditTimer .entry").html("");
 
-            var content = $("#createEditTimer .template").html();
+            const content = $("#createEditTimer .template").html();
             for (i = 0; i < length; i++) {
 
                 place = content.replace("#content#", messages[i].message).replace("#switch#", "switch");
@@ -172,8 +172,8 @@ $(document).ready(function () {
          * @param dropDown - jQuery Object
          */
         function timerAddCommandsToCommandListDropDown(dropDown) {
-            var length = timerCommandList.length;
-            var i;
+            const length = timerCommandList.length;
+            let i;
             dropDown.html("");
             for (i = 0; i < length; i++) {
                 dropDown.append('<a class="dropdown-item" href="#">' + timerCommandList[i] + '</a>');

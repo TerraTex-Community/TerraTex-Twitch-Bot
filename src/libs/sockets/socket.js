@@ -2,7 +2,7 @@
  * Created by Colin on 26.12.2015.
  */
 "use strict";
-var path = require("path");
+const path = require("path");
 
 g_socket.on("connection", function(clientSocket){
     clientSocket.on("channelStateChange", function(state){
@@ -23,7 +23,7 @@ g_socket.on("connection", function(clientSocket){
             }
         }
     });
-    var fs = require("fs");
+    const fs = require("fs");
 
     clientSocket.on("getPage", function(name){
         // If user is not loggedin anymore don't excute any code
@@ -31,9 +31,9 @@ g_socket.on("connection", function(clientSocket){
             return;
         }
 
-        var content = "" + fs.readFileSync(path.resolve(__root, "views", "pages", name + ".hbs"));
-        var hogan = require("handlebars");
-        var template = hogan.compile(content);
+        const content = "" + fs.readFileSync(path.resolve(__root, "views", "pages", name + ".hbs"));
+        const hogan = require("handlebars");
+        const template = hogan.compile(content);
         if (fs.existsSync(path.resolve(__dirname, "pages", name + ".js"))) {
             let pageHandler = require("./pages/" + name + ".js");
 

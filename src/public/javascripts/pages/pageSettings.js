@@ -7,7 +7,7 @@ $(document).ready(function () {
         window.settingsIncluded = true;
 
         $("html").on('click', '#settings_customLogin', function () {
-            var data = {
+            const data = {
                 loginName: $("#custom_login_settings #customLogin_Name").val(),
                 oauthPass: $("#custom_login_settings #customLogin_Password").val(),
                 connectMessage: $('#connectMessage').is(':checked')
@@ -16,7 +16,7 @@ $(document).ready(function () {
         });
 
         $("html").on('click', '#settings_additionalOptions', function () {
-            var data = {
+            const data = {
                 connectMessage: $('#connectMessage').is(':checked')
             };
             g_socket.emit("settings_additionalOptions", data);

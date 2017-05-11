@@ -13,20 +13,9 @@ class APIHelper {
         if (g_bot._channelConnectors[channel]) {
             g_bot._channelConnectors[channel]._client.api({
                 url: "https://tmi.twitch.tv/group/user/" + channel + "/chatters"
-            }, function (err, res, body) {
+            }, (err, res, body) => {
                 if (!err) {
-                    if (body) {
-                        let users = [];
-                        let chatter = body.chatters;
-                        if (chatter) {
-                            users = users.concat(chatter.moderators).concat(chatter.staff).concat(chatter.admins).concat(chatter.global_mods);
-                            users = users.concat(chatter.viewers);
-                        }
-
-                        callback(null, users);
-                    } else {
-                        callback(null, []);
-                    }
+                    callback(null, this._getUserArray(body));
                 } else {
                     callback(err, null);
                 }
@@ -34,6 +23,20 @@ class APIHelper {
         } else {
             throw new Error(channel + " - not connected");
         }
+    }
+
+    /**
+     * @param body
+     * @private
+     */
+    static _getUserArray(body) {
+        let users = [];
+        if (body && body.chatter) {
+            const chatter = body.chatter;
+            users = users.concat(chatter.moderators).concat(chatter.staff).concat(chatter.admins).concat(chatter.global_mods);
+            users = users.concat(chatter.viewers);
+        }
+        return users;
     }
 
     static isUserInChat(channel, username, callback) {
@@ -48,7 +51,7 @@ class APIHelper {
     }
 
     static formatEmotes(text, emotes) {
-        var splitText = text.split('');
+        let splitText = text.split('');
         let i, j, mote;
 
         let returnEmpty = function () {

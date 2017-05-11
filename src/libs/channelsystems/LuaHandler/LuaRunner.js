@@ -13,12 +13,12 @@ class LuaRunner {
      */
     constructor(channel, globalObject, defaultScripts) {
         this._channel = channel;
-        var LuaVM = require('lua.vm.js');
+        const LuaVM = require('lua.vm.js');
         LuaVM.emscripten.print = (function(str) {
             this.writeChannelLog(str);
         }).bind(this);
 
-        var l = new LuaVM.Lua.State();
+        const l = new LuaVM.Lua.State();
 
         this._runner = l;
 

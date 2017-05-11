@@ -1,7 +1,7 @@
 /**
  * Created by C5217649 on 22.03.2016.
  */
-var editor, LuaMode, jsonEditor;
+let editor, LuaMode, jsonEditor;
 
 $(document).ready(function () {
     if (!window.script_scriptedCommands) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
             $("#scriptedCommandDescription").val("");
             $("#scriptedCommandParameterDescription").val("");
 
-            var template = $("#scriptedCommandTemplate").val();
+            let template = $("#scriptedCommandTemplate").val();
             if (template === "0") {
                 editor.setValue("");
                 jsonEditor.set({});
@@ -130,8 +130,8 @@ function loadEditor() {
 
 function loadJsonEditor() {
     if ($("#jsoneditor .jsoneditor").length === 0) {
-        var container = document.getElementById("jsoneditor");
-        var options = {
+        const container = document.getElementById("jsoneditor");
+        const options = {
             modes: ["code", "tree"]
         };
         jsonEditor = new JSONEditor(container, options);

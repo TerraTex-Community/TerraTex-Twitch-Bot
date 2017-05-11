@@ -4,8 +4,8 @@
 
 $(document).ready(function(){
     $(".saveStrings").click(function(){
-        var cat = $(this).attr("data-cat-name");
-        var saveKeys = [];
+        const cat = $(this).attr("data-cat-name");
+        const saveKeys = [];
 
         $(".string_" + cat).each(function(){
            saveKeys.push({

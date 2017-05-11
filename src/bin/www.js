@@ -53,9 +53,9 @@ if (fs.existsSync(__dirname + "/../.version")) {
  * Save PID Files
  */
 // own PID
-var npid = require('npid');
+const npid = require('npid');
 try {
-    var pid = npid.create('run.pid', true);
+    const pid = npid.create('run.pid', true);
     pid.removeOnExit();
 } catch (err) {
     console.log(err);
@@ -63,9 +63,9 @@ try {
 }
 
 //Forever pid for prod
-var exec = require('child_process').exec,
+let exec = require('child_process').exec,
     child;
-var shellParser = require('node-shell-parser');
+const shellParser = require('node-shell-parser');
 
 child = exec('forever list', 'shell',
     function (error, stdout) {
@@ -83,10 +83,11 @@ child = exec('forever list', 'shell',
         }
 
         if (foreverId !== -1) {
-            fs.writeFile("runForever.pid", foreverId, function (err) {
+            fs.writeFile("runForever.pid", foreverId, err => {
                 if (err) {
                     return console.log(err);
                 }
+                return null;
             });
         }
     });
@@ -95,29 +96,28 @@ child = exec('forever list', 'shell',
 /**
  * Module dependencies.
  */
-var http = require('http');
-
-var app = require('../app');
-var debug = require('debug')('TerraTexTwitchBot:server');
+const http = require('http');
+const app = require('../app');
+const debug = require('debug')('TerraTexTwitchBot:server');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var calcPort = normalizePort(process.env.PORT || '9999');
+const calcPort = normalizePort(process.env.PORT || '9999');
 app.set('port', calcPort);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-var io = require('socket.io')(server);
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 global.g_socket = io;
 
-var Session = require('express-session'),
+const Session = require('express-session'),
     SessionStore = require('session-file-store')(Session);
-var session = Session({
+const session = Session({
     store: new SessionStore({ path: './tmp/sessions' }),
     secret: 'TerraTexBotNode',
     resave: true,
@@ -144,7 +144,7 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-    var port = parseInt(val, 10);
+    const port = parseInt(val, 10);
 
     if (isNaN(port)) {
         // named pipe
@@ -168,7 +168,7 @@ function onError(error) {
         throw error;
     }
 
-    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+    const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -190,8 +190,8 @@ function onError(error) {
  */
 
 function onListening() {
-    var addr = server.address();
-    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+    const addr = server.address();
+    const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
 

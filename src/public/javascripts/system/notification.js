@@ -1,7 +1,7 @@
 /**
  * Created by Colin on 03.01.2016.
  */
-var counter = 0;
+let counter = 0;
 
 g_socket.on("notify", function (data) {
     /**
@@ -10,7 +10,7 @@ g_socket.on("notify", function (data) {
      * text
      */
 
-    var template = '<div class="popover" role="tooltip"><div class="popover-arrow">';
+    let template = '<div class="popover" role="tooltip"><div class="popover-arrow">';
     template += '</div><h3 class="popover-title"></h3><div class="popover-content"></div></div>';
 
     if (data.hasOwnProperty("style")) {

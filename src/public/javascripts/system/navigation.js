@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
 
-    var params = getQueryParams(document.location.search);
+    const params = getQueryParams(document.location.search);
     if (params.hasOwnProperty("page")) {
         requestPage(params.page);
     }
@@ -19,7 +19,7 @@ function getPage(objective) {
     }
 
     if (objective.attr("data-load-page")) {
-        var page = objective.attr("data-load-page");
+        const page = objective.attr("data-load-page");
         requestPage(page);
     }
 }
@@ -40,7 +40,7 @@ g_socket.on("loadPage", function (data) {
 function getQueryParams(qs) {
     qs = qs.split('+').join(' ');
 
-    var params = {},
+    let params = {},
         tokens,
         re = /[?&]?([^=]+)=([^&]*)/g;
 
@@ -56,19 +56,19 @@ function getQueryParams(qs) {
     return params;
 }
 
-g_socket.on("reloadPage", function () {
-    var modals = $(".modal");
-    var params;
-    var length = modals.length;
+g_socket.on("reloadPage", () => {
+    const modals = $(".modal");
+    let params;
+    const length = modals.length;
 
 
     if (length > 0) {
 
-        var id = $(modals[length-1]).attr("id");
-        var latest = null;
-        var noShown = true;
+        let id = $(modals[length-1]).attr("id");
+        let latest = null;
+        let noShown = true;
 
-        for (var i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
             id = $(modals[i]).attr("id");
 
             if ($("#" + id).data('bs.modal')) {
@@ -94,7 +94,7 @@ g_socket.on("reloadPage", function () {
             }
         });
 
-        for (i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
 
             id = $(modals[i]).attr("id");
             $("#" + id).modal('hide');

@@ -5,8 +5,8 @@
 
 $(document).ready(function(){
     $("#saveForm_levelSettings").click(function(){
-        var defaultLevel = $("#defaultLevel").val();
-        var isEnabled = $("#levelEnabled").is(":checked");
+        const defaultLevel = $("#defaultLevel").val();
+        const isEnabled = $("#levelEnabled").is(":checked");
 
         g_socket.emit("saveLevelSettings",{
             enabled: isEnabled,
@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
 
     $("#addLevel").click(function(){
-        var newHours = $("#addLevel_hours").val();
+        const newHours = $("#addLevel_hours").val();
 
         g_socket.emit("addNewLevel",{
             hours: newHours
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
     $("html").on("click", ".deleteLevel", function(){
         if (confirm("Wollen Sie das Level wirklich löschen?")) {
-            var id = $(this).attr("data-level");
+            const id = $(this).attr("data-level");
 
             g_socket.emit("removeLevel",{
                 id: id
@@ -38,7 +38,7 @@ $(document).ready(function(){
     });
 
     $("#saveLevelNames").click(function(){
-        var levelData = [];
+        const levelData = [];
         $("#drawLevels .levelName").each(function(){
             levelData.push({id: $(this).attr("data-level"), name: $(this).val()});
         });
