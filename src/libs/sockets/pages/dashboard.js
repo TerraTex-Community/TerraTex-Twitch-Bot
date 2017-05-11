@@ -61,19 +61,19 @@ class PageSettings {
                 }
 
                 if (data.chart === "follower") {
-                    g_database.query(followerSql, {channelID: channelID}, function (err, result) {
-                        clientSocket.emit("recieveDashBoardData", {
-                            chart: "follower",
-                            data: result
-                        });
-                    });
+                    // g_database.query(followerSql, {channelID: channelID}, function (err, result) {
+                    //     clientSocket.emit("recieveDashBoardData", {
+                    //         chart: "follower",
+                    //         data: result
+                    //     });
+                    // });
                 } else if (data.chart === "viewer") {
-                    g_database.query(viewerSql, {channelID: channelID}, function (err, result) {
-                        clientSocket.emit("recieveDashBoardData", {
-                            chart: "viewer",
-                            data: result
-                        });
-                    });
+                    // g_database.query(viewerSql, {channelID: channelID}, function (err, result) {
+                    //     clientSocket.emit("recieveDashBoardData", {
+                    //         chart: "viewer",
+                    //         data: result
+                    //     });
+                    // });
                 }
             } else {
                 let query = "SELECT ";
