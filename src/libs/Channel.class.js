@@ -86,8 +86,8 @@ class Channel {
     }
 
     _addClientEvents() {
-        this._client.on("ping", function () {
-            client.raw("PONG");
+        this._client.on("ping", () => {
+            this._client.raw("PONG");
         });
 
         this._client.on("join", (channel, username) => {

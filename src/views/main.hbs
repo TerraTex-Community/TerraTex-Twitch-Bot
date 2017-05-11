@@ -37,7 +37,54 @@
         <br/><br/><br/>
     </div>
     <div class="col-xs-12 col-md-8" id="content"><script>$(document).ready(function(){requestPage("dashboard")});</script></div>
-    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted" id="staticBar"></div>
+    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted" id="staticBar">
+        <!--<div id="player"></div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="vol-control">Volume:</label>-->
+            <!--<input id="vol-control" type="range" class="form-control" width="100%" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>-->
+        <!--</div>-->
+        <!--<script>-->
+            <!--// 2. This code loads the IFrame Player API code asynchronously.-->
+            <!--var tag = document.createElement('script');-->
+
+            <!--tag.src = "https://www.youtube.com/iframe_api";-->
+            <!--var firstScriptTag = document.getElementsByTagName('script')[0];-->
+            <!--firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);-->
+
+            <!--// 3. This function creates an <iframe> (and YouTube player)-->
+            <!--//    after the API code downloads.-->
+            <!--var player;-->
+            <!--function onYouTubeIframeAPIReady() {-->
+                <!--player = new YT.Player('player', {-->
+                    <!--height: '100',-->
+                    <!--width: '100%',-->
+                    <!--"min-width": '300',-->
+                    <!--videoId: 'ScMzIvxBSi4',-->
+                    <!--events: {-->
+                        <!--'onReady': onReady,-->
+                        <!--'onStateChange': onPlayerStateChange-->
+                    <!--}-->
+                <!--});-->
+            <!--}-->
+
+            <!--function onReady() {-->
+                <!--$("#vol-control").val(player.getVolume());-->
+            <!--}-->
+
+            <!--function setVolume(volume) {-->
+                <!--player.setVolume(volume);-->
+            <!--}-->
+
+            <!--function onPlayerStateChange(event) {-->
+                <!--if (event.data === 0) {-->
+                    <!--console.log("ende");-->
+                <!--}-->
+            <!--}-->
+
+
+        <!--</script>-->
+
+    </div>
 </div>
 
 <footer class="navbar navbar-fixed-bottom  navbar-dark bg-inverse" >
