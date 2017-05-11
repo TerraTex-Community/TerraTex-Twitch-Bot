@@ -253,3 +253,6 @@ INSERT INTO text_categories (name, description) VALUES ('chatfilter', 'ChatFilte
 
 ALTER TABLE `quotes_settings` DROP FOREIGN KEY `quotes_settings_channel_ID_fk`; ALTER TABLE `quotes_settings` ADD CONSTRAINT `quotes_settings_channel_ID_fk` FOREIGN KEY (`channelID`) REFERENCES `channel`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `viewer_points_configs` DROP FOREIGN KEY `viewer_configs_channel_ID_fk`; ALTER TABLE `viewer_points_configs` ADD CONSTRAINT `viewer_configs_channel_ID_fk` FOREIGN KEY (`channelID`) REFERENCES `channel`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DROP TABLE stats_follows;
+DROP TABLE stats_viewer;

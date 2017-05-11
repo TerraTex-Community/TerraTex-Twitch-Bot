@@ -82,21 +82,7 @@ class Channel {
             let Timer = require("./channelsystems/Timer.js");
             this._systems.Timer = new Timer(this);
 
-
-            //for stats
-            this._lastTotal = 0;
-
-            //getLastReadedTotal
-            let query = "SELECT value FROM stats_follows WHERE channelID = :channelID ORDER BY time desc LIMIT 0,1";
-            g_database.query(query, {channelID: result[0].ID}, (function (statErr, valued) {
-                if (!statErr) {
-                    if (valued.length > 0) {
-                        this._lastTotal = valued[0].value;
-                    }
-                }
-            }).bind(this));
         }).bind(this));
-
     }
 
     _addClientEvents() {
@@ -128,7 +114,7 @@ class Channel {
     getStreamStatus() {
         setTimeout(this.getStreamStatus.bind(this), 5000);
 
-        g_twitchAPI.getChannelStream(this._channelName, (function (err, result) {
+        g_twitchAPI.getChannelStream(this._channelName, (err, result) => {
             if (!err && result) {
                 if (result.stream) {
                     if (!this._streamStatus) {
@@ -137,13 +123,6 @@ class Channel {
                     this._streamStatus = true;
                     this._lastStreamDisconnect = null;
                     this._streamInfo = result;
-
-                    //stats
-                    g_database.insert("stats_viewer", {
-                        channelID: this._ID,
-                        viewer: result.stream.viewers
-                    });
-
                 } else {
                     let offlineDate = new Date(new Date().getTime() - 1000 * 60 * 10);
 
@@ -154,14 +133,10 @@ class Channel {
                     if (!this._lastStreamDisconnect && this._streamStatus) {
                         this._lastStreamDisconnect = new Date();
                     }
-                    g_database.insert("stats_viewer", {
-                        channelID: this._ID,
-                        viewer: 0
-                    });
                 }
 
             }
-        }).bind(this));
+        });
 
     }
 
@@ -218,18 +193,6 @@ class Channel {
                 } else {
                     this._lastFollowerCheck = new Date();
                 }
-
-                //save statistics
-                let newTotal = result._total;
-                let diff = newTotal - this._lastTotal;
-
-                g_database.insert("stats_follows", {
-                    channelID: this._ID,
-                    value: newTotal,
-                    diff: diff
-                });
-
-                this._lastTotal = newTotal;
             }
             setTimeout(this.checkNewFollow.bind(this), 61000);
         }).bind(this));
