@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
 
-var SessionStore = require('session-file-store')(session);
+const SessionStore = require('session-file-store')(session);
 app.use(session({
     store: new SessionStore({ path: './tmp/sessions' }),
     resave: false,
@@ -108,7 +108,7 @@ app.use(function (err, req, res) {
 });
 
 //load process globals
-require("loadGlobals")();
+require("./loadGlobals")();
 
 let TwitchAPI = require("twitch-api");
 global.g_twitchAPI = new TwitchAPI({
