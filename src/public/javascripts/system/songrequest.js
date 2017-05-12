@@ -11,6 +11,7 @@ class SongRequest {
      */
     static loadNextSong() {
         SongRequest.playNextSong("-4yI-VEA8pw");
+        // theoretically get title: https://www.googleapis.com/youtube/v3/videos?part=snippet&id=-4yI-VEA8pw&key={authKey}
     }
 
     static playNextSong(id) {
