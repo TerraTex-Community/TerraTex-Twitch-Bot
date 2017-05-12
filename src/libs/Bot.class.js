@@ -63,6 +63,10 @@ class Bot {
             console.error("clienterror", err);
         });
 
+        client.on('reconnect', () => {
+           console.error("reconnect");
+        });
+
         // Connect the client to the server..
         client.connect().catch(err => {
             if (err === "Login authentication failed") {

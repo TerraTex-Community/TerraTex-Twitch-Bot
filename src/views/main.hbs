@@ -37,52 +37,99 @@
         <br/><br/><br/>
     </div>
     <div class="col-xs-12 col-md-8" id="content"><script>$(document).ready(function(){requestPage("dashboard")});</script></div>
-    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted" id="staticBar">
-        <!--<div id="player"></div>-->
-        <!--<div class="form-group">-->
-            <!--<label for="vol-control">Volume:</label>-->
-            <!--<input id="vol-control" type="range" class="form-control" width="100%" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>-->
-        <!--</div>-->
-        <!--<script>-->
-            <!--// 2. This code loads the IFrame Player API code asynchronously.-->
-            <!--var tag = document.createElement('script');-->
+    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted hidden" id="staticBar">
+        <div id="player"></div>
+        <div class="form-group">
+            <label for="vol-control" class="font-weight-bold">Volume:</label>
+            <input id="vol-control" type="range" class="form-control" width="100%" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+        </div>
+        <div class="form-group">
+            <label for="vol-song" class="font-weight-bold">Current Song:</label>
+            <div><span id="songTitle">Placeholder Video</span></div>
+            <div><span id="songPlayTime" class="small">0:00 / 0:00</span></div>
+            <div class="small">Requested By: <span id="songRequester">TerraTex Bot</span></div>
+            <div class="btn-group btn-group-sm">
+                <button id="srqBlacklistSong" class="btn btn-sm btn-danger">Blacklist Song</button>
+                <button id="srqBlacklistRequester" class="btn btn-sm btn-danger">Blacklist Requester</button>
+            </div>
+            <div class="btn-group btn-group-sm">
+                <button id="srqSkipSong" class="btn btn-sm btn-info">Skip Song</button>
+                <button id="srqSaveSong" class="btn btn-sm btn-success">Save Song in Playlist</button>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="vol-song" class="font-weight-bold">Next 5 Songs:</label>
+            <ul class="list-group list-inverted">
+                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
+                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
+                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
+                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
+                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
+            </ul>
+        </div>
+        <script>
+            // 2. This code loads the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
 
-            <!--tag.src = "https://www.youtube.com/iframe_api";-->
-            <!--var firstScriptTag = document.getElementsByTagName('script')[0];-->
-            <!--firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);-->
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            <!--// 3. This function creates an <iframe> (and YouTube player)-->
-            <!--//    after the API code downloads.-->
-            <!--var player;-->
-            <!--function onYouTubeIframeAPIReady() {-->
-                <!--player = new YT.Player('player', {-->
-                    <!--height: '100',-->
-                    <!--width: '100%',-->
-                    <!--"min-width": '300',-->
-                    <!--videoId: 'ScMzIvxBSi4',-->
-                    <!--events: {-->
-                        <!--'onReady': onReady,-->
-                        <!--'onStateChange': onPlayerStateChange-->
-                    <!--}-->
-                <!--});-->
-            <!--}-->
+            // 3. This function creates an <iframe> (and YouTube player)
+            //    after the API code downloads.
+            var player, audioVolume;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '100',
+                    width: '100%',
+                    "min-width": '300',
+                    videoId: 'ScMzIvxBSi4',
+                    events: {
+                        'onReady': onReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
 
-            <!--function onReady() {-->
-                <!--$("#vol-control").val(player.getVolume());-->
-            <!--}-->
+            function checkForVolumeChange() {
+                if (player) {
+                    if (audioVolume && player.getVolume() !== audioVolume) {
+                        $("#vol-control").val(player.getVolume());
+                        audioVolume = player.getVolume();
+                    }
+                    if (player.getPlayerState() > 0) {
+                        $("#songPlayTime").html(convertPlayTime(player.getCurrentTime()) + " / " + convertPlayTime(player.getDuration()));
+                    }
+                }
+            }
 
-            <!--function setVolume(volume) {-->
-                <!--player.setVolume(volume);-->
-            <!--}-->
+            function convertPlayTime(seconds) {
+                let minutes = Math.floor(seconds/60);
+                seconds = Math.floor(seconds - minutes * 60);
 
-            <!--function onPlayerStateChange(event) {-->
-                <!--if (event.data === 0) {-->
-                    <!--console.log("ende");-->
-                <!--}-->
-            <!--}-->
+                return minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            }
+
+            function onReady() {
+                setInterval(checkForVolumeChange, 0);
+                audioVolume = player.getVolume();
+                $("#vol-control").val(player.getVolume());
+            }
+
+            function setVolume(volume) {
+                audioVolume = volume;
+                player.setVolume(volume);
+            }
+
+            function onPlayerStateChange(event) {
+                if (event.data === 0) {
+                    SongRequest.loadNextSong();
+                }
+            }
 
 
-        <!--</script>-->
+        </script>
 
     </div>
 </div>
@@ -109,10 +156,12 @@
 
 <script src="/javascripts/system/navigation.js"></script>
 <script src="/javascripts/system/notification.js"></script>
+<script src="/javascripts/system/songrequest.js"></script>
 
 
 <script>
     $(document).ready(function(){
+        SongRequest.init();
         $('input.switch').bootstrapSwitch();
     });
 </script>

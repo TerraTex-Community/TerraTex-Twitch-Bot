@@ -139,20 +139,20 @@ if (g_app.get('env') === 'development') {
 
 bot.createOnlineChannelsOnStartUp();
 
-require("./libs/API/result");
+//require("./libs/API/result");
 
 // Generate API Documentation and Link it
 const fse = require("fs-extra");
-const raml2html = require('raml2html');
-const configWithDefaultTemplates = raml2html.getDefaultConfig();
-
-raml2html.render("api_doc_raml/api.raml", configWithDefaultTemplates).then(function(result) {
-
-    let fs = require("fs");
-    fse.ensureDir("tmp", function() {
-        fs.writeFile("tmp/api_docs.html", result);
-    });
-});
+// const raml2html = require('raml2html');
+// const configWithDefaultTemplates = raml2html.getDefaultConfig();
+//
+// raml2html.render("api_doc_raml/api.raml", configWithDefaultTemplates).then(function(result) {
+//
+//     let fs = require("fs");
+//     fse.ensureDir("tmp", function() {
+//         fs.writeFile("tmp/api_docs.html", result);
+//     });
+// });
 
 //ensure tmp paths
 fse.ensureDir("tmp/channelLogs");
