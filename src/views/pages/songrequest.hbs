@@ -1,0 +1,101 @@
+
+<div class="alert alert-danger">SongRequest ist noch in Entwicklung und funktioniert daher noch nicht vollständig.</div>
+
+<div class="card" id="alias">
+    <div class="card-header"><span class="font-weight-bold">Songrequest Settings</span></div>
+    <div class="card-block">
+        <fieldset class="form-group">
+            <label for="badWords">
+                <input id="badWords" class="switch" type="checkbox" {{! {{#if (eq badWords 1)}}{{!checked{{/if}}
+                       data-on-color="success" data-off-color="danger">
+                Songrequest aktiv?
+            </label>
+        </fieldset>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#cardContent_DefaultPlaylist" aria-expanded="false"
+         aria-controls="cardContent_DefaultPlaylist">
+        <span class="font-weight-bold">Default Playlist</span><br/>
+        <small>Songs die zu dieser Playlist hinzugefügt werden, werden zufällig abgespielt, wenn es keine Songrequest
+            gibt. (Wenn Option dafür gesetzt ist)
+        </small>
+    </div>
+    <ul class="list-group collapse" id="cardContent_DefaultPlaylist">
+        <li class="list-group-item">
+            <span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">
+                    <i class="fa fa-remove fa-stack-2x text-red"></i>
+                </span>
+            <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE">Example Song</a>
+        </li>
+    </ul>
+</div>
+
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#cardContent_NormalPlaylist" aria-expanded="false"
+         aria-controls="cardContent_NormalPlaylist">
+        <span class="font-weight-bold">Songrequests / Normal Playlist</span><br/>
+        <small>Requested Songs werden an das Ende dieser Playlist angefügt</small>
+    </div>
+    <table class="table table-hover collapse" width="100%" id="cardContent_NormalPlaylist">
+        <tr>
+            <th>Optionen</th>
+            <th>Requested By</th>
+            <th>Song</th>
+        </tr>
+        <tr>
+            <td style="vertical-align: middle">
+                <span class="fa-stack fa-sm clickable" title="Löschen">
+                    <i class="fa fa-remove fa-stack-2x text-red"></i>
+                </span>
+                <span class="fa-stack fa-sm clickable" title="Blacklist Requester">
+                    <i class="fa fa-user fa-stack-1x"></i>
+                    <i class="fa fa-ban fa-stack-2x text-red"></i>
+                </span>
+                <span class="fa-stack fa-sm clickable" title="Blacklist Song">
+                    <i class="fa fa-play fa-stack-1x"></i>
+                    <i class="fa fa-ban fa-stack-2x text-red"></i>
+                </span>
+            </td>
+            <td>Geramy92</td>
+            <td>
+                <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE">Example Song</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#cardContent_UserBlacklist" aria-expanded="false"
+         aria-controls="cardContent_UserBlacklist">
+        <span class="font-weight-bold">User Blacklist</span><br/>
+        <small>Nutzer auf dieser Liste können keine Songrequests mehr durchführen.</small>
+    </div>
+    <ul class="list-group collapse" id="cardContent_UserBlacklist">
+        <li class="list-group-item">
+            <!--<span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">-->
+                    <i class="fa fa-remove fa-stack-2x text-red"></i>
+                <!--</span>-->
+            Testuser
+        </li>
+    </ul>
+</div>
+
+<div class="card">
+    <div class="card-header" data-toggle="collapse" data-target="#cardContent_SongBlacklist" aria-expanded="false"
+         aria-controls="cardContent_SongBlacklist">
+        <span class="font-weight-bold">Song Blacklist</span><br/>
+        <small>Songs die hier gelistet sind, können nicht mehr requested werden.</small>
+    </div>
+    <ul class="list-group collapse" id="cardContent_SongBlacklist">
+        <li class="list-group-item">
+            <span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">
+                    <i class="fa fa-remove fa-stack-2x text-red"></i>
+                </span>
+            <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE" style="vertical-align:middle;">Example Song</a>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="/javascripts/pages/songrequest.js"/>

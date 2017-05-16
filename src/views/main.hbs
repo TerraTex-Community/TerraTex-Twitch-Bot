@@ -37,7 +37,8 @@
         <br/><br/><br/>
     </div>
     <div class="col-xs-12 col-md-8" id="content"><script>$(document).ready(function(){requestPage("dashboard")});</script></div>
-    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted hidden" id="staticBar">
+    <div class="col-xs-12 col-md-2 hidden-sm-down bg-faded bg-light-inverted" id="staticBar">
+        <div class="alert alert-danger">SongRequest ist noch in Entwicklung und funktioniert daher noch nicht vollständig.</div>
         <div id="player"></div>
         <div class="form-group">
             <label for="vol-control" class="font-weight-bold">Volume:</label>
@@ -48,25 +49,14 @@
             <div><span id="songTitle">Placeholder Video</span></div>
             <div><span id="songPlayTime" class="small">0:00 / 0:00</span></div>
             <div class="small">Requested By: <span id="songRequester">TerraTex Bot</span></div>
-            <div class="btn-group btn-group-sm">
+            <div>
                 <button id="srqBlacklistSong" class="btn btn-sm btn-danger">Blacklist Song</button>
                 <button id="srqBlacklistRequester" class="btn btn-sm btn-danger">Blacklist Requester</button>
             </div>
-            <div class="btn-group btn-group-sm">
+            <div style="margin-top: 0.3em">
                 <button id="srqSkipSong" class="btn btn-sm btn-info">Skip Song</button>
                 <button id="srqSaveSong" class="btn btn-sm btn-success">Save Song in Playlist</button>
             </div>
-        </div>
-        <hr />
-        <div class="form-group">
-            <label for="vol-song" class="font-weight-bold">Next 5 Songs:</label>
-            <ul class="list-group list-inverted">
-                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
-                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
-                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
-                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
-                <li class="list-group-item"><i class="fa fa-remove text-red clickable"></i> Example Title <br/> <small>Requested by System</small></li>
-            </ul>
         </div>
         <script>
             // 2. This code loads the IFrame Player API code asynchronously.

@@ -33,6 +33,13 @@
                 "items": false,
                 "id": "giveaway",
                 "title": "GiveAway"
+            },
+            {
+                "type": "page",
+                "seperator": false,
+                "items": false,
+                "id": "songrequest",
+                "title": "SongRequest"
             }
         ]
     },

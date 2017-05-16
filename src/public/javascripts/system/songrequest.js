@@ -24,14 +24,14 @@ class SongRequest {
      * @todo
      */
     static blacklistSong() {
-        SongRequest.loadNextSong();
+
     }
 
     /**
      * @todo
      */
     static blacklistRequester() {
-        SongRequest.loadNextSong();
+
     }
 
     /**
