@@ -17,16 +17,17 @@
 <div class="card">
     <div class="card-header" data-toggle="collapse" data-target="#cardContent_DefaultPlaylist" aria-expanded="false"
          aria-controls="cardContent_DefaultPlaylist">
+        <button class="btn btn-success right">zur Playlist hinzufügen</button>
+        <button class="btn btn-danger right">Playlist leeren</button>
         <span class="font-weight-bold">Default Playlist</span><br/>
         <small>Songs die zu dieser Playlist hinzugefügt werden, werden zufällig abgespielt, wenn es keine Songrequest
             gibt. (Wenn Option dafür gesetzt ist)
         </small>
+        <div class="clearfix"></div>
     </div>
     <ul class="list-group collapse" id="cardContent_DefaultPlaylist">
         <li class="list-group-item">
-            <span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">
-                    <i class="fa fa-remove fa-stack-2x text-red"></i>
-                </span>
+            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
             <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE">Example Song</a>
         </li>
     </ul>
@@ -35,8 +36,10 @@
 <div class="card">
     <div class="card-header" data-toggle="collapse" data-target="#cardContent_NormalPlaylist" aria-expanded="false"
          aria-controls="cardContent_NormalPlaylist">
+        <button class="btn btn-danger right">Playlist leeren</button>
         <span class="font-weight-bold">Songrequests / Normal Playlist</span><br/>
         <small>Requested Songs werden an das Ende dieser Playlist angefügt</small>
+        <div class="clearfix"></div>
     </div>
     <table class="table table-hover collapse" width="100%" id="cardContent_NormalPlaylist">
         <tr>
@@ -45,17 +48,15 @@
             <th>Song</th>
         </tr>
         <tr>
-            <td style="vertical-align: middle">
-                <span class="fa-stack fa-sm clickable" title="Löschen">
-                    <i class="fa fa-remove fa-stack-2x text-red"></i>
-                </span>
-                <span class="fa-stack fa-sm clickable" title="Blacklist Requester">
+            <td>
+                <i class="fa fa-1x clickable fa-remove text-red" title="Löschen"></i>
+                <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Requester">
                     <i class="fa fa-user fa-stack-1x"></i>
-                    <i class="fa fa-ban fa-stack-2x text-red"></i>
+                    <i class="fa fa-ban fa-stack-1x text-red"></i>
                 </span>
-                <span class="fa-stack fa-sm clickable" title="Blacklist Song">
+                <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Song">
                     <i class="fa fa-play fa-stack-1x"></i>
-                    <i class="fa fa-ban fa-stack-2x text-red"></i>
+                    <i class="fa fa-ban fa-stack-1x text-red"></i>
                 </span>
             </td>
             <td>Geramy92</td>
@@ -74,9 +75,7 @@
     </div>
     <ul class="list-group collapse" id="cardContent_UserBlacklist">
         <li class="list-group-item">
-            <!--<span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">-->
-                    <i class="fa fa-remove fa-stack-2x text-red"></i>
-                <!--</span>-->
+            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
             Testuser
         </li>
     </ul>
@@ -90,9 +89,7 @@
     </div>
     <ul class="list-group collapse" id="cardContent_SongBlacklist">
         <li class="list-group-item">
-            <span class="fa-stack fa-sm clickable icon-bottom" title="Löschen">
-                    <i class="fa fa-remove fa-stack-2x text-red"></i>
-                </span>
+            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
             <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE" style="vertical-align:middle;">Example Song</a>
         </li>
     </ul>
