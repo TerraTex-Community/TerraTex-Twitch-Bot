@@ -24,7 +24,7 @@ create table songrequest_playlists
 	title varchar(255) null,
 	requestedBy varchar(255) null,
 	autoplayPlaylist int default '0' null,
-	requestedAt timestamp default 'current_timestamp()' not null,
+	requestedAt timestamp default current_timestamp() not null,
 	constraint songrequest_playlists_channel_ID_fk
 		foreign key (channelID) references twitch_bot.channel (ID)
 			on update cascade on delete cascade
@@ -40,7 +40,7 @@ create table songrequest_blacklist
 	channelID int null,
 	nameOrID varchar(255) null,
 	isSong int default '0' null,
-	createdAt timestamp default 'current_timestamp()' not null,
+	createdAt timestamp default current_timestamp() not null,
 	constraint songrequestBlacklist_channel_ID_fk
 		foreign key (channelID) references twitch_bot.channel (ID)
 			on update cascade on delete cascade
