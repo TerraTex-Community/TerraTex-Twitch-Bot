@@ -5,10 +5,47 @@
     <div class="card-header"><span class="font-weight-bold">Songrequest Settings</span></div>
     <div class="card-block">
         <fieldset class="form-group">
-            <label for="badWords">
-                <input id="badWords" class="switch" type="checkbox" {{! {{#if (eq badWords 1)}}{{!checked{{/if}}
+            <label for="sr_enabled">
+                <input id="sr_enabled" class="switch" type="checkbox" {{#if (eq enabled 1)}}checked{{/if}}
                        data-on-color="success" data-off-color="danger">
                 Songrequest aktiv?
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="sr_autoplay">
+                <input id="sr_autoplay" class="switch" type="checkbox" {{#if (eq settings.autoPlay 1)}}checked{{/if}}
+                       data-on-color="success" data-off-color="danger">
+                Autoplay<br/>
+                <small class="text-muted">Autoplay: Solange keine Songrequests gesendet werden, wird die Playlist durch Songs aus der
+                    Default Playlist gefüllt. Enthält diese keine Songs oder Autoplay ist aus, wird der Player nach dem
+                    letzten requesteten Song angehalten. (Er muss dann aber auch manuell wieder gestartet werden)</small>
+            </label>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="sr_minViewTime">Mindest ViewTime</label>
+            <input type="text" id="sr_minViewTime" class="form-control" value="{{settings.minViewTime}}"
+                   required/>
+            <small class="text-muted">
+                Mindeste Zeit, die ein Zuschauer im Chat verbracht haben muss, um ein Song requesten zu dürfen. (in Minuten)
+            </small>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="sr_pointCosts">Points-Kosten</label>
+            <input type="text" id="sr_pointCosts" class="form-control" value="{{settings.pointCosts}}"
+                   required/>
+            <small class="text-muted">
+                Einem Zuschauer wird diese Anzahl an Points abgezogen, wenn der Songrequest angefordert wird.
+            </small>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="sr_showMessageInChat">
+                <input id="sr_showMessageInChat" class="switch" type="checkbox" {{#if (eq settings.showMessageInChat 1)}}checked{{/if}}
+                       data-on-color="success" data-off-color="danger">
+                Sende Chatnachricht<br/>
+                <small class="text-muted">Wenn diese Option eingeschaltet ist, sendet der Bot nach einem Songwechsel den Titel und Requester im Chat.</small>
             </label>
         </fieldset>
     </div>
@@ -26,10 +63,14 @@
         <div class="clearfix"></div>
     </div>
     <ul class="list-group collapse" id="cardContent_DefaultPlaylist">
-        <li class="list-group-item">
-            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
-            <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE">Example Song</a>
-        </li>
+        {{#playlists}}
+            {{#if (eq autoplayPlaylist 1)}}
+                <li class="list-group-item">
+                    <i class="fa fa-remove clickable text-red" title="Löschen" data-delete-ytid="{{youtubeID}}"></i>
+                    <a target="_blank" href="https://youtube.com/watch?v={{youtubeID}}">{{title}}</a>
+                </li>
+            {{/if}}
+        {{/playlists}}
     </ul>
 </div>
 
@@ -47,23 +88,27 @@
             <th>Requested By</th>
             <th>Song</th>
         </tr>
-        <tr>
-            <td>
-                <i class="fa fa-1x clickable fa-remove text-red" title="Löschen"></i>
-                <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Requester">
-                    <i class="fa fa-user fa-stack-1x"></i>
-                    <i class="fa fa-ban fa-stack-1x text-red"></i>
-                </span>
-                <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Song">
-                    <i class="fa fa-play fa-stack-1x"></i>
-                    <i class="fa fa-ban fa-stack-1x text-red"></i>
-                </span>
-            </td>
-            <td>Geramy92</td>
-            <td>
-                <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE">Example Song</a>
-            </td>
-        </tr>
+        {{#playlists}}
+            {{#if (eq autoplayPlaylist 0)}}
+                <tr>
+                    <td>
+                        <i class="fa fa-1x clickable fa-remove text-red" title="Löschen" data-ytid="{{youtubeID}}"></i>
+                        <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Requester" data-ytid="{{requestedBy}}">
+                            <i class="fa fa-user fa-stack-1x"></i>
+                            <i class="fa fa-ban fa-stack-1x text-red"></i>
+                        </span>
+                        <span class="fa-stack fa-1x fa-stack-same-line clickable" title="Blacklist Song" data-ytid="{{youtubeID}}">
+                            <i class="fa fa-play fa-stack-1x"></i>
+                            <i class="fa fa-ban fa-stack-1x text-red"></i>
+                        </span>
+                    </td>
+                    <td>{{requestedBy}}</td>
+                    <td>
+                        <a target="_blank" href="https://youtube.com/watch?v={{youtubeID}}">{{title}}</a>
+                    </td>
+                </tr>
+            {{/if}}
+        {{/playlists}}
     </table>
 </div>
 
@@ -74,10 +119,14 @@
         <small>Nutzer auf dieser Liste können keine Songrequests mehr durchführen.</small>
     </div>
     <ul class="list-group collapse" id="cardContent_UserBlacklist">
-        <li class="list-group-item">
-            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
-            Testuser
-        </li>
+        {{#blacklists}}
+            {{#if (eq isSong 0)}}
+                <li class="list-group-item">
+                    <i class="fa fa-remove clickable text-red" title="Löschen" data-name="{{nameOrID}}"></i>
+                    {{nameOrID}}
+                </li>
+            {{/if}}
+        {{/blacklists}}
     </ul>
 </div>
 
@@ -88,10 +137,14 @@
         <small>Songs die hier gelistet sind, können nicht mehr requested werden.</small>
     </div>
     <ul class="list-group collapse" id="cardContent_SongBlacklist">
-        <li class="list-group-item">
-            <i class="fa fa-remove clickable text-red" title="Löschen"></i>
-            <a target="_blank" href="https://youtube.com/watch?v=f5cXwgjs0aE" style="vertical-align:middle;">Example Song</a>
-        </li>
+    {{#blacklists}}
+        {{#if (eq isSong 1)}}
+            <li class="list-group-item">
+                <i class="fa fa-remove clickable text-red" title="Löschen" data-id="{{nameOrID}}"></i>
+                <a target="_blank" href="https://youtube.com/watch?v={{nameOrID}}" style="vertical-align:middle;">{{title}}</a>
+            </li>
+        {{/if}}
+    {{/blacklists}}
     </ul>
 </div>
 
