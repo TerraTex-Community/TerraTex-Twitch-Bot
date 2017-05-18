@@ -46,5 +46,48 @@ $(document).ready(() => {
            }
         });
 
+        $("html").on("click", "#cardContent_DefaultPlaylist i[title='Löschen']", function () {
+            srDeleteFromPlaylist($(this).attr("data-delete-ytid"), "default");
+        });
+
+        $("html").on("click", "#cardContent_NormalPlaylist i[title='Löschen']", function () {
+            srDeleteFromPlaylist($(this).attr("data-delete-ytid"), "request");
+        });
+
+        function srDeleteFromPlaylist(songId, playlist) {
+            g_socket.emit("songrequest_remove_from_playlist", {
+                songId: songId,
+                playlist: playlist
+            });
+        }
+
+        $("html").on("click", "#cardContent_UserBlacklist i[title='Löschen']", function () {
+            deleteFromBlacklist("user", $(this).attr("data-name"));
+        });
+
+        $("html").on("click", "#cardContent_SongBlacklist i[title='Löschen']", function () {
+            deleteFromBlacklist("song", $(this).attr("data-id"));
+        });
+
+        function deleteFromBlacklist(songOrUser, nameOrId) {
+            g_socket.emit("songrequest_remove_from_blacklist", {
+                songOrUser: songOrUser,
+                nameOrID: nameOrId
+            });
+        }
+
+        $("html").on("click", "#cardContent_NormalPlaylist .blacklistRequester", function () {
+            addToBlacklist("user", $(this).attr("data-name"));
+        });
+        $("html").on("click", "#cardContent_NormalPlaylist .blacklistSong", function () {
+            addToBlacklist("song", $(this).attr("data-id"));
+        });
+
+        function addToBlacklist(songOrUser, nameOrId) {
+            g_socket.emit("songrequest_add_to_blacklist", {
+                songOrUser: songOrUser,
+                nameOrID: nameOrId
+            });
+        }
     }
 });
