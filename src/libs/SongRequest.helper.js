@@ -422,4 +422,25 @@ const removeSongFromBlacklist = (channel, songID, callback) => {
 };
 exports.removeSongFromBlacklist = removeSongFromBlacklist;
 
+const blacklistCurrentSong = (channel, callback) => {
+    getCurrentSong(channel, (err, data) => {
+        if (err) {
+            return callback(err);
+        }
+
+        return addSongToBlacklist(channel, data.youtubeID, callback);
+    })
+};
+exports.blacklistCurrentSong = blacklistCurrentSong;
+
+const blacklistCurrentRequester = (channel, callback) => {
+    getCurrentSong(channel, (err, data) => {
+        if (err) {
+            return callback(err);
+        }
+
+        return addUserToBlacklist(channel, data.requestedBy, callback);
+    })
+};
+exports.blacklistCurrentRequester = blacklistCurrentRequester;
 

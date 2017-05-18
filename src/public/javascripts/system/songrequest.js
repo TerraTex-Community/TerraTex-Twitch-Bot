@@ -30,23 +30,15 @@ class SongRequest {
         }
     }
 
-    /**
-     * @todo
-     */
     static blacklistSong() {
-
+        g_socket.emit("sr_blacklistSong");
     }
 
-    /**
-     * @todo
-     */
     static blacklistRequester() {
-
+        g_socket.emit("sr_blacklistRequester");
     }
 
-    /**
-     * @todo
-     */
     static saveSong() {
+        g_socket.emit("sr_saveSong");
     }
 }
