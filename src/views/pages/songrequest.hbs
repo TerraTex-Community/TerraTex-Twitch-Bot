@@ -11,16 +11,17 @@
                 Songrequest aktiv?
             </label>
         </fieldset>
-        <fieldset class="form-group">
-            <label for="sr_autoplay">
-                <input id="sr_autoplay" class="switch" type="checkbox" {{#if (eq settings.autoPlay 1)}}checked{{/if}}
-                       data-on-color="success" data-off-color="danger">
-                Autoplay<br/>
-                <small class="text-muted">Autoplay: Solange keine Songrequests gesendet werden, wird die Playlist durch Songs aus der
-                    Default Playlist gefüllt. Enthält diese keine Songs oder Autoplay ist aus, wird der Player nach dem
-                    letzten requesteten Song angehalten. (Er muss dann aber auch manuell wieder gestartet werden)</small>
-            </label>
-        </fieldset>
+
+        <!--<fieldset class="form-group">-->
+            <!--<label for="sr_autoplay">-->
+                <!--<input id="sr_autoplay" class="switch" type="checkbox" {{#if (eq settings.autoPlay 1)}}checked{{/if}}-->
+                       <!--data-on-color="success" data-off-color="danger">-->
+                <!--Autoplay<br/>-->
+                <!--<small class="text-muted">Autoplay: Solange keine Songrequests gesendet werden, wird die Playlist durch Songs aus der-->
+                    <!--Default Playlist gefüllt. Enthält diese keine Songs oder Autoplay ist aus, wird der Player nach dem-->
+                    <!--letzten requesteten Song angehalten. (Er muss dann aber auch manuell wieder gestartet werden)</small>-->
+            <!--</label>-->
+        <!--</fieldset>-->
 
         <fieldset class="form-group">
             <label for="sr_minViewTime">Mindest ViewTime</label>
@@ -48,7 +49,11 @@
                 <small class="text-muted">Wenn diese Option eingeschaltet ist, sendet der Bot nach einem Songwechsel den Titel und Requester im Chat.</small>
             </label>
         </fieldset>
+        <p class="text-xs-right">
+            <a href="#" class="btn btn-primary" id="saveForm_pointsSettings">Einstellungen Speichern</a>
+        </p>
     </div>
+
 </div>
 
 <div class="card">
@@ -57,8 +62,8 @@
         <button class="btn btn-success right">zur Playlist hinzufügen</button>
         <button class="btn btn-danger right">Playlist leeren</button>
         <span class="font-weight-bold">Default Playlist</span><br/>
-        <small>Songs die zu dieser Playlist hinzugefügt werden, werden zufällig abgespielt, wenn es keine Songrequest
-            gibt. (Wenn Option dafür gesetzt ist)
+        <small>Songs die zu dieser Playlist hinzugefügt werden, werden zufällig abgespielt, wenn es keine Songrequest gibt.
+            <!-- (Wenn Option dafür gesetzt ist)-->
         </small>
         <div class="clearfix"></div>
     </div>

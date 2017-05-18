@@ -46,7 +46,7 @@ class PointsSystem {
                 if (err) {
                     callback(err);
                 } else if (result.length === 0) {
-                    callback("no such User");
+                    callback(new Error("no such User"));
                 } else {
                     callback(null, result[0].points);
                 }

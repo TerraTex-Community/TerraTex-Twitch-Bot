@@ -349,6 +349,15 @@
             ]
         }
     },
+    "songrequest": {
+        "requested": {
+            "desc": "Wird gesendet, wenn ein Song erfolgreich requested wurde.",
+            "text": "Der Song #title# wurde von #fromUser# zur Playlist hinzugefügt.",
+            "vars": [
+                "fromUser"
+            ]
+        }
+    },
     "chatfilter": {
         "badword_ban": {
             "desc": "Wird gesendet, wenn eine Beleidigung erkannt wurde",
