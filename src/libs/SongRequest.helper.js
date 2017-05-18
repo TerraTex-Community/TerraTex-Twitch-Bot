@@ -198,6 +198,7 @@ const getPlaylist = (channel, playlist, callback) => {
 };
 exports.getPlaylist = getPlaylist;
 
+
 /**
  * get Next Song
  * @param {string|int} channel
@@ -227,6 +228,74 @@ const getNextSong = (channel, callback) => {
     });
 };
 exports.getNextSong = getNextSong;
+
+/**
+ * set song as current song
+ * @param {string|int} channel
+ * @param {string} songId
+ * @param callback
+ */
+const setCurrentSong = (channel, songId, callback) => {
+    Helper.getChannelIdFromIdOrName(channel, channelId => {
+        g_database.update("songrequest_playlists", {played: 0}, {
+            channelID: channelId,
+            played: 1
+        }, err => {
+            if (err) {
+                return callback(err);
+            }
+
+            return g_database.update("songrequest_playlists", {played: 1}, {
+                channelID: channelId,
+                youtubeID: songId
+            }, callback);
+        });
+    });
+};
+exports.setCurrentSong = setCurrentSong;
+
+const getCurrentSong = (channel, callback) => {
+    Helper.getChannelIdFromIdOrName(channel, channelId => {
+        g_database.getTable("songrequest_playlists", {
+            channelID: channelId,
+            played: 1
+        }, (err, data) => {
+            if (err) {
+                callback(err);
+            } else {
+                if (data.length > 0) {
+                    callback(null, data[0]);
+                } else {
+                    callback();
+                }
+            }
+        });
+    });
+};
+exports.getCurrentSong = getCurrentSong;
+
+const removeCurrentSong = (channel, callback) => {
+    getCurrentSong(channel, (err, data) => {
+        if (!err && data) {
+            removeFromPlaylist(channel, data.youtubeID, "request", callback);
+        } else {
+            callback(err);
+        }
+    });
+};
+exports.removeCurrentSong = removeCurrentSong;
+
+const saveCurrentSong = (channel, callback) => {
+    Helper.getChannelIdFromIdOrName(channel, channelId => {
+        g_database.update("songrequest_playlists", {
+            autoplayPlaylist: 1
+        }, {
+            channelID: channelId,
+            played: 1
+        }, callback);
+    });
+};
+exports.saveCurrentSong = saveCurrentSong;
 
 /**
  *

@@ -59,4 +59,5 @@ g_socket.on("connection", function(clientSocket){
         });
     });
 
+    require("./songrequest")(clientSocket);
 });

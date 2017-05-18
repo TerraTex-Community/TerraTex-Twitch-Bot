@@ -50,3 +50,4 @@ create index songrequestBlacklist_channel_ID_fk
 	on songrequest_blacklist (channelID);
 
 ALTER TABLE songrequest_blacklist ADD title VARCHAR(255) NULL;
+ALTER TABLE songrequest_playlists ADD played INT DEFAULT 0 NULL;

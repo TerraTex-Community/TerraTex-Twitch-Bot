@@ -1,22 +1,32 @@
+let firstSong = true;
+
 class SongRequest {
     static init() {
         $("#srqSkipSong").click(SongRequest.loadNextSong);
         $("#srqBlacklistSong").click(SongRequest.blacklistSong);
         $("#srqBlacklistRequester").click(SongRequest.blacklistRequester);
         $("#srqSaveSong").click(SongRequest.saveSong);
+
+        g_socket.on("sr_setSongInPlayer", (data) => {
+            SongRequest.playNextSong(data.id);
+            $("#songTitle").html(data.title);
+            $("#songRequester").html(data.requester);
+        });
+
+        setTimeout(SongRequest.loadNextSong, 1500);
     }
 
-    /**
-     * @todo
-     */
     static loadNextSong() {
-        SongRequest.playNextSong("-4yI-VEA8pw");
-        // theoretically get title: https://www.googleapis.com/youtube/v3/videos?part=snippet&id=-4yI-VEA8pw&key={authKey}
+        g_socket.emit("sr_getNextSong");
     }
 
     static playNextSong(id) {
         if (player) {
             player.loadVideoById({videoId: id});
+            if (firstSong) {
+                firstSong = false;
+                player.stopVideo();
+            }
         }
     }
 
