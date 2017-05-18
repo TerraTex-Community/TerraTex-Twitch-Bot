@@ -356,6 +356,13 @@
             "vars": [
                 "fromUser"
             ]
+        },
+        "play": {
+            "desc": "Wird gesendet, wenn ein neuer Song im Player geladen wurde.",
+            "text": "Nächster Song: #title# requested von #fromUser#",
+            "vars": [
+                "fromUser"
+            ]
         }
     },
     "chatfilter": {

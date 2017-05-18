@@ -4,9 +4,8 @@
 const srHelper = require("./../SongRequest.helper");
 
 module.exports = (clientSocket) => {
-    let channelID = clientSocket.handshake.session.user.id;
-
     clientSocket.on("sr_getNextSong", () => {
+        let channelID = clientSocket.handshake.session.user.id;
         srHelper.removeCurrentSong(channelID, (err) => {
             if (!err) {
                 srHelper.getNextSong(channelID, (gnsErr, data) => {
@@ -17,6 +16,16 @@ module.exports = (clientSocket) => {
                             title: data.title,
                             requester: data.requestedBy
                         });
+
+                        if (g_bot._channelConnectors.hasOwnProperty(clientSocket.handshake.session.user.name)) {
+                            let channel = g_bot._channelConnectors[clientSocket.handshake.session.user.name];
+
+                            let output = channel.text.get("songrequest.play", {
+                                title: data.title,
+                                fromUser: data.username
+                            });
+                            channel._client.say(channel._channelName, output);
+                        }
                     }
                 });
             }
@@ -24,6 +33,7 @@ module.exports = (clientSocket) => {
     });
 
     clientSocket.on("sr_blacklistSong", () => {
+        let channelID = clientSocket.handshake.session.user.id;
         srHelper.blacklistCurrentSong(channelID, (err) => {
             if (!err) {
                 clientSocket.emit("notify", {
@@ -36,6 +46,7 @@ module.exports = (clientSocket) => {
     });
 
     clientSocket.on("sr_blacklistRequester", () => {
+        let channelID = clientSocket.handshake.session.user.id;
         srHelper.blacklistCurrentRequester(channelID, (err) => {
             if (!err) {
                 clientSocket.emit("notify", {
@@ -48,6 +59,7 @@ module.exports = (clientSocket) => {
     });
 
     clientSocket.on("sr_saveSong", () => {
+        let channelID = clientSocket.handshake.session.user.id;
         srHelper.saveCurrentSong(channelID, (err) => {
             if (!err) {
                 clientSocket.emit("notify", {
