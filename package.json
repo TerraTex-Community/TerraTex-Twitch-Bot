@@ -43,7 +43,8 @@
     "session-file-store": "^1.0.0",
     "socket.io": "^1.7.2",
     "tmi.js": "1.2.0",
-    "twitch-api": "0.4.5"
+    "twitch-api": "0.4.5",
+    "urijs": "^1.18.10"
   },
   "docs": {
     "twitch-irc": "https://www.tmijs.org/docs/Commands.md",

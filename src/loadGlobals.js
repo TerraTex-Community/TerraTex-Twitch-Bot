@@ -10,7 +10,8 @@ module.exports = () => {
         "database": new Config("database"),
         "badWord": new Config("badword"),
         "badWordEn": new Config("badword_en"),
-        "advertising": new Config("anti_advertising")
+        "advertising": new Config("anti_advertising"),
+        "youtube": new Config("youtube")
     };
 
 

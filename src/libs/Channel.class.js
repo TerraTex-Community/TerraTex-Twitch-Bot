@@ -49,38 +49,41 @@ class Channel {
 
             // Include additional Systems
             this._systems = {};
-            let commandHandler = require("./channelsystems/CommandHandler.js");
+            const commandHandler = require("./channelsystems/CommandHandler.js");
             this._systems.commandHandler = new commandHandler(this);
 
-            let quoteSystem = require("./channelsystems/QuoteSystem.js");
+            const quoteSystem = require("./channelsystems/QuoteSystem.js");
             this._systems.quoteSystem = new quoteSystem(this);
 
-            let pointsSystem = require("./channelsystems/PointsSystem.js");
+            const pointsSystem = require("./channelsystems/PointsSystem.js");
             this._systems.pointsSystem = new pointsSystem(this);
 
-            let viewerSystem = require("./channelsystems/ViewerSystem.js");
+            const viewerSystem = require("./channelsystems/ViewerSystem.js");
             this._systems.viewerSystem = new viewerSystem(this);
 
-            let textSystem = require("./channelsystems/TextHandler.js");
+            const textSystem = require("./channelsystems/TextHandler.js");
             this._systems.textHandler = new textSystem(this);
 
-            let ViewerRankSystem = require("./channelsystems/ViewerRankSystem.js");
+            const ViewerRankSystem = require("./channelsystems/ViewerRankSystem.js");
             this._systems.ViewerRankSystem = new ViewerRankSystem(this);
 
-            let GiveAwaySystem = require("./channelsystems/GiveAwaySystem.js");
+            const GiveAwaySystem = require("./channelsystems/GiveAwaySystem.js");
             this._systems.GiveAwaySystem = new GiveAwaySystem(this);
 
-            let ChatGames = require("./channelsystems/ChatGames.js");
+            const ChatGames = require("./channelsystems/ChatGames.js");
             this._systems.ChatGames = new ChatGames(this);
 
-            let ChatFilter = require("./channelsystems/ChatFilter.js");
+            const ChatFilter = require("./channelsystems/ChatFilter.js");
             this._systems.ChatFilter = new ChatFilter(this);
 
-            let ScriptedCommands = require("./channelsystems/ScriptedCommands.js");
+            const ScriptedCommands = require("./channelsystems/ScriptedCommands.js");
             this._systems.ScriptedCommands = new ScriptedCommands(this);
 
-            let Timer = require("./channelsystems/Timer.js");
+            const Timer = require("./channelsystems/Timer.js");
             this._systems.Timer = new Timer(this);
+
+            const SongRequest = require("./channelsystems/SongRequest.js");
+            this._systems.SongRequest = new SongRequest(this);
 
         }).bind(this));
     }
@@ -318,6 +321,13 @@ class Channel {
      */
     get timer() {
         return this._systems.Timer;
+    }
+
+    /**
+     * @returns {SongRequest}
+     */
+    get songrequest() {
+        return this._systems.SongRequest;
     }
 }
 module.exports = Channel;
