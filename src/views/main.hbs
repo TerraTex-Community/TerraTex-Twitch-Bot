@@ -83,11 +83,13 @@
 
             function checkForVolumeChange() {
                 if (player) {
-                    if (audioVolume && player.getVolume() !== audioVolume) {
-                        $("#vol-control").val(player.getVolume());
-                        audioVolume = player.getVolume();
-                    }
                     if (player.getPlayerState() > 0) {
+                        if (audioVolume && player.getVolume() !== audioVolume) {
+                            $("#vol-control").val(player.getVolume());
+                            audioVolume = player.getVolume();
+                            localStorage.setItem("terratex_twitchbot_songrequest_volume", audioVolume);
+                        }
+
                         $("#songPlayTime").html(convertPlayTime(player.getCurrentTime()) + " / " + convertPlayTime(player.getDuration()));
                     }
                 }
@@ -102,6 +104,11 @@
 
             function onReady() {
                 setInterval(checkForVolumeChange, 0);
+
+                if (localStorage.getItem("terratex_twitchbot_songrequest_volume")) {
+                    player.setVolume(localStorage.getItem("terratex_twitchbot_songrequest_volume"))
+                }
+
                 audioVolume = player.getVolume();
                 $("#vol-control").val(player.getVolume());
             }
@@ -109,6 +116,7 @@
             function setVolume(volume) {
                 audioVolume = volume;
                 player.setVolume(volume);
+                localStorage.setItem("terratex_twitchbot_songrequest_volume", audioVolume);
             }
 
             function onPlayerStateChange(event) {
