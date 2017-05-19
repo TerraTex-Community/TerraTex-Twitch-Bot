@@ -22,7 +22,7 @@ module.exports = (clientSocket) => {
 
                             let output = channel.text.get("songrequest.play", {
                                 title: data.title,
-                                fromUser: data.username
+                                fromUser: data.requestedBy
                             });
                             channel._client.say(channel._channelName, output);
                         }
