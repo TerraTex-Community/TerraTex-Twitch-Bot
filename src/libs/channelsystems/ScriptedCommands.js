@@ -63,7 +63,7 @@ class ScriptedCommands {
                     cmd = result[i];
                     bool = this._channel.command.registerNewCommand(cmd.command.toLowerCase(), this._runCommand.bind(this), cmd.restrictedTo);
                     if (!bool) {
-                        this._runner.writeChannelLog("CommandHandler.Error: Command '" + cmd.command + "' already used and cannot registered.");
+                        this._writeChannelLog("CommandHandler.Error: Command '" + cmd.command + "' already used and cannot registered.");
                     } else {
                         try {
                             result[i].save = JSON.parse(result[i].save);
@@ -87,6 +87,11 @@ class ScriptedCommands {
     _runCommand(user, cmd, ...args) {
         let runner = new (require("./LuaHandler/LuaRunner"))(this._channel, this._globalObject, this._defaultScripts);
         runner.run(user, cmd.toLowerCase(), args, this._commands[cmd.toLowerCase()].code);
+    }
+
+    _writeChannelLog(content) {
+        let fs = require("fs");
+        fs.appendFile("tmp/channelLogs/" + this._channel._channelName + ".log", content + "\n");
     }
 
     /**
@@ -121,7 +126,7 @@ class ScriptedCommands {
         this.removeCommand(cmd.toLowerCase(), (function () {
             let bool = this._channel.command.registerNewCommand(cmd.toLowerCase(), this._runCommand.bind(this), options.restrictedTo);
             if (!bool) {
-                this._runner.writeChannelLog("CommandHandler.Error: Command '" + cmd + "' already used and cannot registered.");
+                this._writeChannelLog("CommandHandler.Error: Command '" + cmd + "' already used and cannot registered.");
             } else {
                 this._commands[cmd.toLowerCase()] = options;
             }
