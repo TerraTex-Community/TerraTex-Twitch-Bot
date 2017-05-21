@@ -1,10 +1,10 @@
 /**
  * Created by C5217649 on 22.03.2016.
  */
-let editor, LuaMode, jsonEditor;
 
 $(document).ready(function () {
     if (!window.script_scriptedCommands) {
+        let editor, LuaMode, jsonEditor;
         window.script_scriptedCommands = true;
 
         loadEditor();
@@ -96,7 +96,9 @@ $(document).ready(function () {
             if (save === null) {
                 save = {};
             }
+
             editor.setValue(data.code);
+
             jsonEditor.set(save);
             $('#scriptedCommandEditor').modal('show');
         });
@@ -118,22 +120,22 @@ $(document).ready(function () {
             }, 500);
         });
 
+        function loadEditor() {
+            editor = ace.edit("editor");
+            LuaMode = ace.require("ace/mode/lua").Mode;
+            editor.session.setMode(new LuaMode());
+        }
 
+        function loadJsonEditor() {
+            if ($("#jsoneditor .jsoneditor").length === 0) {
+                const container = document.getElementById("jsoneditor");
+                const options = {
+                    modes: ["code", "tree"]
+                };
+                jsonEditor = new JSONEditor(container, options);
+            }
+        }
     }
 });
 
-function loadEditor() {
-    editor = ace.edit("editor");
-    LuaMode = ace.require("ace/mode/lua").Mode;
-    editor.session.setMode(new LuaMode());
-}
 
-function loadJsonEditor() {
-    if ($("#jsoneditor .jsoneditor").length === 0) {
-        const container = document.getElementById("jsoneditor");
-        const options = {
-            modes: ["code", "tree"]
-        };
-        jsonEditor = new JSONEditor(container, options);
-    }
-}

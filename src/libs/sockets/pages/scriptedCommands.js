@@ -29,12 +29,13 @@ class PageSettings {
                     text: "Der Scriptbare Command \"" + data + "\" wurde erfolgreich gelöscht."
                 });
 
+                clientSocket.emit("reloadPage", {});
+
                 //set new data object on existing channel
                 if (g_bot._channelConnectors.hasOwnProperty(clientSocket.handshake.session.user.name)) {
                     let channel = g_bot._channelConnectors[clientSocket.handshake.session.user.name];
                     channel.scriptedCommands.removeCommand(data);
                 }
-                clientSocket.emit("reloadPage", {});
             });
         });
 
@@ -103,6 +104,7 @@ class PageSettings {
                                 let channel = g_bot._channelConnectors[clientSocket.handshake.session.user.name];
                                 channel.scriptedCommands.addOrReloadCommand(data.command, data);
                             }
+
                             clientSocket.emit("reloadPage", {});
 
                         } else {
